@@ -10,6 +10,8 @@ class Tablero(Actor):
         self._ancho = ancho
         self.distancia = 30
         self.celda = Celda(pilas) * (alto * ancho)
+        #self.z = 5
+        #self.radio_de_colision = None
 
         negro = True
         h=0
