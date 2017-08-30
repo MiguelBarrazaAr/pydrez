@@ -8,6 +8,8 @@ class Tablero(Actor):
     def __init__(self, pilas, x=0, y=0, alto=8, ancho=8):
         self._alto = alto
         self._ancho = ancho
+        self._x = x
+        self._y = y
         self.distancia = 30
         self.celda = Celda(pilas) * (alto * ancho)
         #self.z = 5
@@ -36,3 +38,7 @@ class Tablero(Actor):
             else:
                 negro = not negro
 
+    def posicionar(self, actor, x, y):
+        """Posiciona un actor en una casilla del tablero"""
+        actor.x=self._x+(x-1)*self.distancia
+        actor.y=self._y+(y-1)*self.distancia

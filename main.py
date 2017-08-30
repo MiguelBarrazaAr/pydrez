@@ -3,7 +3,8 @@ from accessible_output import speech
 
 #import pantallaJuego
 from actor.tablero import Tablero
-from actor.reina import Reina
+from logica.ajedrez_basico import armarAjedrezBasico
+
 
 # iniciamos:
 pilas = pilasengine.iniciar(titulo='test')
@@ -14,11 +15,8 @@ try:
 except AttributeError:
     print("Omitiendo forzar la inicializacion, version anterior a 1.4.8")
 
-tablero = Tablero(pilas, alto=4, ancho=4, x=-180, y=-240)
-tablero1 = Tablero(pilas, alto=4, ancho=4, x=0, y=-240)
-
-tablero2 = Tablero(pilas, alto=5, ancho=5, x=0, y=50)
-reina = Reina(pilas)
+tablero = Tablero(pilas, alto=8, ancho=8, x=-120, y=-120)
+armarAjedrezBasico(pilas, tablero)
 
 def decir(texto, interrumpir=True, visual=False):
   s.output(texto, interrupt=interrumpir)
@@ -26,19 +24,5 @@ def mover(x, y, actor):
   actor.x=actor.x+x
   actor.y=actor.y+y
 
-def pulsado(evento):
-  m=30
-  if evento.codigo == "a":
-    # mover a la izquierda:
-    mover(-m, 0, reina)
-    #decir(reina.x)
-  elif evento.codigo == "d":
-    # mover a la derecha
-    mover(m, 0, reina)
-    #decir(reina.x)
-
-
-
-pilas.eventos.pulsa_tecla.conectar(pulsado)
 
 pilas.ejecutar()
