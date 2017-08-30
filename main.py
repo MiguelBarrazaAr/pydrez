@@ -14,7 +14,10 @@ try:
 except AttributeError:
     print("Omitiendo forzar la inicializacion, version anterior a 1.4.8")
 
-tablero = Tablero(pilas, alto=8, ancho=8)
+tablero = Tablero(pilas, alto=4, ancho=4, x=-180, y=-240)
+tablero1 = Tablero(pilas, alto=4, ancho=4, x=0, y=-240)
+
+tablero2 = Tablero(pilas, alto=5, ancho=5, x=0, y=50)
 reina = Reina(pilas)
 
 def decir(texto, interrumpir=True, visual=False):

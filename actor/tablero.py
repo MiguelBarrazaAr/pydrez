@@ -17,19 +17,22 @@ class Tablero(Actor):
         h=0
         w=0
         for c in self.celda:
-            c.x=w*self.distancia
-            c.y=h*self.distancia
+            c.x=x+w*self.distancia
+            c.y=y+h*self.distancia
+            c.z=100
+
+            # coloreamos la celda:
+            if negro:
+                c.colorearNegro()
+
 
             w+=1
             # si llegamos al final de la fila volvemos al principio y subimos:
             if w == ancho:
                 w=0
                 h+=1
-
-            # coloreamos la celda:
-            if negro:
-                c.colorearNegro()
-                negro = False
+                if (ancho%2) == 1:
+                    negro = not negro
             else:
-                negro = True
+                negro = not negro
 
