@@ -15,8 +15,10 @@ try:
 except AttributeError:
     print("Omitiendo forzar la inicializacion, version anterior a 1.4.8")
 
+pilas.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
 tablero = Tablero(pilas, alto=8, ancho=8, x=-120, y=-120)
 armarAjedrezBasico(pilas, tablero)
+
 
 def decir(texto, interrumpir=True, visual=False):
   s.output(texto, interrupt=interrumpir)
