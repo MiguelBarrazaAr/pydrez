@@ -10,6 +10,6 @@ class PantallaJuego(pilasengine.escenas.Escena):
         self.fondo = pilas.fondos.Plano()
 
         # armamos tablero:
-        self.tablero = Tablero(pilas, filas=13, columnas=8, x=-240, y=-126)
-        #armarAjedrezBasico(pilas, self.tablero)
-        #self.cursorTeclado = Cursor(pilas, tablero=self.tablero)
+        self.tablero = Tablero(pilas, filas=8, columnas=8, x=-120, y=-120)
+        armarAjedrezBasico(pilas, self.tablero)
+        self.cursorTeclado = Cursor(pilas, tablero=self.tablero)
