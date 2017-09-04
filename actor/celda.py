@@ -1,18 +1,25 @@
-import pilasengine
+# -*- encoding: utf-8 -*-
+from pilasengine.actores.actor import Actor
 
-class Celda(pilasengine.actores.Actor):
+class Celda(Actor):
 
-    def iniciar(self):
-        self.blanco = "imagenes/celda/blanco.png"
-        self.negro = "imagenes/celda/negro.png"
+    def __init__(self, pilas, x=0, y=0, z=0, color='blanco'):
+        Actor.__init__(self, pilas, x=x, y=y)
+        self.z = z
+        self.color = color
+
+        if color == 'blanco':
+            self.normal = "imagenes/celda/blanco.png"
+        else:
+            self.normal = "imagenes/celda/negro.png"
+
         self.verde = "imagenes/celda/verde.png"
-        self.imagen = self.blanco
+        self.imagen = self.normal
 
-    def colorearVerde(self):
-        self.imagen = self.blanco
-
-    def colorearNegro(self):
-        self.imagen = self.negro
 
     def colorearVerde(self):
         self.imagen = self.verde
+
+    def colorearNormal(self):
+        """Regresa la celda a su color base"""
+        self.imagen = self.normal

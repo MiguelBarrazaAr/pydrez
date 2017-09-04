@@ -1,0 +1,1 @@
+celda 30 px

@@ -1,23 +1,16 @@
 import pilasengine
 from accessible_output import speech
 
-#import pantallaJuego
-from actor.tablero import Tablero
-from logica.ajedrez_basico import armarAjedrezBasico
-
+from escena.pantallaJuego import PantallaJuego
 
 # iniciamos:
-pilas = pilasengine.iniciar(titulo='test')
+pilas = pilasengine.iniciar(titulo='pydrez 0.1 - alpha')
 s = speech.Speaker()
 
 try:
     pilas.forzar_habilitacion_de_audio()
 except AttributeError:
     print("Omitiendo forzar la inicializacion, version anterior a 1.4.8")
-
-pilas.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
-tablero = Tablero(pilas, alto=8, ancho=8, x=-120, y=-120)
-armarAjedrezBasico(pilas, tablero)
 
 
 def decir(texto, interrumpir=True, visual=False):
@@ -26,5 +19,6 @@ def mover(x, y, actor):
   actor.x=actor.x+x
   actor.y=actor.y+y
 
-
+pilas.escenas.vincular(PantallaJuego)
+pilas.escenas.PantallaJuego(pilas=pilas)
 pilas.ejecutar()
