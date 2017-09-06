@@ -4,7 +4,7 @@ from accessible_output import speech
 from escena.pantallaJuego import PantallaJuego
 
 # iniciamos:
-pilas = pilasengine.iniciar(titulo='pydrez 0.1 - alpha')
+pilas = pilasengine.iniciar(titulo='pydrez 0.1 - alpha', habilitar_mensajes_log=False)
 s = speech.Speaker()
 
 try:
@@ -20,5 +20,5 @@ def mover(x, y, actor):
   actor.y=actor.y+y
 
 pilas.escenas.vincular(PantallaJuego)
-pilas.escenas.PantallaJuego(pilas=pilas)
+pilas.escenas.PantallaJuego(pilas=pilas, tts=decir)
 pilas.ejecutar()

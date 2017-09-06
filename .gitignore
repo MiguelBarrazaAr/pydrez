@@ -103,3 +103,7 @@ ENV/
 # eclipse pydev project settings
 .project
 .pydevproject
+
+# example file:
+log.txt
+juego.py
