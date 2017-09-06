@@ -6,7 +6,7 @@ from celda import Celda
 class Tablero(Actor):
     """Representa al tablero"""
 
-    def __init__(self, pilas, x=0, y=0, columnas=8, filas=8):
+    def __init__(self, pilas, x=0, y=0, columnas=8, filas=8, centrado=False):
         """Constructor del tablero:
 
         :param x: x del punto central de a1 (casilla inferior izquierda).
@@ -17,13 +17,20 @@ class Tablero(Actor):
         :type columnas: int
         :param filas: cantidad de filas
         :type filas: int
+        :param centrado: indica si el tablero estará centrado.
+        :type centrado: bool
         """
+
+        self.distancia = 30
+        # si esta centrado calculamos su posición:
+        if centrado:
+            x = pilas.camara.x+columnas/2*self.distancia*-1
+            y = pilas.camara.y+filas/2*self.distancia*-1
 
         Actor.__init__(self, pilas, x=x, y=y)
         self.imagen = "invisible.png"
         self.columnas = columnas
         self.filas = filas
-        self.distancia = 30
         self.celda = []
         self.ficha = []
         #self.radio_de_colision = None
@@ -46,6 +53,10 @@ class Tablero(Actor):
             else:
                 # la siguiente fila es impar, es blanco:
                 color = 'blanco'
+
+    def acomodarFichas(self, loader):
+        loader.acomodar(tablero=self)
+        #pass
 
     def posicionar(self, actor, columna, fila):
         """Posiciona un actor en una casilla del tablero
