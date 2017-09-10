@@ -1,10 +1,6 @@
-from pilasengine.actores.actor import Actor
+from actor.ficha import Ficha
 
-class Reina(Actor):
+class Reina(Ficha):
 
-    def iniciar(self, color="blanco"):
-        self.imagen = "imagenes/pieza/"+color+"/reina.png"
-        self.bando = color
-        self.escala = 0.7
-
-
+    def nombre(self):
+        return "reina"
