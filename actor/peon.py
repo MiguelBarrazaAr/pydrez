@@ -4,7 +4,7 @@ class Peon(Actor):
 
     def iniciar(self, color="blanco"):
         self.imagen = "imagenes/pieza/"+color+"/peon.png"
-        self.bando = color
+        self.color = color
         self.escala = 0.7
 
 
