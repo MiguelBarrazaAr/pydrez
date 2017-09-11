@@ -45,3 +45,22 @@ class TestPeon(unittest.TestCase):
 
     def test_10_UnPeonBlancoEnE2_puedeMoverA_e3(self):
         self.assertTrue(self.peonBlanco.puedeMoverA(5, 3), "un peon de e2 puede moverse a e3")
+
+    def test_11_UnPeonBlancoEnE2_puedeMoverA_e4(self):
+        self.assertTrue(self.peonBlanco.puedeMoverA(5, 4), "un peon de e2 puede moverse a e4")
+
+    def test_12_UnPeonBlancoEnE2_noPuedeMoverA_e5(self):
+        self.assertFalse(self.peonBlanco.puedeMoverA(5, 5), "un peon de e2 no puede moverse a e5")
+
+    def test_13_UnPeonBlancoEnE2_noPuedeMoverA_d2(self):
+        self.assertFalse(self.peonBlanco.puedeMoverA(4, 2), "un peon de e2 no puede moverse a d2")
+
+    def test_14_UnPeonBlancoEnE2_noPuedeMoverA_f2(self):
+        self.assertFalse(self.peonBlanco.puedeMoverA(6, 2), "un peon de e2 no puede moverse a f2")
+
+    def test_14_UnPeonBlancoEnE2_noPuedeMoverA_d3(self):
+        self.assertFalse(self.peonBlanco.puedeMoverA(4, 3), "un peon de e2 no puede moverse a d3")
+
+    def test_14_UnPeonBlancoEnE2_noPuedeMoverA_f3(self):
+        self.assertFalse(self.peonBlanco.puedeMoverA(6, 3), "un peon de e2 no puede moverse a f3")
+
