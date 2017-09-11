@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 from pilasengine.actores.actor import Actor
 
 class Ficha(Actor):
@@ -12,3 +13,8 @@ class Ficha(Actor):
 
     def definirTablero(self, tablero):
         self.tablero = tablero
+
+    def puedeMoverA(self, columna, fila):
+        """ valida si esta ficha puede moverse a otra posición
+        este Método debe ser redefinido."""
+        return False
