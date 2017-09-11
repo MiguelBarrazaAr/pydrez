@@ -23,4 +23,9 @@ class Peon(Ficha):
             return False
 
     def _negro_puedeMoverA(self, columna, fila):
-        return False
+        if self.columna == columna and (self.fila-1) == fila:
+            return True
+        elif fila == 5 and self.columna == columna:
+            return True
+        else:
+            return False
