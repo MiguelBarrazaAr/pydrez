@@ -1,17 +1,43 @@
-import time
+from pilasengine.actores.actor import Actor
+from pilasengine.colores import *
 
-minutos = 1
-segundos = 60
-minutosPrimo = minutos
-segundosPrimo = segundos
-for m in range (0,minutos+1):
-	for s in range(0,segundos):
-		if segundosPrimo == 0:
-			minutosPrimo = minutosPrimo - 1
-			segundosPrimo = segundos
-		segundosPrimo = segundosPrimo - 1
-		mm = str(minutosPrimo)
-		ss = str(segundosPrimo)
-		print(mm + ":" + ss)
-		time.sleep(1)
+class Reloj(Actor):
+
+    def iniciar(self, x=0, y=0):
+        self.imagen = "invisible.png"
+        self.minutos = 0
+        self.segundos = 0
+        self.tarea_en_curso = None
+        self.texto = self.pilas.actores.Texto(str(self.minutos) + ":" + str(self.segundos))
+        self.texto.color = negro
+
+    def configurar(self, min, seg):
+        self.minutos = min
+        if seg >= 59:
+        	self.segundos = 59
+        else:
+        	self.segundos = seg
+        self.actualizarTexto()
+
+
+    def comenzar(self):
+        if self.tarea_en_curso == None: 
+            self.tarea_en_curso = self.pilas.tareas.siempre(1, self.restarAlContador)
+
+    def restarAlContador(self):
+    	if self.segundos >= 1 or self.minutos >= 1:
+    		if self.segundos >= 1:
+        		self.segundos -= 1
+        	else:
+        		self.minutos -= 1
+        		self.segundos = 59
+        self.actualizarTexto()
+
+    def actualizarTexto(self):
+    	self.texto.texto = (str(self.minutos) + ":" + str(self.segundos))
+
+    def pausar(self):
+         self.tarea_en_curso.eliminar()
+         self.tarea_en_curso = None
+
 
