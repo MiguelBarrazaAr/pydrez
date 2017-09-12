@@ -2,6 +2,7 @@
 import unittest
 
 from test.peonTest import TestPeon
+from test.tableroTest import TestTablero
 
 print("Running tests...")
 unittest.main()
