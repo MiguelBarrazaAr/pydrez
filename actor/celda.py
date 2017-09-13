@@ -7,6 +7,7 @@ class Celda(Actor):
         Actor.__init__(self, pilas, x=x, y=y)
         self.z = z
         self.color = color
+        self.ficha = None
 
         if color == 'blanco':
             self.normal = "imagenes/celda/blanco.png"
@@ -23,3 +24,6 @@ class Celda(Actor):
     def colorearNormal(self):
         """Regresa la celda a su color base"""
         self.imagen = self.normal
+
+    def tieneFicha(self):
+        return not self.ficha is None
