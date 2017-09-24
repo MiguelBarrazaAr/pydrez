@@ -4,7 +4,7 @@ from accessible_output import speech
 from escena.pantallaJuego import PantallaJuego
 
 # iniciamos:
-pilas = pilasengine.iniciar(titulo='pydrez 0.1 - alpha', habilitar_mensajes_log=False)
+pilas = pilasengine.iniciar(titulo='pydrez 0.1 - alpha', habilitar_mensajes_log=True)
 s = speech.Speaker()
 
 try:

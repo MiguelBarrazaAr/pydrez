@@ -73,3 +73,6 @@ class Tablero(Actor):
         actor.x=self.x+columna*self.distancia
         actor.y=self.y+fila*self.distancia
         self.ficha.append(actor)
+
+    def posicion_de_celda(self, columna, fila):
+        return self.x+(columna*self.distancia), self.y+(fila*self.distancia)
