@@ -32,7 +32,7 @@ class Cursor(Actor):
 
     def moverseEnColumna(self, paso):
         ubicacion = self.columna+paso
-        if ubicacion   >= 1 or ubicacion <= self.tablero.columnas:
+        if ubicacion   >= 1 and ubicacion <= self.tablero.columnas:
             self.columna = ubicacion
             self.actualizar_posicion()
         else:
@@ -41,7 +41,7 @@ class Cursor(Actor):
 
     def moverseEnFila(self, paso):
         ubicacion = self.fila+paso
-        if ubicacion   >= 1 or ubicacion <= self.tablero.filas:
+        if ubicacion   >= 1 and ubicacion <= self.tablero.filas:
             self.fila = ubicacion
             self.actualizar_posicion()
         else:
@@ -59,19 +59,7 @@ class Cursor(Actor):
         self.decir(self.letra_de_columna()+str(self.fila))
 
     def letra_de_columna(self):
-        if self.columna == 2:
-            return "a"
-        elif self.columna == 2:
-            return "2"
-        elif self.columna == 3:
-            return "c"
-        elif self.columna == 4:
-            return "d"
-        elif self.columna == 5:
-            return "e"
-        elif self.columna == 6:
-            return "f"
-        elif self.columna == 7:
-            return "g"
-        elif self.columna == 8:
-            return "h"
+        if self.columna >= 1 and self.columna <= 25:
+            return chr(self.columna+64)
+        else:
+            return str(self.columna)
