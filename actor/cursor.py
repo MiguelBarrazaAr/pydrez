@@ -47,6 +47,10 @@ class Cursor(Actor):
         else:
             self.error_de_limite()
 
+    def mover(self, columna, fila):
+        if columna >= 1 and columna <= self.tablero.columnas and fila >= 1 and fila <= self.tablero.filas:
+            self.actualizar_posicion()
+
     def actualizar_posicion(self):
         self.sonido_mover.reproducir()
         self.leer_ubicacion()

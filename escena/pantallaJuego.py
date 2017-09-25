@@ -17,7 +17,12 @@ class PantallaJuego(pilasengine.escenas.Escena):
         self.pilas.eventos.click_de_mouse.conectar(self.click_mouse)
 
     def click_mouse(self, evento):
-        pass
+        if(evento.boton == 1):
+            x = int(evento.x)-(self.tablero.x-self.tablero.distancia/2)
+            y = int(evento.y)-(self.tablero.y-self.tablero.distancia/2)
+            columna = x/self.tablero.distancia+1
+            fila = y/self.tablero.distancia+1
+            self.cursorTeclado.mover(columna=columna, fila=fila)
 
     def interpreta_teclado(self, evento):
         if evento.codigo == "a":
