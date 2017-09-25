@@ -28,7 +28,7 @@ class Tablero(Actor):
             y = pilas.camara.y+filas/2*self.distancia*-1
 
         Actor.__init__(self, pilas, x=x, y=y)
-        self.imagen = "invisible.png"
+        #self.imagen = "invisible.png"
         self.columnas = columnas
         self.filas = filas
         self.celda = []
@@ -40,7 +40,7 @@ class Tablero(Actor):
         for f in range(filas):
             self.celda.append([])
             for c in range(columnas):
-                self.celda[f].append(Celda(pilas, x=(x+c*self.distancia), y=(y+f*self.distancia), z=100, color=color))
+                self.celda[f].append(Celda(pilas, x=(x+c*self.distancia), y=(y+f*self.distancia), z=100, color=color, columna=c, fila=f))
 
                 # invertimos el color:
                 if color == 'negro':
