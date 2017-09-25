@@ -49,6 +49,8 @@ class Cursor(Actor):
 
     def mover(self, columna, fila):
         if columna >= 1 and columna <= self.tablero.columnas and fila >= 1 and fila <= self.tablero.filas:
+            self.columna = columna
+            self.fila = fila
             self.actualizar_posicion()
 
     def actualizar_posicion(self):
@@ -67,3 +69,7 @@ class Cursor(Actor):
             return chr(self.columna+64)
         else:
             return str(self.columna)
+
+    def seleccionar(self):
+        """selecciona una casilla del tablero"""
+        self.tablero.seleccionar(self.columna, self.fila)

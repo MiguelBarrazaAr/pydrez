@@ -6,7 +6,7 @@ from celda import Celda
 class Tablero(Actor):
     """Representa al tablero"""
 
-    def __init__(self, pilas, x=0, y=0, columnas=8, filas=8, centrado=False):
+    def __init__(self, pilas, x=0, y=0, columnas=8, filas=8, centrado=False, tts=None):
         """Constructor del tablero:
 
         :param x: x del punto central de a1 (casilla inferior izquierda).
@@ -34,6 +34,7 @@ class Tablero(Actor):
         self.celda = []
         self.ficha = []
         #self.radio_de_colision = None
+        self.decir = tts
 
         color = 'negro'
         for f in range(filas):
@@ -78,3 +79,10 @@ class Tablero(Actor):
         columna-=1
         fila-=1
         return self.x+(columna*self.distancia), self.y+(fila*self.distancia)
+
+    def seleccionar(self, columna, fila):
+        """selecciona una celda.
+        si ya hay una seleccionada realiza un movimiento
+        """
+        if self.decir is not None:
+            self.decir("seleccionado")
