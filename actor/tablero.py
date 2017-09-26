@@ -65,19 +65,19 @@ class Tablero(Actor):
 
         :param actor: un actor a posicionar en una casilla del tablero.
         :type actor: Actor
-        :param columna: numero de columna en la que se posicionará (0..n)
+        :param columna: numero de columna en la que se posicionará (1..n)
         :type columna: int
-        :param fila: numero de fila (0..n)
+        :param fila: numero de fila (1..n)
         :type fila: int
         """
 
-        actor.x=self.x+columna*self.distancia
-        actor.y=self.y+fila*self.distancia
         self.ficha.append(actor)
+        self.celda[fila][columna].ponerFicha(actor)
 
-    def posicion_de_celda(self, columna=0, fila=0):
-        columna-=1
-        fila-=1
+    def obtenerFicha(self, columna, fila):
+        return self.celda[fila][columna].ficha
+
+    def posicion_de_celda(self, columna, fila):
         return self.x+(columna*self.distancia), self.y+(fila*self.distancia)
 
     def seleccionar(self, columna, fila):
@@ -85,4 +85,4 @@ class Tablero(Actor):
         si ya hay una seleccionada realiza un movimiento
         """
         if self.decir is not None:
-            self.decir("seleccionado")
+            self.decir("seleccionado "+str(columna)+" "+str(fila))

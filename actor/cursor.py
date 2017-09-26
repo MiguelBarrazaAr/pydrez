@@ -8,8 +8,8 @@ class Cursor(Actor):
         Actor.__init__(self, pilas, x=tablero.x, y=tablero.y)
         self.imagen = "imagenes/cabezal.png"
         self.tablero = tablero
-        self.columna=1
-        self.fila=1
+        self.columna=0
+        self.fila=0
         self.control = pilas.escena_actual().control
         self.decir=tts
         self.activo = True
@@ -32,7 +32,7 @@ class Cursor(Actor):
 
     def moverseEnColumna(self, paso):
         ubicacion = self.columna+paso
-        if ubicacion   >= 1 and ubicacion <= self.tablero.columnas:
+        if ubicacion   >= 0 and ubicacion < self.tablero.columnas:
             self.columna = ubicacion
             self.actualizar_posicion()
         else:
@@ -41,7 +41,7 @@ class Cursor(Actor):
 
     def moverseEnFila(self, paso):
         ubicacion = self.fila+paso
-        if ubicacion   >= 1 and ubicacion <= self.tablero.filas:
+        if ubicacion   >= 0 and ubicacion < self.tablero.filas:
             self.fila = ubicacion
             self.actualizar_posicion()
         else:
@@ -62,11 +62,14 @@ class Cursor(Actor):
         self.sonido_limite.reproducir()
 
     def leer_ubicacion(self):
-        self.decir(self.letra_de_columna()+str(self.fila))
+        self.decir(self.letra_de_columna()+str(self.fila+1))
+        ficha = self.tablero.obtenerFicha(columna=self.columna, fila=self.fila)
+        if ficha:
+            self.decir(ficha.nombre()+" "+ficha.color, False)
 
     def letra_de_columna(self):
-        if self.columna >= 1 and self.columna <= 25:
-            return chr(self.columna+64)
+        if self.columna >= 0 and self.columna <= 24:
+            return chr(self.columna+65)
         else:
             return str(self.columna)
 
