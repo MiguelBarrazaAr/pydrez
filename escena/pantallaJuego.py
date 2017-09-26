@@ -20,8 +20,8 @@ class PantallaJuego(pilasengine.escenas.Escena):
         if(evento.boton == 1):
             x = int(evento.x)-(self.tablero.x-self.tablero.distancia/2)
             y = int(evento.y)-(self.tablero.y-self.tablero.distancia/2)
-            columna = x/self.tablero.distancia+1
-            fila = y/self.tablero.distancia+1
+            columna = x/self.tablero.distancia
+            fila = y/self.tablero.distancia
             self.cursorTeclado.mover(columna=columna, fila=fila)
 
     def interpreta_teclado(self, evento):

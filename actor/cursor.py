@@ -48,7 +48,7 @@ class Cursor(Actor):
             self.error_de_limite()
 
     def mover(self, columna, fila):
-        if columna >= 1 and columna <= self.tablero.columnas and fila >= 1 and fila <= self.tablero.filas:
+        if columna >= 0 and columna < self.tablero.columnas and fila >= 0 and fila < self.tablero.filas:
             self.columna = columna
             self.fila = fila
             self.actualizar_posicion()
