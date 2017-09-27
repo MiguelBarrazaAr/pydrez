@@ -6,4 +6,7 @@ class Alfil(Ficha):
         return "alfil"
 
     def puedeMoverA(self, columna, fila):
-        return True
+        if abs(self._celda.fila - fila) == abs(self._celda.columna - columna):
+            return True
+        else:
+            return False
