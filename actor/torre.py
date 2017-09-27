@@ -6,4 +6,7 @@ class Torre(Ficha):
         return "torre"
 
     def puedeMoverA(self, columna, fila):
-        return True
+        if self._celda.fila == fila or self._celda.columna == columna:
+            return True
+        else:
+            return False
