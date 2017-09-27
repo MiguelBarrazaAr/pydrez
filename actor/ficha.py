@@ -11,6 +11,9 @@ class Ficha(Actor):
         self.fila = fila
         self.tablero = None
 
+    def __str__(self):
+        return self.nombre()+" "+self.color
+
     def definirTablero(self, tablero):
         self.tablero = tablero
 
@@ -18,3 +21,32 @@ class Ficha(Actor):
         """ valida si esta ficha puede moverse a otra posición
         este Método debe ser redefinido."""
         return False
+
+    def nombre(self):
+        return self.__name__
+
+    def _getCelda(self):
+        return self._celda
+
+    def _setCelda(self, celda):
+        self._celda = celda
+        # posiciona sobre la celda:
+        self.x = celda.x
+        self.y = celda.y
+
+    celda = property(fget=_getCelda, fset=_setCelda, doc="almacena la referencia a la celda en la cual esta la ficha. Si se sobreescribe reposiciona la ficha.")
+
+    def puedeMoverA(self, columna, fila):
+        """retorna true si esta ficha puede moverse a la celda indicada.
+        este metodo se debe sobreescribir"""
+        return False
+
+    def moverA(self, columna, fila):
+        """Mueve la ficha a otra celda."""
+        puedeMover = self.puedeMoverA(columna, fila)
+        if puedeMover:
+            # realiza el movimiento:
+            self.celda.liberar()
+            self.tablero.reposicionar(self, columna=columna, fila=fila)
+
+        return puedeMover

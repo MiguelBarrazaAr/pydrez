@@ -10,6 +10,7 @@ class Celda(Actor):
         self.ficha = None
         self.columna = columna
         self.fila = fila
+        self.seleccionado = False
 
         if color == 'blanco':
             self.normal = "imagenes/celda/blanco.png"
@@ -28,6 +29,9 @@ class Celda(Actor):
         self.imagen = self.normal
 
     def estaLibre(self):
+        return self.ficha is None
+
+    def tieneFicha(self):
         return self.ficha is not None
 
     def seleccionar(self):
@@ -44,5 +48,8 @@ class Celda(Actor):
     def ponerFicha(self, actor):
         """Posiciona un actor sobre esta celda."""
         self.ficha = actor
-        actor.x = self.x
-        actor.y = self.y
+        actor.celda = self
+
+    def liberar(self):
+        """metodo que se invoca cuando un actor deja esta celda."""
+        self.ficha = None

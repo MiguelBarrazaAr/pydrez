@@ -4,3 +4,7 @@ class Caballo(Ficha):
 
     def nombre(self):
         return "caballo"
+
+
+    def puedeMoverA(self, columna, fila):
+        return True

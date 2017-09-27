@@ -17,7 +17,7 @@ class Peon(Ficha):
     def _blanco_puedeMoverA(self, columna, fila):
         if self.columna == columna and (self.fila+1) == fila:
             return True
-        elif fila == 4 and self.columna == columna:
+        elif fila == 3 and self.columna == columna:
             return True
         else:
             return False
@@ -25,7 +25,8 @@ class Peon(Ficha):
     def _negro_puedeMoverA(self, columna, fila):
         if self.columna == columna and (self.fila-1) == fila:
             return True
-        elif fila == 5 and self.columna == columna:
+        elif fila == 4 and self.columna == columna:
             return True
         else:
             return False
+
