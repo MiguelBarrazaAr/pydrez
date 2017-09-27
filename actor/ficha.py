@@ -32,8 +32,11 @@ class Ficha(Actor):
         # posiciona sobre la celda:
         self.x = celda.x
         self.y = celda.y
+        self.columna = celda.columna+1
+        self.fila = celda.fila+1
 
     celda = property(fget=_getCelda, fset=_setCelda, doc="almacena la referencia a la celda en la cual esta la ficha. Si se sobreescribe reposiciona la ficha.")
+
 
     def puedeMoverA(self, columna, fila):
         """retorna true si esta ficha puede moverse a la celda indicada.
