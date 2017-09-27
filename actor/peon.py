@@ -15,17 +15,19 @@ class Peon(Ficha):
             return self._negro_puedeMoverA(columna, fila)
 
     def _blanco_puedeMoverA(self, columna, fila):
-        if self.columna == columna and (self.fila+1) == fila:
+        # precondición: la propiedad celda no debe ser None
+        if self._celda.columna == columna and (self._celda.fila+1) == fila:
             return True
-        elif fila == 3 and self.columna == columna:
+        elif fila == 3 and self._celda.columna == columna:
             return True
         else:
             return False
 
     def _negro_puedeMoverA(self, columna, fila):
-        if self.columna == columna and (self.fila-1) == fila:
+        # precondición: la propiedad celda no debe ser None
+        if self._celda.columna == columna and (self._celda.fila-1) == fila:
             return True
-        elif fila == 4 and self.columna == columna:
+        elif fila == 4 and self._celda.columna == columna:
             return True
         else:
             return False

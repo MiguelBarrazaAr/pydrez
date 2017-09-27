@@ -3,12 +3,11 @@ from pilasengine.actores.actor import Actor
 
 class Ficha(Actor):
 
-    def iniciar(self, color="blanco", fila=1, columna=1):
+    def iniciar(self, color="blanco", celda=None):
         self.imagen = "imagenes/pieza/"+color+"/"+self.nombre()+".png"
         self.color = color
         self.escala = 0.7
-        self.columna = columna
-        self.fila = fila
+        self._celda = celda
         self.tablero = None
 
     def __str__(self):
@@ -38,6 +37,7 @@ class Ficha(Actor):
 
     def puedeMoverA(self, columna, fila):
         """retorna true si esta ficha puede moverse a la celda indicada.
+
         este metodo se debe sobreescribir"""
         return False
 
