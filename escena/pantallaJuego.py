@@ -2,6 +2,7 @@ import pilasengine
 
 from actor.tablero import Tablero
 from actor.cursor import Cursor
+from logica.pooldefichas import PoolDeFichas
 from logica.ajedrez_basico import AjedrezTradicional
 
 class PantallaJuego(pilasengine.escenas.Escena):
@@ -9,9 +10,10 @@ class PantallaJuego(pilasengine.escenas.Escena):
     def iniciar(self, pilas, tts):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
+        self.pool = PoolDeFichas(pilas)
         # armamos tablero:
         self.tablero = Tablero(pilas, filas=8, columnas=8, centrado=True, tts=tts)
-        self.tablero.acomodarFichas(AjedrezTradicional())
+        self.tablero.acomodarFichas(AjedrezTradicional(self.pool))
         self.cursorTeclado = Cursor(pilas, tablero=self.tablero, tts=tts)
         self.pilas.eventos.pulsa_tecla.conectar(self.interpreta_teclado)
         self.pilas.eventos.click_de_mouse.conectar(self.click_mouse)

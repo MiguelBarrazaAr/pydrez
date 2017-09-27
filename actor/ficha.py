@@ -13,7 +13,7 @@ class Ficha(Actor):
     def __str__(self):
         return self.nombre()+" "+self.color
 
-    def definirTablero(self, tablero):
+    def definir_tablero(self, tablero):
         self.tablero = tablero
 
     def puedeMoverA(self, columna, fila):

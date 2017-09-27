@@ -59,13 +59,12 @@ class Tablero(Actor):
 
     def acomodarFichas(self, loader):
         loader.acomodar(tablero=self)
-        #pass
 
-    def posicionar(self, actor, columna, fila):
+    def posicionar(self, ficha, columna, fila):
         """Posiciona un actor en una casilla del tablero
         y lo almacena como actor activo dentro del tablero.
 
-        :param actor: un actor a posicionar en una casilla del tablero.
+        :param actor: una ficha a Agregarlo al juego.
         :type actor: Actor
         :param columna: numero de columna en la que se posicionará (1..n)
         :type columna: int
@@ -73,12 +72,7 @@ class Tablero(Actor):
         :type fila: int
         """
 
-        actor.definirTablero(self)
-        self.ficha.append(actor)
-        self.celda[fila][columna].ponerFicha(actor)
-
-    def reposicionar(self, actor, columna, fila):
-        self.celda[fila][columna].ponerFicha(actor)
+        self.celda[fila][columna].ponerFicha(ficha)
 
     def obtenerFicha(self, columna, fila):
         return self.celda[fila][columna].ficha
