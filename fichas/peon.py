@@ -1,10 +1,7 @@
 # -*- encoding: utf-8 -*-
-from actor.ficha import Ficha
+from .comportamiento import Comportamiento
 
-class Peon(Ficha):
-
-    def nombre(self):
-        return "peon"
+class Peon(Comportamiento):
 
     def puedeMoverA(self, columna, fila):
         """los peones podrán caminar 2 pasos si es su primer movimiento, luego solo podrá moverse de a 1 paso siempre hacia adelante.
@@ -15,19 +12,17 @@ class Peon(Ficha):
             return self._negro_puedeMoverA(columna, fila)
 
     def _blanco_puedeMoverA(self, columna, fila):
-        # precondición: la propiedad celda no debe ser None
-        if self._celda.columna == columna and (self._celda.fila+1) == fila:
+        if self.columna == columna and (self.fila+1) == fila:
             return True
-        elif fila == 3 and self._celda.columna == columna:
+        elif fila == 3 and self.columna == columna:
             return True
         else:
             return False
 
     def _negro_puedeMoverA(self, columna, fila):
-        # precondición: la propiedad celda no debe ser None
-        if self._celda.columna == columna and (self._celda.fila-1) == fila:
+        if self.columna == columna and (self.fila-1) == fila:
             return True
-        elif fila == 4 and self._celda.columna == columna:
+        elif fila == 4 and self.columna == columna:
             return True
         else:
             return False

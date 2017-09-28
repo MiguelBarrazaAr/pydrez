@@ -28,7 +28,6 @@ class Tablero(Actor):
             y = pilas.camara.y+filas/2*self.distancia*-1
 
         Actor.__init__(self, pilas, x=x, y=y, imagen='invisible.png')
-        #self.imagen = "invisible.png"
         self.columnas = columnas
         self.filas = filas
         self.celda = []

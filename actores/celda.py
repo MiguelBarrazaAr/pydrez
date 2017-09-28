@@ -45,10 +45,14 @@ class Celda(Actor):
             self.colorearNormal()
             self.seleccionado = False
 
-    def ponerFicha(self, actor):
-        """Posiciona un actor sobre esta celda."""
-        self.ficha = actor
-        actor.celda = self
+    def ponerFicha(self, unaFicha):
+        """Posiciona una ficha sobre esta celda.
+        si ya tiene una lo elimina."""
+        if self.tieneFicha():
+            self.ficha.eliminar()
+
+        self.ficha = unaFicha
+        unaFicha.celda = self
 
     def liberar(self):
         """metodo que se invoca cuando un actor deja esta celda."""

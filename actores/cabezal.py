@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 from pilasengine.actores.actor import Actor
 
-class Cursor(Actor):
+class Cabezal(Actor):
     """Representa al cursor del teclado, se puede mover sobre un tablero."""
 
     def __init__(self, pilas, tablero, tts, demora=30):
@@ -65,7 +65,7 @@ class Cursor(Actor):
         self.decir(self.letra_de_columna()+str(self.fila+1))
         ficha = self.tablero.obtenerFicha(columna=self.columna, fila=self.fila)
         if ficha:
-            self.decir(ficha.nombre()+" "+ficha.color, False)
+            self.decir(ficha.nombre+" "+ficha.color, False)
 
     def letra_de_columna(self):
         if self.columna >= 0 and self.columna <= 24:
