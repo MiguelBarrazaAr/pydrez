@@ -35,7 +35,6 @@ class Tablero(Actor):
         self.ficha = []
         #self.radio_de_colision = None
         self.decir = tts
-        self.sonido_mover = self.pilas.sonidos.cargar('audio/mover-ficha.ogg')
 
         color = 'negro'
         for f in range(filas):
@@ -73,49 +72,11 @@ class Tablero(Actor):
 
         self.celda[fila][columna].ponerFicha(ficha)
 
+    def obtener_celda(self, columna, fila):
+        return self.celda[fila][columna]
+
     def obtenerFicha(self, columna, fila):
         return self.celda[fila][columna].ficha
 
     def posicion_de_celda(self, columna, fila):
         return self.x+(columna*self.distancia), self.y+(fila*self.distancia)
-
-    def seleccionar(self, columna, fila):
-        """selecciona una celda.
-        solo se puede seleccionar celdas que tienen fichas.
-        si ya hay una seleccionada realiza un movimiento
-        """
-        if self.celda_seleccionada is None:
-            # si no hay ninguna celda seleccionada:
-            if self.celda[fila][columna].tieneFicha():
-                # seleccionamos la celda:
-                self.celda_seleccionada = self.celda[fila][columna]
-                self.celda_seleccionada.seleccionar()
-                self.decir(str(self.celda_seleccionada.ficha)+" seleccionado")
-
-        else:
-            # si ya hay celda seleccionada:
-            if self.celda_seleccionada.columna == columna and  self.celda_seleccionada.fila == fila:
-                # si selecciona 2 veces la misma celda la deselecciona.
-                self.decir(str(self.celda_seleccionada.ficha)+" deseleccionado")
-                self.deseleccionarCelda()
-            else:
-                # si selecciona otra celda realiza el movimiento:
-                if self.celda_seleccionada.ficha.moverA(columna=columna, fila=fila):
-                    # pudo realizar el movimiento:
-                    self.sonido_mover.reproducir()
-                    self.deseleccionarCelda()
-                else:
-                    # no puede realizar el movimiento:
-                    self.deseleccionarCelda()
-                    self.movimiento_imposible()
-
-    def deseleccionarCelda(self):
-        """deselecciona una celda seleccionada:
-        precondición: debe haber una celda seleccionada.
-        la propiedad: celda_seleccionada no debe ser None"""
-        self.celda_seleccionada.deseleccionar()
-        self.celda_seleccionada = None
-
-    def movimiento_imposible(self):
-        """metodo que se ejecuta cuando un jugador realiza un movimiento imposible"""
-        self.decir("movimiento imposible")

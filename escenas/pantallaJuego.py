@@ -40,4 +40,4 @@ class PantallaJuego(pilasengine.escenas.Escena):
         if evento.codigo == "w" or evento.codigo == self.pilas.simbolos.ARRIBA:
             self.cabezal.mover_arriba()
         if evento.codigo == self.pilas.simbolos.SELECCION:
-            self.cabezal.seleccionar()
+            self.partida.seleccionar_celda(columna=self.cabezal.columna, fila=self.cabezal.fila)

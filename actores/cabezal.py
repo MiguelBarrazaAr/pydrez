@@ -72,7 +72,3 @@ class Cabezal(Actor):
             return chr(self.columna+65)
         else:
             return str(self.columna)
-
-    def seleccionar(self):
-        """selecciona una casilla del tablero"""
-        self.tablero.seleccionar(self.columna, self.fila)
