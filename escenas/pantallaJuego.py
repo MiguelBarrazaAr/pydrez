@@ -2,19 +2,21 @@ import pilasengine
 
 from actores.tablero import Tablero
 from actores.cabezal import Cabezal
-from fichas.pool import PoolDeFichas
-from organizadores.ajedrez_basico import AjedrezTradicional
+from partida import Partida
+from reglas.ajedrez_tradicional import ReglasAjedrezTradicional
 
 class PantallaJuego(pilasengine.escenas.Escena):
 
     def iniciar(self, pilas, tts):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
-        self.pool = PoolDeFichas(pilas)
+        self.partida = Partida(pilas, tts)
+        self.partida.definir_reglas(ReglasAjedrezTradicional())
         # armamos tablero:
         self.tablero = Tablero(pilas, filas=8, columnas=8, centrado=True, tts=tts)
-        self.pool.definir_tablero(self.tablero)
-        self.tablero.acomodarFichas(AjedrezTradicional(self.pool))
+        self.partida.definir_tablero(self.tablero)
+        self.partida.iniciar()
+
         self.cabezal = Cabezal(pilas, tablero=self.tablero, tts=tts)
         self.pilas.eventos.pulsa_tecla.conectar(self.interpreta_teclado)
         self.pilas.eventos.click_de_mouse.conectar(self.click_mouse)
