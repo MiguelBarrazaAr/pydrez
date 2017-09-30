@@ -105,6 +105,6 @@ ENV/
 .pydevproject
 
 # example file:
-escena/pantallaJuego2.py
+escenas/pantallaJuego2.py
 log.txt
 juego.py
