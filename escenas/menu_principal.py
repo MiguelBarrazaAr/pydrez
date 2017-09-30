@@ -1,11 +1,13 @@
 import pilasengine
 
-class Inicio(pilasengine.escenas.Escena):
+from actores.menu import MenuAccesible
+
+class MenuPrincipal(pilasengine.escenas.Escena):
 
     def iniciar(self, pilas, tts):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
-        self.menu = pilas.actores.Menu(y = 50 , opciones = [('jugar', self.jugar),('conectarse', self.conectarse),('tutorial', self.tutorial),('creditos', self.creditos),('salir', self.salir)])
+        self.menu = MenuAccesible(pilas, y = 50 , opciones = [('jugar', self.jugar),('conectarse', self.conectarse),('tutorial', self.tutorial),('creditos', self.creditos),('salir', self.salir)], tts=tts)
 
     def jugar(self):
         print("jugar")
