@@ -31,7 +31,7 @@ class Celda(Actor):
     def estaLibre(self):
         return self.ficha is None
 
-    def tieneFicha(self):
+    def tiene_ficha(self):
         return self.ficha is not None
 
     def seleccionar(self):
@@ -48,7 +48,7 @@ class Celda(Actor):
     def ponerFicha(self, unaFicha):
         """Posiciona una ficha sobre esta celda.
         si ya tiene una lo elimina."""
-        if self.tieneFicha():
+        if self.tiene_ficha():
             self.ficha.eliminar()
 
         self.ficha = unaFicha

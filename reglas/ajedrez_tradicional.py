@@ -12,7 +12,7 @@ class ReglasAjedrezTradicional(Reglas):
         if self.celda_seleccionada is None:
             # si no hay ninguna celda seleccionada:
             celda = self.partida.tablero.obtener_celda(columna, fila)
-            if celda.tieneFicha():
+            if celda.tiene_ficha():
                 turno_actual = self.turno_actual()
                 if celda.ficha.color == turno_actual:
                     # seleccionamos la celda:

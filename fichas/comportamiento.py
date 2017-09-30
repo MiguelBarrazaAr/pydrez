@@ -34,10 +34,10 @@ class Comportamiento(object):
     def fila(self):
         return self.ficha._celda.fila
 
-    def puede_comer_en(self, celda_destino):
+    def puedeComerEn(self, celda_destino):
         """retorna true si esta ficha puede comer en esa celda_destino.
         este metodo se debe sobreescribir si es necesario."""
-        return False
+        return True
 
     def verificar_celdas(self, celda_destino):
         """retorna una lista de tupla (columna, fila) de las celdas que se debe verificar para llegar a celda_destino.

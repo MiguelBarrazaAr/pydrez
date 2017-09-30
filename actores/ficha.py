@@ -42,7 +42,12 @@ class Ficha(Actor):
         if self.comportamiento is None:
             return False
         else:
-            return self.comportamiento.puedeMoverA(columna=celda.columna, fila=celda.fila)
+            if celda.tiene_ficha():
+                # si tiene ficha verifica si la puede comer:
+                return self.comportamiento.puedeComerEn(celda)
+            else:
+                # si no tiene ficha retorna si puede mover a esa celda:
+                return self.comportamiento.puedeMoverA(columna=celda.columna, fila=celda.fila)
 
     def eliminar(self):
         self.pilas.log(self.nombre, self.color, "de (", self._celda.columna, ",", self._celda.fila, "), se elimina del juego.")
