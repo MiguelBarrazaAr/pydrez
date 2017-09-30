@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+from sonido import Sonido
 from pilasengine.actores.actor import Actor
 
 class Cabezal(Actor):
@@ -14,8 +15,8 @@ class Cabezal(Actor):
         self.decir=tts
         self.activo = True
         # sonidos:
-        self.sonido_mover = self.pilas.sonidos.cargar('audio/mover.ogg')
-        self.sonido_limite = self.pilas.sonidos.cargar('audio/limite.ogg')
+        self.sonido_mover = Sonido('audio/mover.ogg')
+        self.sonido_limite = Sonido('audio/limite.ogg')
         self.x, self.y = self.tablero.posicion_de_celda(self.columna, self.fila)
 
     def mover_izquierda(self):

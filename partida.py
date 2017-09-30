@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+from sonido import Sonido
 from fichas.pool import PoolDeFichas
 
 class Partida(object):
@@ -10,7 +11,7 @@ class Partida(object):
         self.reglas = None
         self.tablero = None
         # sonidos de la partida:
-        self.sonido_mover = self.pilas.sonidos.cargar('audio/mover-ficha.ogg')
+        self.sonido_mover = Sonido('audio/mover-ficha.ogg')
 
     def definir_reglas(self, reglas):
         self.reglas = reglas
