@@ -37,19 +37,12 @@ class Ficha(Actor):
 
     celda = property(fget=_getCelda, fset=_setCelda, doc="almacena la referencia a la celda en la cual esta la ficha. Si se sobreescribe reposiciona la ficha.")
 
-    def moverA(self, celda):
-        """Mueve la ficha a otra celda."""
+    def puede_mover(self, celda):
+        """Retorna si la ficha puede moverse a la celda indicada por parámetro."""
         if self.comportamiento is None:
-            puedeMover = False
+            return False
         else:
-            puedeMover = self.comportamiento.puedeMoverA(columna=celda.columna, fila=celda.fila)
-
-        if puedeMover:
-            # realiza el movimiento:
-            self.celda.liberar()
-            self.tablero.posicionar(self, columna=celda.columna, fila=celda.fila)
-
-        return puedeMover
+            return self.comportamiento.puedeMoverA(columna=celda.columna, fila=celda.fila)
 
     def eliminar(self):
         self.pilas.log(self.nombre, self.color, "de (", self._celda.columna, ",", self._celda.fila, "), se elimina del juego.")
