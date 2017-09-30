@@ -41,9 +41,12 @@ class Comportamiento(object):
 
     def puedeComerEn(self, celda):
         """retorna true si esta ficha puede comer en esa celda_destino.
-        una celda no puede comer a otra del mismo bando.
+        una ficha no puede comer a otra del mismo bando.
         este metodo se debe sobreescribir si es necesario."""
-        return self.puedeMoverA(columna=celda.columna, fila=celda.fila)
+        if celda.ficha.color == self.bando:
+            return False
+        else:
+            return self.puedeMoverA(columna=celda.columna, fila=celda.fila)
 
     def verificar_celdas(self, celda):
         """retorna una lista de tupla (columna, fila) de las celdas que se debe verificar para llegar a celda_destino.
