@@ -5,7 +5,7 @@ from pilasengine.actores.actor import Actor
 from pilasengine import colores
 from pilasengine.controles import simbolos
 
-DEMORA = 14
+from sonido import Sonido
 
 class MenuAccesible(Actor):
     """Un actor que puede mostrar una lista de opciones a seleccionar."""
@@ -15,9 +15,14 @@ class MenuAccesible(Actor):
         Actor.__init__(self, pilas, x=x, y=y)
         self.opciones_como_actores = []
         self.iconos_de_opciones = []
-        self.demora_al_responder = 0
         self.imagen = "invisible.png"
         self.decir = tts
+
+        # sonidos:
+        self.sonido_abrir = Sonido("audio/menu_abrir.ogg")
+        self.sonido_mover = Sonido("audio/menu_opcion.ogg")
+        self.sonido_activar = Sonido("audio/menu_enter.ogg")
+        self.sonido_activar.volumen = 0.3
 
         self._verificar_opciones(opciones)
         self.crear_texto_de_las_opciones(opciones, fuente, color_normal, color_resaltado)
@@ -33,6 +38,7 @@ class MenuAccesible(Actor):
         self.pilas.escena_actual().mueve_mouse.conectar(self.cuando_mueve_el_mouse)
         self.pilas.escena_actual().click_de_mouse.conectar(self.cuando_hace_click_con_el_mouse)
         self.pilas.eventos.pulsa_tecla.conectar(self.interpreta_teclado)
+        self.sonido_abrir.reproducir()
 
     def desactivar(self):
         """Deshabilita toda la funcionalidad del menú."""
@@ -86,10 +92,13 @@ class MenuAccesible(Actor):
     def interpreta_teclado(self, evento):
         """Comportamiento al pulsar tecla"""
         if evento.codigo == self.pilas.simbolos.SELECCION:
+            self.sonido_activar.reproducir()
             self.seleccionar_opcion_actual()
         elif evento.codigo == self.pilas.simbolos.ABAJO:
+            self.sonido_mover.reproducir()
             self.mover_cursor(1)
         elif evento.codigo == self.pilas.simbolos.ARRIBA:
+            self.sonido_mover.reproducir()
             self.mover_cursor(-1)
 
     def seleccionar_opcion_actual(self):
