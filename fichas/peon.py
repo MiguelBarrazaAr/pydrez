@@ -29,7 +29,10 @@ class Peon(Comportamiento):
 
     def puedeComerEn(self, celda):
         """los peones solo pueden comer un paso en diagonal hacia adelante"""
-        if self.bando == "blanco":
-            return self.fila+1 == celda.fila and abs(celda.columna-self.columna) == 1
+        if celda.ficha.color == self.bando:
+            return False
         else:
-            return self.fila-1 == celda.fila and abs(celda.columna-self.columna) == 1
+            if self.bando == "blanco":
+                return self.fila+1 == celda.fila and abs(celda.columna-self.columna) == 1
+            else:
+                return self.fila-1 == celda.fila and abs(celda.columna-self.columna) == 1
