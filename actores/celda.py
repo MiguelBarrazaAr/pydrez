@@ -3,7 +3,7 @@ from pilasengine.actores.actor import Actor
 
 class Celda(Actor):
 
-    def __init__(self, pilas, x=0, y=0, z=0, color='blanco', columna=0, fila=0):
+    def __init__(self, pilas, x=0, y=0, z=0, color='blanco', columna=0, fila=0, estiloDeCelda="celda"):
         Actor.__init__(self, pilas, x=x, y=y)
         self.z = z
         self.color = color
@@ -13,11 +13,11 @@ class Celda(Actor):
         self.seleccionado = False
 
         if color == 'blanco':
-            self.normal = "imagenes/celda/blanco.png"
+            self.normal = "imagenes/"+estiloDeCelda+"/blanco.png"
         else:
-            self.normal = "imagenes/celda/negro.png"
+            self.normal = "imagenes/"+estiloDeCelda+"/negro.png"
 
-        self.verde = "imagenes/celda/verde.png"
+        self.verde = "imagenes/"+estiloDeCelda+"/verde.png"
         self.imagen = self.normal
 
 

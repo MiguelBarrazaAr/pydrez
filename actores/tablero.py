@@ -6,7 +6,7 @@ from celda import Celda
 class Tablero(Actor):
     """Representa al tablero"""
 
-    def __init__(self, pilas, x=0, y=0, columnas=8, filas=8, centrado=False, tts=None):
+    def __init__(self, pilas, x=0, y=0, columnas=8, filas=8, centrado=False, estiloDeCelda="celda", tts=None):
         """Constructor del tablero:
 
         :param x: x del punto central de a1 (casilla inferior izquierda).
@@ -17,6 +17,8 @@ class Tablero(Actor):
         :type columnas: int
         :param filas: cantidad de filas
         :type filas: int
+        :param estiloDeCelda: nombre de la carpeta donde se encuentra las imagenes de las celdas. relativas a: /imagenes/(nombre de estilo)
+        :type estiloDeCelda: string
         :param centrado: indica si el tablero estará centrado.
         :type centrado: bool
         """
@@ -40,7 +42,7 @@ class Tablero(Actor):
         for f in range(filas):
             self.celda.append([])
             for c in range(columnas):
-                self.celda[f].append(Celda(pilas, x=(x+c*self.distancia), y=(y+f*self.distancia), z=100, color=color, columna=c, fila=f))
+                self.celda[f].append(Celda(pilas, x=(x+c*self.distancia), y=(y+f*self.distancia), z=-200, color=color, columna=c, fila=f, estiloDeCelda=estiloDeCelda))
 
                 # invertimos el color:
                 if color == 'negro':
