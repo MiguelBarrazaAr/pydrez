@@ -29,7 +29,6 @@ class MenuAccesible(Actor):
         self.opciones = opciones
         self.seleccionar_primer_opcion()
         self.opcion_actual = 0
-        # contador para evitar la repeticion de teclas
         self.activar()
 
 

@@ -15,7 +15,7 @@ def decir(texto, interrumpir=True, visual=False):
 pilas.escenas.vincular(MenuPrincipal)
 pilas.escenas.vincular(PantallaJuego)
 
-#pilas.escenas.MenuPrincipal(pilas=pilas, tts=decir)
-pilas.escenas.PantallaJuego(pilas=pilas, tts=decir)
+pilas.escenas.MenuPrincipal(pilas=pilas, tts=decir)
+#pilas.escenas.PantallaJuego(pilas=pilas, tts=decir)
 
 pilas.ejecutar()

@@ -18,8 +18,13 @@ class PantallaJuego(pilasengine.escenas.Escena):
         self.partida.iniciar()
 
         self.cabezal = Cabezal(pilas, tablero=self.tablero, tts=tts)
+        # conexiones con eventos:
         self.pilas.eventos.pulsa_tecla.conectar(self.interpreta_teclado)
         self.pilas.eventos.click_de_mouse.conectar(self.click_mouse)
+        self.pilas.eventos.pulsa_tecla_escape.conectar(self.activar_menu_principal)
+
+    def activar_menu_principal(self, evento):
+        self.pilas.escenas.MenuPrincipal(pilas=self.pilas, tts=self.decir)
 
     def click_mouse(self, evento):
         if(evento.boton == 1):
