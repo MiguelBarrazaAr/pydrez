@@ -21,10 +21,10 @@ class Partida(object):
         self.tablero = tablero
         self.pool.definir_tablero(self.tablero)
 
-    def iniciar(self):
+    def iniciar(self, *args, **kwargs):
         """Inicia la partida."""
         organizador = self.reglas.obtener_organizador()
-        self.tablero.acomodarFichas(organizador(self.pool))
+        self.tablero.acomodarFichas(organizador(pool=self.pool, *args, **kwargs))
 
     def seleccionar_celda(self, columna, fila):
         """Realiza una seleccion de celda."""

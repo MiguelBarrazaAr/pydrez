@@ -1,13 +1,15 @@
 # -*- encoding: utf-8 -*-
 from organizadores.ajedrez_basico import AjedrezTradicional
+from organizadores.acomodar_fichas import AcomodarFichas
 
 class Reglas(object):
 
-    def __init__(self):
+    def __init__(self, personalizado=False):
         self.bandos = ['blanco', 'negro']
         self.turno = 0
         self.partida = None
         self.celda_seleccionada = None
+        self.personalizado = personalizado
 
     def definir_partida(self, partida):
         self.partida = partida
@@ -19,8 +21,11 @@ class Reglas(object):
         return self.bandos[self.turno]
 
     def obtener_organizador(self):
-        """el organizador por default es el del ajedrez tradicional"""
-        return AjedrezTradicional
+        """retorna el organizador de fichas en el tablero"""
+        if self.personalizado:
+            return AcomodarFichas
+        else:
+            return AjedrezTradicional
 
     def decir(self, texto, interrumpir=True):
         self.partida.decir(texto, interrumpir)

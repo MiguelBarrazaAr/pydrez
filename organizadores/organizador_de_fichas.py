@@ -2,7 +2,7 @@
 
 class OrganizadorDeFichas(object):
 
-    def __init__(self, pool):
+    def __init__(self, pool, *args, **kwargs):
         self.pool = pool
 
     def colocar(self, tipoDeFicha, color, columna, fila):
