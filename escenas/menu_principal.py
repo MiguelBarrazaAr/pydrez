@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*-
+﻿# -*- encoding: utf-8 -*-
 import pilasengine
 
 from actores.menu import MenuAccesible
@@ -8,12 +8,21 @@ class MenuPrincipal(pilasengine.escenas.Escena):
     def iniciar(self, pilas, tts):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
-        self.menu = MenuAccesible(pilas, y = 50 , opciones = [('jugar', self.jugar),('conectarse', self.conectarse),('tutorial', self.tutorial),('creditos', self.creditos),('salir', self.salir)], tts=tts)
+        opciones = [('jugar', self.jugar),
+                    (u'desafíos', self.desafios),
+                    ('conectarse', self.conectarse),
+                    ('tutorial', self.tutorial),
+                    ('creditos', self.creditos),
+                    ('salir', self.salir)]
+        self.menu = MenuAccesible(pilas, y = 50 , opciones = opciones, tts=tts)
         self.decir(u"menú principal: pulse las flechas para navegar por el menú.", False)
 
 
     def jugar(self):
         self.pilas.escenas.PantallaJuego(pilas=self.pilas, tts=self.decir)
+
+    def desafios(self):
+        self.pilas.escenas.Desafio(pilas=self.pilas, tts=self.decir)
 
     def conectarse(self):
         print("conectarse")
