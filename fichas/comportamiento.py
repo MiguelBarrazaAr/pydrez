@@ -48,7 +48,11 @@ class Comportamiento(object):
         else:
             return self.puedeMoverA(columna=celda.columna, fila=celda.fila)
 
-    def verificar_celdas(self, celda):
-        """retorna una lista de tupla (columna, fila) de las celdas que se debe verificar para llegar a celda_destino.
-        este metodo se debe sobreescribir si no es saltadora."""
-        return []
+    def validar_celdas(self, celdas):
+        """valida una lista de tupla (columna, fila) de celdas que estén libre.
+        metodo que se utiliza por las no salteadoras."""
+        libre = True
+        for x in celdas:
+            libre = libre and self.ficha.tablero.obtener_celda(x[0], x[1]).estaLibre()
+
+        return libre
