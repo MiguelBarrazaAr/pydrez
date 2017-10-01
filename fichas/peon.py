@@ -15,15 +15,15 @@ class Peon(Comportamiento):
         if self.columna == columna and (self.fila+1) == fila:
             return True
         elif fila == 3 and self.columna == columna:
-            return True
+            return self.validar_celdas([(columna, 2)])
         else:
             return False
 
     def _negro_puedeMoverA(self, columna, fila):
         if self.columna == columna and (self.fila-1) == fila:
             return True
-        elif fila == 4 and self.columna == columna:
-            return True
+        elif fila == (self.ficha.tablero.filas-4) and self.columna == columna:
+            return self.validar_celdas([(columna, self.ficha.tablero.filas-3)])
         else:
             return False
 
