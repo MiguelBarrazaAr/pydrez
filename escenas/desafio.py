@@ -11,11 +11,20 @@ class Desafio(pilasengine.escenas.Escena):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
         self.partida = Partida(pilas, tts)
-        self.partida.definir_reglas(ReglasAjedrezTradicional())
+        self.partida.definir_reglas(ReglasAjedrezTradicional(personalizado=True))
         # armamos tablero:
         self.tablero = Tablero(pilas, filas=8, columnas=8, centrado=True, tts=tts)
         self.partida.definir_tablero(self.tablero)
-        self.partida.iniciar()
+
+        # definimos la posicion inicial:
+        fichas = [('rey', 'negro', 7, 7),
+            ('peon', 'negro', 6, 6),
+            ('torre', 'negro', 7, 6),
+            ('torre', 'negro', 6, 7),
+            ('dama', 'blanco', 4, 4),
+            ('torre', 'blanco', 7, 0),
+            ('torre', 'blanco', 0, 7)]
+        self.partida.iniciar(posicionInicial=fichas)
 
         self.cabezal = Cabezal(pilas, tablero=self.tablero, tts=tts)
         # conexiones con eventos:
