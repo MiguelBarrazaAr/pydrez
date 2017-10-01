@@ -1,7 +1,12 @@
 # -*- encoding: utf-8 -*-
 from .reglas import Reglas
+from sonido import Sonido
 
 class ReglasAjedrezTradicional(Reglas):
+
+    def __init__(self, *args, **kwargs):
+        Reglas.__init__(self, *args, **kwargs)
+        self.sonido_revote = Sonido("audio/boing.ogg")
 
     def seleccionar_celda(self, columna, fila):
         """Selecciona una celda.
@@ -57,4 +62,5 @@ class ReglasAjedrezTradicional(Reglas):
 
     def movimiento_imposible(self):
         """metodo que se ejecuta cuando un jugador realiza un movimiento imposible"""
+        self.sonido_revote.reproducir()
         self.decir("movimiento imposible")
