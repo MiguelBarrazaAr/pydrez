@@ -11,20 +11,19 @@ class Celda(Actor):
         self.columna = columna
         self.fila = fila
         self.seleccionado = False
+        self.estiloDeCelda = estiloDeCelda
 
         if color == 'blanco':
             self.normal = "imagenes/"+estiloDeCelda+"/blanco.png"
         else:
             self.normal = "imagenes/"+estiloDeCelda+"/negro.png"
 
-        self.verde = "imagenes/"+estiloDeCelda+"/verde.png"
         self.imagen = self.normal
 
+    def cambiar(self, nombreDeCelda):
+        self.imagen = "imagenes/"+self.estiloDeCelda+"/"+nombreDeCelda+".png"
 
-    def colorearVerde(self):
-        self.imagen = self.verde
-
-    def colorearNormal(self):
+    def normalizar(self):
         """Regresa la celda a su color base"""
         self.imagen = self.normal
 
@@ -36,13 +35,13 @@ class Celda(Actor):
 
     def seleccionar(self):
         if not self.seleccionado:
-            self.colorearVerde()
+            self.cambiar("verde")
             self.seleccionado = True
 
     def deseleccionar(self):
         """Solo si la celda esta seleccionado permite deseleccionar"""
         if self.seleccionado:
-            self.colorearNormal()
+            self.normalizar()
             self.seleccionado = False
 
     def ponerFicha(self, unaFicha):
