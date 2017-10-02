@@ -104,6 +104,9 @@ ENV/
 .project
 .pydevproject
 
+#pycharm
+.idea/
+
 # example file:
 escenas/pantallaJuego2.py
 log.txt
