@@ -15,5 +15,4 @@ class Torre(Comportamiento):
         else:
             lista = map((lambda x: (columna, x)), range(min(self.fila, fila)+1, max(self.fila, fila)))
 
-        print(lista)
         return self.validar_celdas(lista)
