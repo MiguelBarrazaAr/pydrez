@@ -45,6 +45,10 @@ class ReglasAjedrezTradicional(Reglas):
             self.celda_seleccionada.liberar()
             self.partida.registrar_movimiento(ficha=self.celda_seleccionada.ficha,
                 fichaEliminada=celda.ficha, celda_origen=self.celda_seleccionada, celda_destino=celda)
+            # valida si se comio el rey para finalizar la partida:
+            if celda.ficha is not None and celda.ficha.nombre == "rey":
+                self.partida.finalizar()
+
             self.partida.tablero.posicionar(ficha, columna=columna, fila=fila)
             self.pasar_turno()
             self._deseleccionarCelda()
