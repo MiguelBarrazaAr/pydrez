@@ -30,5 +30,7 @@ class Partida(object):
         """Realiza una seleccion de celda."""
         self.reglas.seleccionar_celda(columna, fila)
 
-    def registrar_movimiento(self, ficha, celda_origen, celda_destino):
+    def registrar_movimiento(self, ficha, fichaEliminada, celda_origen, celda_destino):
         self.sonido_mover.reproducir()
+        if fichaEliminada:
+            print("fuera de juego", fichaEliminada.nombre,  fichaEliminada.color)

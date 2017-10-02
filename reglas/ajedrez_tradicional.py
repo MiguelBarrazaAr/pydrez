@@ -43,10 +43,10 @@ class ReglasAjedrezTradicional(Reglas):
         if ficha.puede_mover(celda):
             # puede realizar el movimiento:
             self.celda_seleccionada.liberar()
+            self.partida.registrar_movimiento(ficha=self.celda_seleccionada.ficha,
+                fichaEliminada=celda.ficha, celda_origen=self.celda_seleccionada, celda_destino=celda)
             self.partida.tablero.posicionar(ficha, columna=columna, fila=fila)
             self.pasar_turno()
-            self.partida.registrar_movimiento(ficha=self.celda_seleccionada.ficha,
-                celda_origen=self.celda_seleccionada, celda_destino=celda)
             self._deseleccionarCelda()
         else:
             # no puede realizar el movimiento:
