@@ -10,12 +10,10 @@ class Torre(Comportamiento):
             return False
 
     def validar_celdas_intermedias(self, columna, fila):
-        lista = []
         if self.fila == fila:
-            for x in range(min(self.columna, columna)+1, max(self.columna, columna)):
-                lista.append((x, fila))
+            lista = map((lambda x: (x, fila)), range(min(self.columna, columna)+1, max(self.columna, columna)))
         else:
-            for x in range(min(self.fila, fila)+1, max(self.fila, fila)):
-                lista.append((columna, x))
+            lista = map((lambda x: (columna, x)), range(min(self.fila, fila)+1, max(self.fila, fila)))
 
+        print(lista)
         return self.validar_celdas(lista)
