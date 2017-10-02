@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
 from .comportamiento import Comportamiento
+from .dama import Dama
 
 class Peon(Comportamiento):
 
@@ -13,6 +14,7 @@ class Peon(Comportamiento):
 
     def _blanco_puedeMoverA(self, columna, fila):
         if self.columna == columna and (self.fila+1) == fila:
+            self.validar_promocion(fila, self.ficha.tablero.filas-1)
             return True
         elif fila == 3 and self.columna == columna:
             return self.validar_celdas([(columna, 2)])
@@ -21,6 +23,7 @@ class Peon(Comportamiento):
 
     def _negro_puedeMoverA(self, columna, fila):
         if self.columna == columna and (self.fila-1) == fila:
+            self.validar_promocion(fila, 0)
             return True
         elif fila == (self.ficha.tablero.filas-4) and self.columna == columna:
             return self.validar_celdas([(columna, self.ficha.tablero.filas-3)])
@@ -33,6 +36,12 @@ class Peon(Comportamiento):
             return False
         else:
             if self.bando == "blanco":
+                self.validar_promocion(celda.fila, self.ficha.tablero.filas-1)
                 return self.fila+1 == celda.fila and abs(celda.columna-self.columna) == 1
             else:
+                self.validar_promocion(celda.fila, 0)
                 return self.fila-1 == celda.fila and abs(celda.columna-self.columna) == 1
+
+    def validar_promocion(self, fila, ultimaFila):
+        if fila == ultimaFila:
+            self.ficha.definir_comportamiento(Dama(self.ficha.color))
