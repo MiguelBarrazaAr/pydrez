@@ -42,7 +42,7 @@ class Tablero(Actor):
         for f in range(filas):
             self.celda.append([])
             for c in range(columnas):
-                self.celda[f].append(Celda(pilas, x=(x+c*self.distancia), y=(y+f*self.distancia), z=-200, color=color, columna=c, fila=f, estiloDeCelda=estiloDeCelda))
+                self.celda[f].append(Celda(pilas, x=(x+c*self.distancia), y=(y+f*self.distancia), z=100, color=color, columna=c, fila=f, estiloDeCelda=estiloDeCelda))
 
                 # invertimos el color:
                 if color == 'negro':
