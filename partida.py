@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+from actores.historial import Historial
 from sonido import Sonido
 from fichas.pool import PoolDeFichas
 
@@ -13,6 +14,7 @@ class Partida(object):
         self.activa = False
         # sonidos de la partida:
         self.sonido_mover = Sonido('audio/mover-ficha.ogg')
+        self.historial = Historial(pilas,130,140)
 
     def definir_reglas(self, reglas):
         self.reglas = reglas
@@ -50,3 +52,6 @@ class Partida(object):
         self.sonido_mover.reproducir()
         if fichaEliminada:
             print("fuera de juego", fichaEliminada.nombre,  fichaEliminada.color)
+            self.historial.agregar(str(ficha) +  "x" + str(celda_destino))
+        else:
+            self.historial.agregar(str(ficha) + str(celda_destino))

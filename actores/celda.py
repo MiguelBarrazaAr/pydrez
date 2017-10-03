@@ -20,6 +20,12 @@ class Celda(Actor):
 
         self.imagen = self.normal
 
+    def __str__(self):
+        if self.columna >= 0 and self.columna <= 24:
+            return chr(self.columna+65)+str(self.fila)
+        else:
+            return str(self.columna)+str(self.fila)
+
     def cambiar(self, nombreDeCelda):
         self.imagen = "imagenes/"+self.estiloDeCelda+"/"+nombreDeCelda+".png"
 

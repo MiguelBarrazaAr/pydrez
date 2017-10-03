@@ -13,6 +13,12 @@ class Ficha(Actor):
         Actor.__init__(self, pilas, x=0, y=0, imagen='invisible.png')
 
     def __str__(self):
+        if self.color == "blanco":
+            return self.nombre[0].upper()
+        else:
+            return self.nombre[0]
+
+    def str2(self):
         return self.nombre+" "+self.color
 
     def definir_tablero(self, tablero):
@@ -38,7 +44,7 @@ class Ficha(Actor):
     celda = property(fget=_getCelda, fset=_setCelda, doc="almacena la referencia a la celda en la cual esta la ficha. Si se sobreescribe reposiciona la ficha.")
 
     def puede_mover(self, celda):
-        """Retorna si la ficha puede moverse a la celda indicada por par·metro."""
+        """Retorna si la ficha puede moverse a la celda indicada por par√°metro."""
         if self.comportamiento is None:
             return False
         else:

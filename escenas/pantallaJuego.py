@@ -13,7 +13,7 @@ class PantallaJuego(pilasengine.escenas.Escena):
         self.partida = Partida(pilas, tts)
         self.partida.definir_reglas(ReglasAjedrezTradicional())
         # armamos tablero:
-        self.tablero = Tablero(pilas, filas=8, columnas=8, centrado=True, tts=tts)
+        self.tablero = Tablero(pilas, filas=8, columnas=8, centrado=False, tts=tts)
         self.partida.definir_tablero(self.tablero)
         self.partida.iniciar()
 
@@ -22,18 +22,23 @@ class PantallaJuego(pilasengine.escenas.Escena):
         self.pilas.eventos.pulsa_tecla.conectar(self.interpreta_teclado)
         self.pilas.eventos.click_de_mouse.conectar(self.click_mouse)
         self.pilas.eventos.pulsa_tecla_escape.conectar(self.activar_menu_principal)
+        self.pilas.camara.x = 200
+        self.pilas.camara.y= 85
 
     def activar_menu_principal(self, evento):
         self.pilas.escenas.MenuPrincipal(pilas=self.pilas, tts=self.decir)
 
     def click_mouse(self, evento):
         if(evento.boton == 1):
-            x = int(evento.x)-(self.tablero.x-self.tablero.distancia/2)
-            y = int(evento.y)-(self.tablero.y-self.tablero.distancia/2)
+            x = int(evento.x)+(self.tablero.distancia/2)
+            y = int(evento.y)+(self.tablero.distancia/2)
             columna = x/self.tablero.distancia
             fila = y/self.tablero.distancia
             self.cabezal.mover(columna=columna, fila=fila)
-            self.cabezal.seleccionar()
+            #elf.cabezal.seleccionar()
+            self.partida.seleccionar_celda(columna=self.cabezal.columna, fila=self.cabezal.fila)
+            print(x)
+            print(y)
 
     def interpreta_teclado(self, evento):
         if evento.codigo == "a" or evento.codigo == self.pilas.simbolos.IZQUIERDA:
@@ -46,3 +51,8 @@ class PantallaJuego(pilasengine.escenas.Escena):
             self.cabezal.mover_arriba()
         if evento.codigo == self.pilas.simbolos.SELECCION:
             self.partida.seleccionar_celda(columna=self.cabezal.columna, fila=self.cabezal.fila)
+        if evento.codigo == "m":
+            self.partida.historial.subir()
+        if evento.codigo == "n":
+            self.partida.historial.bajar()
+

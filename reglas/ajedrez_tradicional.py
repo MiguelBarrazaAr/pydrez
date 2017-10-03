@@ -42,9 +42,10 @@ class ReglasAjedrezTradicional(Reglas):
         celda = self.partida.tablero.obtener_celda(columna, fila)
         if ficha.puede_mover(celda):
             # puede realizar el movimiento:
-            self.celda_seleccionada.liberar()
+
             self.partida.registrar_movimiento(ficha=self.celda_seleccionada.ficha,
                 fichaEliminada=celda.ficha, celda_origen=self.celda_seleccionada, celda_destino=celda)
+            self.celda_seleccionada.liberar()
             # valida si se comio el rey para finalizar la partida:
             if celda.ficha is not None and celda.ficha.nombre == "rey":
                 self.partida.finalizar()
@@ -59,7 +60,7 @@ class ReglasAjedrezTradicional(Reglas):
 
     def _deseleccionarCelda(self):
         """deselecciona una celda seleccionada:
-        precondición: debe haber una celda seleccionada.
+        precondiciï¿½n: debe haber una celda seleccionada.
         la propiedad: celda_seleccionada no debe ser None"""
         self.celda_seleccionada.deseleccionar()
         self.celda_seleccionada = None
