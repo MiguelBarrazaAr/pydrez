@@ -15,11 +15,11 @@ class Desafio(pilasengine.escenas.Escena):
         # armamos tablero:
         self.tablero = Tablero(pilas, filas=8, columnas=8, centrado=True, tts=tts)
         self.partida.definir_tablero(self.tablero)
-
+        self.pilas.avisar("las blancas hace mate en 2 movimientos")
         # definimos la posicion inicial:
         fichas = [('rey', 'negro', 7, 7),
             ('peon', 'negro', 6, 6),
-            ('torre', 'negro', 7, 6),
+            ('torre', 'negro', 7, 5),
             ('torre', 'negro', 6, 7),
             ('dama', 'blanco', 4, 4),
             ('torre', 'blanco', 7, 0),
