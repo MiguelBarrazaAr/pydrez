@@ -32,15 +32,12 @@ class Peon(Comportamiento):
 
     def puedeComerEn(self, celda):
         """los peones solo pueden comer un paso en diagonal hacia adelante"""
-        if celda.ficha.color == self.bando:
-            return False
+        if self.bando == "blanco":
+            self.validar_promocion(celda.fila, self.ficha.tablero.filas-1)
+            return self.fila+1 == celda.fila and abs(celda.columna-self.columna) == 1
         else:
-            if self.bando == "blanco":
-                self.validar_promocion(celda.fila, self.ficha.tablero.filas-1)
-                return self.fila+1 == celda.fila and abs(celda.columna-self.columna) == 1
-            else:
-                self.validar_promocion(celda.fila, 0)
-                return self.fila-1 == celda.fila and abs(celda.columna-self.columna) == 1
+            self.validar_promocion(celda.fila, 0)
+            return self.fila-1 == celda.fila and abs(celda.columna-self.columna) == 1
 
     def validar_promocion(self, fila, ultimaFila):
         if fila == ultimaFila:
