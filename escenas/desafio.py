@@ -13,7 +13,7 @@ class Desafio(pilasengine.escenas.Escena):
         self.partida = Partida(pilas, tts)
         self.partida.definir_reglas(PuzzleAjedrez())
         # armamos tablero:
-        self.tablero = Tablero(pilas, filas=8, columnas=8, centrado=True, tts=tts)
+        self.tablero = Tablero(pilas, filas=8, columnas=8, tts=tts)
         self.partida.definir_tablero(self.tablero)
         self.pilas.avisar("Realiza movimientos siempre comiendo, y logra que quede solo una pieza en el tablero")
         # definimos la posicion inicial:
@@ -21,6 +21,9 @@ class Desafio(pilasengine.escenas.Escena):
         self.partida.iniciar(posicionInicial=fichas)
 
         self.cabezal = Cabezal(pilas, tablero=self.tablero, tts=tts)
+        # camara:
+        self.pilas.camara.x = 180
+        self.pilas.camara.y = 85
         # conexiones con eventos:
         self.pilas.eventos.pulsa_tecla.conectar(self.interpreta_teclado)
         self.pilas.eventos.click_de_mouse.conectar(self.click_mouse)
@@ -31,12 +34,12 @@ class Desafio(pilasengine.escenas.Escena):
 
     def click_mouse(self, evento):
         if(evento.boton == 1):
-            x = int(evento.x)-(self.tablero.x-self.tablero.distancia/2)
-            y = int(evento.y)-(self.tablero.y-self.tablero.distancia/2)
+            x = int(evento.x)-(self.tablero.x-self.tablero.distancia/2)+self.pilas.camara.x
+            y = int(evento.y)-(self.tablero.y-self.tablero.distancia/2)+self.pilas.camara.y
             columna = x/self.tablero.distancia
             fila = y/self.tablero.distancia
             self.cabezal.mover(columna=columna, fila=fila)
-            self.cabezal.seleccionar()
+            self.partida.seleccionar_celda(columna=self.cabezal.columna, fila=self.cabezal.fila)
 
     def interpreta_teclado(self, evento):
         if evento.codigo == "a" or evento.codigo == self.pilas.simbolos.IZQUIERDA:
