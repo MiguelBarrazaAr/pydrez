@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*-
+﻿# -*- encoding: utf-8 -*-
 from .reglas import Reglas
 from sonido import Sonido
 
@@ -50,7 +50,7 @@ class PuzzleAjedrez(Reglas):
             # valida si queda una ficha o no tiene posibilidad de comer. para finalizar el puzzgle.
             self.fichasActivas = self.partida.pool.fichasActivas()
             if self.fichasActivas == 1:
-                self.partida.finalizar(mensaje="desaf�o superado!.", audio="audio/logro.ogg")
+                self.partida.finalizar(mensaje=u"¡Desafío superado!", audio="audio/logro.ogg")
 
         else:
             # no puede realizar el movimiento:
@@ -59,7 +59,7 @@ class PuzzleAjedrez(Reglas):
 
     def _deseleccionarCelda(self):
         """deselecciona una celda seleccionada:
-        precondici�n: debe haber una celda seleccionada.
+        precondiciï¿½n: debe haber una celda seleccionada.
         la propiedad: celda_seleccionada no debe ser None"""
         self.celda_seleccionada.deseleccionar()
         self.celda_seleccionada = None
