@@ -44,6 +44,9 @@ class Partida(object):
         self.activa = False
         self.decir(mensaje, False)
         self.pilas.avisar(mensaje)
+        if audio is not None:
+            audio = Sounido(audio)
+            audio.reproducir()
 
     def seleccionar_celda(self, columna, fila):
         """Realiza una seleccion de celda si la partida esta activa"""
@@ -52,6 +55,7 @@ class Partida(object):
 
     def registrar_movimiento(self, ficha, fichaEliminada, celda_origen, celda_destino):
         self.sonido_mover.reproducir()
+        self.decir(str(ficha)+" mueve a: "+str(celda_destino))
         if fichaEliminada:
             #print("fuera de juego", fichaEliminada.nombre,  fichaEliminada.color)
             self.historial.agregar(repr(ficha) +  "x" + str(celda_destino))
