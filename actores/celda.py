@@ -22,7 +22,7 @@ class Celda(Actor):
 
     def __str__(self):
         if self.columna >= 0 and self.columna <= 24:
-            return chr(self.columna+65)+str(self.fila)
+            return chr(self.columna+65)+str(self.fila+1)
         else:
             return str(self.columna)+str(self.fila)
 
