@@ -51,7 +51,7 @@ class Partida(object):
     def registrar_movimiento(self, ficha, fichaEliminada, celda_origen, celda_destino):
         self.sonido_mover.reproducir()
         if fichaEliminada:
-            print("fuera de juego", fichaEliminada.nombre,  fichaEliminada.color)
-            self.historial.agregar(str(ficha) +  "x" + str(celda_destino))
+            #print("fuera de juego", fichaEliminada.nombre,  fichaEliminada.color)
+            self.historial.agregar(repr(ficha) +  "x" + str(celda_destino))
         else:
-            self.historial.agregar(str(ficha) + str(celda_destino))
+            self.historial.agregar(repr(ficha) + str(celda_destino))

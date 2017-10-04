@@ -12,13 +12,13 @@ class Ficha(Actor):
         self.color = ''
         Actor.__init__(self, pilas, x=0, y=0, imagen='invisible.png')
 
-    def __str__(self):
+    def __repr__(self):
         if self.color == "blanco":
             return self.nombre[0].upper()
         else:
             return self.nombre[0]
 
-    def str2(self):
+    def __str__(self):
         return self.nombre+" "+self.color
 
     def definir_tablero(self, tablero):
