@@ -14,7 +14,7 @@ class MenuPrincipal(pilasengine.escenas.Escena):
                     ('tutorial', self.tutorial),
                     ('creditos', self.creditos),
                     ('salir', self.salir)]
-        self.menu = MenuAccesible(pilas, y = 50 , opciones = opciones, tts=tts)
+        self.menu = MenuAccesible(pilas, y = 100 , opciones = opciones, tts=tts)
         self.decir(u"menú principal: pulse las flechas para navegar por el menú.", False)
 
 

@@ -25,7 +25,7 @@ class MenuAccesible(Actor):
         self.sonido_activar.volumen = 0.3
 
         self._verificar_opciones(opciones)
-        self.crear_texto_de_las_opciones(opciones, fuente, color_normal, color_resaltado)
+        self.crear_texto_de_las_opciones(opciones, fuente, self.pilas.colores.negro, color_resaltado)
         self.opciones = opciones
         self.seleccionar_primer_opcion()
         self.opcion_actual = 0

@@ -13,6 +13,7 @@ class Historial(Actor):
         self.actor_texto.ancho = 240
         self.actor_texto.x = ejex
         self.actor_texto.y = ejey
+        self.actor_texto.color = self.pilas.colores.negro
         self.actor_texto.escala = 0.5
         self.borde = self.pilas.actores.Pizarra()
         self.lineas.append("")
