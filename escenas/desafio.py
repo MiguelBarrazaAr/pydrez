@@ -3,7 +3,7 @@ import pilasengine
 from actores.tablero import Tablero
 from actores.cabezal import Cabezal
 from partida import Partida
-from reglas.ajedrez_tradicional import ReglasAjedrezTradicional
+from reglas.puzzle_ajedrez import PuzzleAjedrez
 
 class Desafio(pilasengine.escenas.Escena):
 
@@ -11,7 +11,7 @@ class Desafio(pilasengine.escenas.Escena):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
         self.partida = Partida(pilas, tts)
-        self.partida.definir_reglas(ReglasAjedrezTradicional(personalizado=True))
+        self.partida.definir_reglas(PuzzleAjedrez())
         # armamos tablero:
         self.tablero = Tablero(pilas, filas=8, columnas=8, centrado=True, tts=tts)
         self.partida.definir_tablero(self.tablero)
