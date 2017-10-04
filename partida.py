@@ -45,8 +45,8 @@ class Partida(object):
         self.decir(mensaje, False)
         self.pilas.avisar(mensaje)
         if audio is not None:
-            audio = Sounido(audio)
-            audio.reproducir()
+            audio = Sonido(audio)
+            audio.reproducir_esperando()
 
     def seleccionar_celda(self, columna, fila):
         """Realiza una seleccion de celda si la partida esta activa"""
