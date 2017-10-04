@@ -11,6 +11,12 @@ class Reglas(object):
         self.celda_seleccionada = None
         self.personalizado = personalizado
 
+    def iniciar(self, *args, **kwargs):
+        """configura el inicio de una partida"""
+        organizador = self.obtener_organizador()
+        self.partida.tablero.acomodarFichas(organizador(pool=self.partida.pool, *args, **kwargs))
+        self.partida.activa = True
+
     def definir_partida(self, partida):
         self.partida = partida
 

@@ -25,10 +25,11 @@ class Partida(object):
         self.pool.definir_tablero(self.tablero)
 
     def iniciar(self, *args, **kwargs):
-        """Inicia la partida."""
-        self.activa = True
-        organizador = self.reglas.obtener_organizador()
-        self.tablero.acomodarFichas(organizador(pool=self.pool, *args, **kwargs))
+        """Inicia la partida.
+        precondicion: debe tener cargada las reglas y definido un tablero."""
+        # falta validar precondicion.
+        #if not self.activa:
+        self.reglas.iniciar(*args, **kwargs)
 
     def reiniciar(self):
         """reinicia la partida."""
