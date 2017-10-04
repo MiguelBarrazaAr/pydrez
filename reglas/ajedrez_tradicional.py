@@ -40,7 +40,14 @@ class ReglasAjedrezTradicional(Reglas):
     def mover_ficha(self, columna, fila):
         ficha = self.celda_seleccionada.ficha
         celda = self.partida.tablero.obtener_celda(columna, fila)
-        if ficha.puede_mover(celda):
+        # verificamos si la celda tiene ficha:
+        if celda.tiene_ficha():
+            # si tiene ficha verificamos que no sea del mismo color:
+            celdaVerificada = ficha.color != celda.ficha.color
+        else:
+            celdaVerificada = True
+
+        if ficha.puede_mover(celda) and celdaVerificada:
             # puede realizar el movimiento:
 
             self.partida.registrar_movimiento(ficha=self.celda_seleccionada.ficha,
