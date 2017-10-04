@@ -16,6 +16,12 @@ class Reglas(object):
         organizador = self.obtener_organizador()
         self.partida.tablero.acomodarFichas(organizador(pool=self.partida.pool, *args, **kwargs))
         self.partida.activa = True
+        self.posIniciar()
+
+    def PosIniciar(self):
+        """metodo que se ejecuta despues de iniciar la partida.
+        se debe sobreescribir si es necesario"""
+        return None
 
     def definir_partida(self, partida):
         self.partida = partida

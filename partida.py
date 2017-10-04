@@ -39,10 +39,11 @@ class Partida(object):
         print("reiniciando")
         pass
 
-    def finalizar(self):
+    def finalizar(self, mensaje, audio=None):
         """finaliza la partida"""
         self.activa = False
-        self.decir("jacke mate. fin de la partida.", False)
+        self.decir(mensaje, False)
+        self.pilas.avisar(mensaje)
 
     def seleccionar_celda(self, columna, fila):
         """Realiza una seleccion de celda si la partida esta activa"""

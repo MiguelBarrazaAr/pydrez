@@ -9,6 +9,9 @@ class PuzzleAjedrez(Reglas):
         self.personalizado=True
         self.sonido_revote = Sonido("audio/boing.ogg")
 
+    def posIniciar(self):
+        self.fichasActivas = self.partida.pool.fichasActivas()
+
     def seleccionar_celda(self, columna, fila):
         """Selecciona una celda.
         solo se puede seleccionar celdas que tienen fichas.
@@ -37,16 +40,18 @@ class PuzzleAjedrez(Reglas):
     def mover_ficha(self, columna, fila):
         ficha = self.celda_seleccionada.ficha
         celda = self.partida.tablero.obtener_celda(columna, fila)
-        if ficha.puede_mover(celda):
+        if ficha.puede_mover(celda) and celda.tiene_ficha():
             # puede realizar el movimiento:
             self.partida.registrar_movimiento(ficha=self.celda_seleccionada.ficha,
                 fichaEliminada=celda.ficha, celda_origen=self.celda_seleccionada, celda_destino=celda)
             self.celda_seleccionada.liberar()
-            # valida si queda una ficha o no tiene posibilidad de comer. para finalizar el puzzgle.
-            #self.partida.finalizar()
-
             self.partida.tablero.posicionar(ficha, columna=columna, fila=fila)
             self._deseleccionarCelda()
+            # valida si queda una ficha o no tiene posibilidad de comer. para finalizar el puzzgle.
+            self.fichasActivas = self.partida.pool.fichasActivas()
+            if self.fichasActivas == 1:
+                self.partida.finalizar(mensaje="desafío superado!.", audio="audio/logro.ogg")
+
         else:
             # no puede realizar el movimiento:
             self._deseleccionarCelda()
