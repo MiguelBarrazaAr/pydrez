@@ -15,15 +15,9 @@ class Desafio(pilasengine.escenas.Escena):
         # armamos tablero:
         self.tablero = Tablero(pilas, filas=8, columnas=8, centrado=True, tts=tts)
         self.partida.definir_tablero(self.tablero)
-        self.pilas.avisar("las blancas hace mate en 2 movimientos")
+        self.pilas.avisar("Realiza movimientos siempre comiendo, y logra que quede solo una pieza en el tablero")
         # definimos la posicion inicial:
-        fichas = [('rey', 'negro', 7, 7),
-            ('peon', 'negro', 6, 6),
-            ('torre', 'negro', 7, 5),
-            ('torre', 'negro', 6, 7),
-            ('dama', 'blanco', 4, 4),
-            ('torre', 'blanco', 7, 0),
-            ('torre', 'blanco', 0, 7)]
+        fichas = self.cargarDesafio("datos/desafios/01.chess")
         self.partida.iniciar(posicionInicial=fichas)
 
         self.cabezal = Cabezal(pilas, tablero=self.tablero, tts=tts)
@@ -55,3 +49,20 @@ class Desafio(pilasengine.escenas.Escena):
             self.cabezal.mover_arriba()
         if evento.codigo == self.pilas.simbolos.SELECCION:
             self.partida.seleccionar_celda(columna=self.cabezal.columna, fila=self.cabezal.fila)
+
+    def cargarDesafio(self, rutaDeArchivo):
+        file = open(rutaDeArchivo, "r")
+        info = file.read()
+        file.close()
+
+        info = info.split("\n")
+        lista = []
+
+        for x in info:
+            if x != "":
+                x=x.split(" ")
+                x.append(int(x[2][1])-1)
+                x[2] = ord(x[2][0])-97
+                lista.append(tuple(x))
+
+        return lista
