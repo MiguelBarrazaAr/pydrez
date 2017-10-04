@@ -61,5 +61,8 @@ class Ficha(Actor):
         self.celda.liberar()
         self._celda = None
 
-    def no_tiene_comportamiento(self):
+    def noTieneComportamiento(self):
         return self.comportamiento is None
+
+    def tieneComportamiento(self):
+        return self.comportamiento is not None

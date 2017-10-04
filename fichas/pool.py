@@ -42,7 +42,7 @@ class PoolDeFichas():
         """busca una ficha que este libre.
         si no la encuentra genera una ficha nueva para el pool."""
         for ficha in self.fichas:
-            if ficha.no_tiene_comportamiento():
+            if ficha.noTieneComportamiento():
                 return ficha
 
         # no encontro ninguna ficha libre, genera nueva:
@@ -50,3 +50,12 @@ class PoolDeFichas():
         fichas.agregar(ficha)
         self.pilas.log("se agranda el pool de fichas, ahora tiene", len(self.fichas), "fichas")
         return ficha
+
+    def fichasActivas(self):
+        """Cuenta las fichas activas."""
+        cantidad = 0
+        for ficha in self.fichas:
+            if ficha.tieneComportamiento():
+                cantidad += 1
+
+        return cantidad
