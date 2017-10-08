@@ -4,7 +4,7 @@ class Comportamiento(object):
 
     def __init__(self, bando):
         self.nombre = self.__class__.__name__.lower()
-        self.escala = 0.7
+        self.escala = 0.05
         self.saltadora = False
         self.bando = bando
         self.ficha = None
@@ -46,7 +46,7 @@ class Comportamiento(object):
         return self.puedeMoverA(columna=celda.columna, fila=celda.fila)
 
     def validar_celdas(self, celdas):
-        """valida una lista de tupla (columna, fila) de celdas que estén libre.
+        """valida una lista de tupla (columna, fila) de celdas que estï¿½n libre.
         metodo que se utiliza por las no salteadoras."""
         libre = True
         for x in celdas:
