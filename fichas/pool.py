@@ -8,6 +8,10 @@ from .peon import Peon
 from .rey import Rey
 from .torre import Torre
 
+# especiales:
+from .enano import Enano
+from .golem import Golem
+
 class PoolDeFichas():
 
     def __init__(self, pilas, cantidadDeFichas=32):
@@ -16,13 +20,14 @@ class PoolDeFichas():
         self.tablero = None
         self.pilas.log('Se inicia el pool de fichas con', cantidadDeFichas, 'fichas')
         # comportamientos:
-        self.comportamientos = {}
-        self.comportamientos['alfil']=Alfil
-        self.comportamientos['caballo']=Caballo
-        self.comportamientos['dama']=Dama
-        self.comportamientos['peon']=Peon
-        self.comportamientos['rey']=Rey
-        self.comportamientos['torre']=Torre
+        self.comportamientos = {'alfil':Alfil,
+            'caballo':Caballo,
+            'dama':Dama,
+            'enano':Enano,
+            'golem':Golem,
+            'peon':Peon,
+            'rey':Rey,
+            'torre':Torre}
 
         # iniciamos las fichas:
         for x in range(cantidadDeFichas):
