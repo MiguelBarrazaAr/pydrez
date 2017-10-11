@@ -2,10 +2,11 @@
 import pilasengine
 
 from actores.menu import MenuAccesible
+from tts import leer as tts
 
 class MenuPrincipal(pilasengine.escenas.Escena):
 
-    def iniciar(self, pilas, tts):
+    def iniciar(self, pilas):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
         opciones = [('jugar', self.jugar),
@@ -19,10 +20,10 @@ class MenuPrincipal(pilasengine.escenas.Escena):
 
 
     def jugar(self):
-        self.pilas.escenas.PantallaJuego(pilas=self.pilas, tts=self.decir)
+        self.pilas.escenas.PantallaJuego(pilas=self.pilas)
 
     def desafios(self):
-        self.pilas.escenas.Desafio(pilas=self.pilas, tts=self.decir, nombreDesafio='2')
+        self.pilas.escenas.Desafio(pilas=self.pilas, nombreDesafio='2')
 
     def conectarse(self):
         print("conectarse")

@@ -5,9 +5,11 @@ from actores.cabezal import Cabezal
 from partida import Partida
 from reglas.puzzle_ajedrez import PuzzleAjedrez
 
+from tts import leer as tts
+
 class Desafio(pilasengine.escenas.Escena):
 
-    def iniciar(self, pilas, tts, nombreDesafio):
+    def iniciar(self, pilas, nombreDesafio):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
         self.partida = Partida(pilas, tts)
@@ -30,7 +32,7 @@ class Desafio(pilasengine.escenas.Escena):
         self.pilas.eventos.pulsa_tecla_escape.conectar(self.activar_menu_principal)
 
     def activar_menu_principal(self, evento):
-        self.pilas.escenas.MenuPrincipal(pilas=self.pilas, tts=self.decir)
+        self.pilas.escenas.MenuPrincipal(pilas=self.pilas)
 
     def click_mouse(self, evento):
         if(evento.boton == 1):

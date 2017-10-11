@@ -4,10 +4,11 @@ from actores.tablero import Tablero
 from actores.cabezal import Cabezal
 from partida import Partida
 from reglas.ajedrez_tradicional import ReglasAjedrezTradicional
+from tts import leer as tts
 
 class PantallaJuego(pilasengine.escenas.Escena):
 
-    def iniciar(self, pilas, tts):
+    def iniciar(self, pilas):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
         self.partida = Partida(pilas, tts)
@@ -26,7 +27,7 @@ class PantallaJuego(pilasengine.escenas.Escena):
         self.pilas.camara.y= 85
 
     def activar_menu_principal(self, evento):
-        self.pilas.escenas.MenuPrincipal(pilas=self.pilas, tts=self.decir)
+        self.pilas.escenas.MenuPrincipal(pilas=self.pilas)
 
     def click_mouse(self, evento):
         if(evento.boton == 1):
