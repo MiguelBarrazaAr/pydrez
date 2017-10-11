@@ -23,6 +23,10 @@ class Comportamiento(object):
         self.ficha.color = ''
         self.ficha = None
 
+    def valor(self):
+        """valor que tiene la ficha"""
+        return 3
+
     def ruta_de_imagen(self):
         return "imagenes/fichas/"+self.bando+"/"+self.nombre+".png"
 
