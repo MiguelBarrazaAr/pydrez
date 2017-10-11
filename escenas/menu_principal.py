@@ -22,7 +22,7 @@ class MenuPrincipal(pilasengine.escenas.Escena):
         self.pilas.escenas.PantallaJuego(pilas=self.pilas, tts=self.decir)
 
     def desafios(self):
-        self.pilas.escenas.Desafio(pilas=self.pilas, tts=self.decir)
+        self.pilas.escenas.Desafio(pilas=self.pilas, tts=self.decir, nombreDesafio='2')
 
     def conectarse(self):
         print("conectarse")

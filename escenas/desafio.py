@@ -7,7 +7,7 @@ from reglas.puzzle_ajedrez import PuzzleAjedrez
 
 class Desafio(pilasengine.escenas.Escena):
 
-    def iniciar(self, pilas, tts):
+    def iniciar(self, pilas, tts, nombreDesafio):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
         self.partida = Partida(pilas, tts)
@@ -17,7 +17,7 @@ class Desafio(pilasengine.escenas.Escena):
         self.partida.definir_tablero(self.tablero)
         self.pilas.avisar("Realiza movimientos siempre comiendo, y logra que quede solo una pieza en el tablero")
         # definimos la posicion inicial:
-        fichas = self.cargarDesafio("datos/desafios/01.chess")
+        fichas = self.cargarDesafio("datos/desafios/"+nombreDesafio+".chess")
         self.partida.iniciar(posicionInicial=fichas)
 
         self.cabezal = Cabezal(pilas, tablero=self.tablero, tts=tts)
