@@ -11,7 +11,7 @@ class PantallaJuego(pilasengine.escenas.Escena):
     def iniciar(self, pilas):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
-        self.partida = Partida(pilas, tts)
+        self.partida = Partida(pilas)
         self.partida.definir_reglas(ReglasAjedrezTradicional())
         # armamos tablero:
         self.tablero = Tablero(pilas, filas=8, columnas=8, centrado=False, tts=tts)

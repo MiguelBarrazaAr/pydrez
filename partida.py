@@ -3,9 +3,11 @@ from actores.historial import Historial
 from sonido import Sonido
 from fichas.pool import PoolDeFichas
 
+from tts import leer as tts
+
 class Partida(object):
 
-    def __init__(self, pilas, tts):
+    def __init__(self, pilas):
         self.pilas = pilas
         self.decir = tts
         self.pool = PoolDeFichas(pilas)
