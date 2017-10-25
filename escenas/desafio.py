@@ -12,7 +12,7 @@ class Desafio(pilasengine.escenas.Escena):
     def iniciar(self, pilas, nombreDesafio):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
-        self.partida = Partida(pilas, tts)
+        self.partida = Partida(pilas)
         self.partida.definir_reglas(PuzzleAjedrez())
         # armamos tablero:
         self.tablero = Tablero(pilas, filas=8, columnas=8, tts=tts)
