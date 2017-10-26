@@ -9,12 +9,12 @@ class MenuPrincipal(pilasengine.escenas.Escena):
     def iniciar(self, pilas):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
-        opciones = [('jugar', self.jugar),
-                    (u'desafíos', self.desafios),
-                    ('conectarse', self.conectarse),
-                    ('tutorial', self.tutorial),
-                    ('creditos', self.creditos),
-                    ('salir', self.salir)]
+        opciones = [('Jugar', self.jugar),
+                    (u'Desafíos', self.desafios),
+                    ('Conectarse', self.conectarse),
+                    ('Tutorial', self.tutorial),
+                    ('Creditos', self.creditos),
+                    ('Salir', self.salir)]
         self.menu = MenuAccesible(pilas, y = 100 , opciones = opciones, tts=tts)
         self.decir(u"menú principal: pulse las flechas para navegar por el menú.", False)
 

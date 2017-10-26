@@ -1,9 +1,9 @@
 import pilasengine
 
-from escenas.menu_principal import MenuPrincipal
+from escenas.menuPrincipal import MenuPrincipal
 from escenas.pantallaJuego import PantallaJuego
 from escenas.menuPromocion  import MenuPromocion
-from escenas.desafios import Desafios
+from escenas.menuDesafios import Desafios
 from escenas.desafio import Desafio
 
 # iniciamos:

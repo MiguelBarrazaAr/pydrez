@@ -2,8 +2,9 @@ import pilasengine
 
 from actores.tablero import Tablero
 from actores.cabezal import Cabezal
+from actores.reloj import Reloj
 from partida import Partida
-from reglas.puzzle_ajedrez import PuzzleAjedrez
+from reglas.puzzleAjedrez import PuzzleAjedrez
 
 from tts import leer as tts
 
@@ -14,6 +15,9 @@ class Desafio(pilasengine.escenas.Escena):
         self.decir = tts
         self.partida = Partida(pilas)
         self.partida.definir_reglas(PuzzleAjedrez())
+        # se arma el reloj
+        self.reloj = Reloj(pilas, x=-70, y=180, incremental=True)
+
         # armamos tablero:
         self.tablero = Tablero(pilas, filas=8, columnas=8, tts=tts)
         self.partida.definir_tablero(self.tablero)
@@ -31,6 +35,7 @@ class Desafio(pilasengine.escenas.Escena):
         self.pilas.eventos.pulsa_tecla.conectar(self.interpreta_teclado)
         self.pilas.eventos.click_de_mouse.conectar(self.click_mouse)
         self.pilas.eventos.pulsa_tecla_escape.conectar(self.activar_menu_principal)
+
 
     def activar_menu_principal(self, evento):
         self.pilas.escenas.MenuPrincipal(pilas=self.pilas)
