@@ -3,6 +3,7 @@ import pilasengine
 from escenas.menu_principal import MenuPrincipal
 from escenas.pantallaJuego import PantallaJuego
 from escenas.menuPromocion  import MenuPromocion
+from escenas.desafios import Desafios
 from escenas.desafio import Desafio
 
 # iniciamos:
@@ -12,6 +13,7 @@ pilas = pilasengine.iniciar(titulo='pydrez 0.1 - alpha', capturar_errores=False,
 pilas.escenas.vincular(MenuPrincipal)
 pilas.escenas.vincular(PantallaJuego)
 pilas.escenas.vincular(MenuPromocion)
+pilas.escenas.vincular(Desafios)
 pilas.escenas.vincular(Desafio)
 
 pilas.escenas.MenuPrincipal(pilas=pilas)

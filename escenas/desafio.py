@@ -20,6 +20,7 @@ class Desafio(pilasengine.escenas.Escena):
         self.pilas.avisar("Realiza movimientos siempre comiendo, y logra que quede solo una pieza en el tablero")
         # definimos la posicion inicial:
         fichas = self.cargarDesafio("datos/desafios/"+nombreDesafio+".chess")
+        self.nombreDesafio = nombreDesafio
         self.partida.iniciar(posicionInicial=fichas)
 
         self.cabezal = Cabezal(pilas, tablero=self.tablero, tts=tts)
@@ -52,6 +53,8 @@ class Desafio(pilasengine.escenas.Escena):
             self.cabezal.mover_abajo()
         if evento.codigo == "w" or evento.codigo == self.pilas.simbolos.ARRIBA:
             self.cabezal.mover_arriba()
+        if evento.codigo == "r":
+            self.pilas.escenas.Desafio(pilas=self.pilas, nombreDesafio = self.nombreDesafio)
         if evento.codigo == self.pilas.simbolos.SELECCION:
             self.partida.seleccionar_celda(columna=self.cabezal.columna, fila=self.cabezal.fila)
 
