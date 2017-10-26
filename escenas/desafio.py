@@ -17,6 +17,7 @@ class Desafio(pilasengine.escenas.Escena):
         self.partida.definir_reglas(PuzzleAjedrez())
         # se arma el reloj
         self.reloj = Reloj(pilas, x=-70, y=180, incremental=True)
+        self.reloj.comenzar()
 
         # armamos tablero:
         self.tablero = Tablero(pilas, filas=8, columnas=8, tts=tts)
