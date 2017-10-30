@@ -9,6 +9,21 @@ class Tablero(object):
         :param filas: cantidad de filas
         :type filas: int
         """
-        self.escaques = [([None]*columnas)]*filas
+        self.celdas = {}
         self.filas = filas
         self.columnas = columnas
+
+    def agregar(self, columna, fila, ficha):
+        self.celdas[str(columna)+"."+str(fila)] = ficha
+
+    def eliminar(self, columna, fila):
+        del self.celdas[str(columna)+"."+str(fila)]
+
+    def valor(self, columna, fila):
+        return self.celdas.get(str(columna)+"."+str(fila))
+
+    def celdasActivas(self):
+        return self.celdas.keys()
+
+    def estaLibre(self, columna, fila):
+        return self.valor(columna, fila) is None
