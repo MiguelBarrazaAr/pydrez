@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 import pilasengine
 
 from actores.tablero import Tablero
@@ -7,6 +8,7 @@ from partida import Partida
 from reglas.puzzleAjedrez import PuzzleAjedrez
 
 from tts import leer as tts
+from sonido import Sonido
 
 class Desafio(pilasengine.escenas.Escena):
 
@@ -36,7 +38,8 @@ class Desafio(pilasengine.escenas.Escena):
         self.pilas.eventos.pulsa_tecla.conectar(self.interpreta_teclado)
         self.pilas.eventos.click_de_mouse.conectar(self.click_mouse)
         self.pilas.eventos.pulsa_tecla_escape.conectar(self.activar_menu_principal)
-
+        # eventos de partida:
+        self.partida.eventoFinalizar.conectar(self.finalizar)
 
     def activar_menu_principal(self, evento):
         self.pilas.escenas.MenuPrincipal(pilas=self.pilas)
@@ -80,3 +83,11 @@ class Desafio(pilasengine.escenas.Escena):
                 lista.append(tuple(x))
 
         return lista
+
+    def finalizar(self, evento):
+        if evento.motivo == "superado":
+            mensaje = "Desafio superado!"
+            self.decir(mensaje, False)
+            self.pilas.avisar(mensaje)
+            audio = Sonido("audio/logro.ogg")
+            audio.reproducir_esperando()

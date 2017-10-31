@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 import pilasengine
 
 from escenas.menuPrincipal import MenuPrincipal

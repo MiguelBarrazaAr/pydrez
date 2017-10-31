@@ -17,6 +17,9 @@ class Partida(object):
         # sonidos de la partida:
         self.sonido_mover = Sonido('audio/mover-ficha.ogg')
         self.historial = Historial(pilas,130,140)
+        # eventos de la partida:
+        self.mueveFicha = pilas.evento.Evento("mueve_ficha")
+        self.eventoFinalizar = pilas.evento.Evento("finaliza_partida")
 
     def definir_reglas(self, reglas):
         self.reglas = reglas
@@ -41,14 +44,11 @@ class Partida(object):
         print("reiniciando")
         pass
 
-    def finalizar(self, mensaje, audio=None):
-        """finaliza la partida"""
+    def finalizar(self, motivo):
+        """finaliza la partida
+        : param motivo: se refiere al motivo por el cual finaliza esta partida."""
         self.activa = False
-        self.decir(mensaje, False)
-        self.pilas.avisar(mensaje)
-        if audio is not None:
-            audio = Sonido(audio)
-            audio.reproducir_esperando()
+        self.eventoFinalizar.emitir(motivo=motivo)
 
     def seleccionar_celda(self, columna, fila):
         """Realiza una seleccion de celda si la partida esta activa"""
