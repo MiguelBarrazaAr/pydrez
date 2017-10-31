@@ -1,5 +1,7 @@
 # -*- encoding: utf-8 -*-
 
+from .tuple import tupleToString, stringToTuple
+
 class Tablero(object):
     """Representa al tablero"""
 
@@ -13,17 +15,17 @@ class Tablero(object):
         self.filas = filas
         self.columnas = columnas
 
-    def agregar(self, columna, fila, ficha):
-        self.celdas[str(columna)+"."+str(fila)] = ficha
+    def agregar(self, posicion, ficha):
+        self.celdas[tupleToString(posicion)] = ficha
 
-    def eliminar(self, columna, fila):
-        del self.celdas[str(columna)+"."+str(fila)]
+    def eliminar(self, posicion):
+        del self.celdas[tupleToString(posicion)]
 
-    def valor(self, columna, fila):
-        return self.celdas.get(str(columna)+"."+str(fila))
+    def valor(self, posicion):
+        return self.celdas.get(tupleToString(posicion))
 
     def celdasActivas(self):
         return self.celdas.keys()
 
-    def estaLibre(self, columna, fila):
-        return self.valor(columna, fila) is None
+    def estaLibre(self, posicion):
+        return self.valor(posicion) is None
