@@ -37,7 +37,7 @@ class MenuPrincipal(pilasengine.escenas.Escena):
         self.pilas.escenas.PantallaJuego(pilas=self.pilas)
 
     def desafios(self):
-        self.pilas.escenas.Desafios(pilas=self.pilas)
+        self.pilas.escenas.MenuDesafios(pilas=self.pilas)
         #self.pilas.escenas.Desafio(pilas=self.pilas, nombreDesafio='2')
 
     def conectarse(self):
