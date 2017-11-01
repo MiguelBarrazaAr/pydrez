@@ -43,7 +43,7 @@ class PuzzleAjedrez(Reglas):
         if ficha.puede_mover(celda) and celda.tiene_ficha():
             # puede realizar el movimiento:
             self.partida.registrar_movimiento(ficha=self.celda_seleccionada.ficha,
-                fichaEliminada=celda.ficha, celda_origen=self.celda_seleccionada, celda_destino=celda)
+                fichaEliminada=celda.ficha, celdaOrigen=self.celda_seleccionada, celdaDestino=celda)
             self.celda_seleccionada.liberar()
             self.partida.tablero.posicionar(ficha, columna=columna, fila=fila)
             self._deseleccionarCelda()

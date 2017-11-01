@@ -1,6 +1,4 @@
 # -*- encoding: utf-8 -*-
-from actores.historial import Historial
-from sonido import Sonido
 from fichas.pool import PoolDeFichas
 
 from tts import leer as tts
@@ -14,11 +12,9 @@ class Partida(object):
         self.reglas = None
         self.tablero = None
         self.activa = False
-        # sonidos de la partida:
-        self.sonido_mover = Sonido('audio/mover-ficha.ogg')
-        self.historial = Historial(pilas,130,140)
+
         # eventos de la partida:
-        self.mueveFicha = pilas.evento.Evento("mueve_ficha")
+        self.eventoMueveFicha = pilas.evento.Evento("mueve_ficha")
         self.eventoFinalizar = pilas.evento.Evento("finaliza_partida")
 
     def definir_reglas(self, reglas):
@@ -55,11 +51,5 @@ class Partida(object):
         if self.activa:
             self.reglas.seleccionar_celda(columna, fila)
 
-    def registrar_movimiento(self, ficha, fichaEliminada, celda_origen, celda_destino):
-        self.sonido_mover.reproducir()
-        self.decir(str(ficha)+" mueve a: "+str(celda_destino))
-        if fichaEliminada:
-            #print("fuera de juego", fichaEliminada.nombre,  fichaEliminada.color)
-            self.historial.agregar(repr(ficha) +  "x" + str(celda_destino))
-        else:
-            self.historial.agregar(repr(ficha) + str(celda_destino))
+    def registrar_movimiento(self, ficha, fichaEliminada, celdaOrigen, celdaDestino):
+        self.eventoMueveFicha.emitir(ficha=ficha, fichaEliminada=fichaEliminada, celdaOrigen=celdaOrigen, celdaDestino=celdaDestino)

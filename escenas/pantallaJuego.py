@@ -2,9 +2,12 @@ import pilasengine
 
 from actores.tablero import Tablero
 from actores.cabezal import Cabezal
+from actores.historial import Historial
+
 from partida import Partida
 from reglas.ajedrez_tradicional import ReglasAjedrezTradicional
 from tts import leer as tts
+from sonido import Sonido
 
 class PantallaJuego(pilasengine.escenas.Escena):
 
@@ -23,11 +26,28 @@ class PantallaJuego(pilasengine.escenas.Escena):
         self.pilas.eventos.pulsa_tecla.conectar(self.interpreta_teclado)
         self.pilas.eventos.click_de_mouse.conectar(self.click_mouse)
         self.pilas.eventos.pulsa_tecla_escape.conectar(self.activar_menu_principal)
+        # eventos de juego:
+        self.partida.eventoMueveFicha.conectar(self.mueveFicha)
+
         self.pilas.camara.x = 180
         self.pilas.camara.y= 85
 
+        # sonidos:
+        self.sonido_mover = Sonido('audio/mover-ficha.ogg')
+        self.historial = Historial(pilas,130,140)
+
     def activar_menu_principal(self, evento):
         self.pilas.escenas.MenuPrincipal(pilas=self.pilas)
+
+    def mueveFicha(self, evento):
+        self.sonido_mover.reproducir()
+        self.decir(str(evento.ficha)+" mueve a: "+str(evento.celdaDestino))
+        if evento.fichaEliminada:
+            #print("fuera de juego", fichaEliminada.nombre,  fichaEliminada.color)
+            self.historial.agregar(repr(evento.ficha) +  "x" + str(evento.celdaDestino))
+        else:
+            self.historial.agregar(repr(evento.ficha) + str(evento.celdaDestino))
+
 
     def click_mouse(self, evento):
         if(evento.boton == 1):
