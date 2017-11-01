@@ -21,9 +21,5 @@ class MenuDesafios(EscenaMenu):
     def cargarDesafio(self , nombreDesafio):
         self.pilas.escenas.Desafio(pilas=self.pilas, nombreDesafio=nombreDesafio)
 
-    def irAMenuPrincipal():
-        self.pilas.escenas.MenuPrincipal(pilas=pilas)
-
-
     def salir(self):
         exit()
