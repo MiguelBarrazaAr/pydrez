@@ -19,7 +19,7 @@ class Desafio(pilasengine.escenas.Escena):
         self.partida.definir_reglas(PuzzleAjedrez())
 
         # se arma el reloj
-        self.reloj = Reloj(pilas, x=-70, y=180, incremental=True)
+        self.reloj = Reloj(pilas, x=200, y=200, incremental=True)
         self.reloj.comenzar()
 
         # armamos tablero:
@@ -34,8 +34,8 @@ class Desafio(pilasengine.escenas.Escena):
         self.cabezal = Cabezal(pilas, tablero=self.tablero, tts=tts)
 
         # camara:
-        self.pilas.camara.x = 180
-        self.pilas.camara.y = 85
+        self.pilas.camara.x = 270
+        self.pilas.camara.y = 160
 
         # conexiones con eventos:
         self.pilas.eventos.pulsa_tecla.conectar(self.interpreta_teclado)

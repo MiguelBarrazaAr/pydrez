@@ -3,6 +3,7 @@ import pilasengine
 from actores.tablero import Tablero
 from actores.cabezal import Cabezal
 from actores.historial import Historial
+from actores.textoAyuda import TextoAyuda
 
 from partida import Partida
 from reglas.ajedrez_tradicional import ReglasAjedrezTradicional
@@ -16,6 +17,8 @@ class PantallaJuego(pilasengine.escenas.Escena):
         self.decir = tts
         self.partida = Partida(pilas)
         self.partida.definir_reglas(ReglasAjedrezTradicional())
+        self.textoAyuda = TextoAyuda(self.pilas)
+
         # armamos tablero:
         self.tablero = Tablero(pilas, filas=8, columnas=8, centrado=False, tts=tts)
         self.partida.definir_tablero(self.tablero)
@@ -58,6 +61,8 @@ class PantallaJuego(pilasengine.escenas.Escena):
             self.cabezal.mover(columna=columna, fila=fila)
             #elf.cabezal.seleccionar()
             self.partida.seleccionar_celda(columna=self.cabezal.columna, fila=self.cabezal.fila)
+        if(evento.boton == 2):
+            self.textoAyuda.decirAlgo()
 
     def interpreta_teclado(self, evento):
         if evento.codigo == "a" or evento.codigo == self.pilas.simbolos.IZQUIERDA:
