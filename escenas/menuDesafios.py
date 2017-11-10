@@ -9,7 +9,7 @@ class MenuDesafios(EscenaMenu):
         for desafio in listdir("datos/desafios"):
             desafios = [desafio[:-6]] + desafios
         desafios.sort()
-        return map(lambda x: ('Opcion ' + x, self.cargarDesafio, x), desafios)
+        return map(lambda x: ('Desafio ' + x, self.cargarDesafio, x), desafios)
 
     def activar(self):
         self.decir(u"Desafíos disponibles: pulse las flechas para elegir un desafío y pulse enter para intentar superarlo.", False)
