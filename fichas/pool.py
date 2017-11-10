@@ -29,6 +29,16 @@ class PoolDeFichas():
             'peon':Peon,
             'rey':Rey,
             'torre':Torre}
+        self.prefijo = {
+            'a':'alfil',
+            'c':'caballo',
+            'd':'dama',
+            'e':'enano',
+            'g':'golem',
+            'p':'peon',
+            'r':'rey',
+            't':'torre'
+        }
 
         # iniciamos las fichas:
         for x in range(cantidadDeFichas):
@@ -66,6 +76,12 @@ class PoolDeFichas():
 
         return cantidad
 
+    def limpiar(self):
+        """Elimina de pantalla la fichas Activas."""
+        for ficha in self.fichas:
+            if ficha.tieneComportamiento():
+                ficha.eliminar()
+
     def posicion(self):
         """Retorna una lista de strings con la posición de las fichas"""
         posicion = ""
@@ -77,3 +93,24 @@ class PoolDeFichas():
                     posicion += " "+repr(ficha)+str(ficha.celda)
 
         return posicion
+
+    def cargarPosicion(self, texto):
+        """Carga una posicion indicada por parametro"""
+        self.limpiar()
+        lista = texto.split(" ")
+        color = ""
+
+        for n, x in enumerate(lista):
+            if lista[n][0].islower():
+                color="negro"
+            else:
+                color = "blanco"
+
+            lista[n] = (
+                self.prefijo[(lista[n][0].lower())],
+                color,
+                ord(lista[n][1])-97,
+                int(lista[n][2:])-1)
+
+        for ficha in lista:
+            self.tablero.posicionar(self.generar(ficha[0], ficha[1]), ficha[2], ficha[3])
