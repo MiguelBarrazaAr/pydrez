@@ -5,6 +5,7 @@ from escenas.menuPrincipal import MenuPrincipal
 from escenas.pantallaJuego import PantallaJuego
 from escenas.menuPromocion  import MenuPromocion
 from escenas.menuDesafios import MenuDesafios
+from escenas.desafioTernimado import PantallaJuegoTerminado
 from escenas.desafio import Desafio
 
 # iniciamos:
@@ -16,8 +17,8 @@ pilas.escenas.vincular(PantallaJuego)
 pilas.escenas.vincular(MenuPromocion)
 pilas.escenas.vincular(MenuDesafios)
 pilas.escenas.vincular(Desafio)
+pilas.escenas.vincular(PantallaJuegoTerminado)
 
 pilas.escenas.MenuPrincipal(pilas=pilas)
-#pilas.escenas.PantallaJuego(pilas=pilas)
 
 pilas.ejecutar()

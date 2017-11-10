@@ -17,6 +17,7 @@ class Desafio(pilasengine.escenas.Escena):
         self.decir = tts
         self.partida = Partida(pilas)
         self.partida.definir_reglas(PuzzleAjedrez())
+
         # se arma el reloj
         self.reloj = Reloj(pilas, x=-70, y=180, incremental=True)
         self.reloj.comenzar()
@@ -25,19 +26,22 @@ class Desafio(pilasengine.escenas.Escena):
         self.tablero = Tablero(pilas, filas=8, columnas=8, tts=tts)
         self.partida.definir_tablero(self.tablero)
         self.pilas.avisar("Realiza movimientos siempre comiendo, y logra que quede solo una pieza en el tablero")
+
         # definimos la posicion inicial:
         fichas = self.cargarDesafio("datos/desafios/"+nombreDesafio+".chess")
         self.nombreDesafio = nombreDesafio
         self.partida.iniciar(posicionInicial=fichas)
-
         self.cabezal = Cabezal(pilas, tablero=self.tablero, tts=tts)
+
         # camara:
         self.pilas.camara.x = 180
         self.pilas.camara.y = 85
+
         # conexiones con eventos:
         self.pilas.eventos.pulsa_tecla.conectar(self.interpreta_teclado)
         self.pilas.eventos.click_de_mouse.conectar(self.click_mouse)
         self.pilas.eventos.pulsa_tecla_escape.conectar(self.activar_menu_principal)
+
         # eventos de partida:
         self.partida.eventoFinalizar.conectar(self.finalizar)
 
@@ -91,3 +95,4 @@ class Desafio(pilasengine.escenas.Escena):
             self.pilas.avisar(mensaje)
             audio = Sonido("audio/logro.ogg")
             audio.reproducir_esperando()
+            self.pilas.escenas.PantallaJuegoTerminado(self.pilas,self.reloj.texto, self.nombreDesafio)
