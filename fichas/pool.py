@@ -68,9 +68,9 @@ class PoolDeFichas():
 
     def posicion(self):
         """Retorna una lista de strings con la posición de las fichas"""
-        posicion = []
+        posicion = ""
         for ficha in self.fichas:
             if ficha.tieneComportamiento():
-                posicion.append(str(ficha)+" "+str(ficha.celda))
+                posicion += " "+repr(ficha)+str(ficha.celda)
 
         return posicion
