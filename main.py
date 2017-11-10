@@ -2,10 +2,11 @@
 import pilasengine
 
 from escenas.menuPrincipal import MenuPrincipal
+from escenas.conectarseAlServidor import ConectarseAlServidor
 from escenas.pantallaJuego import PantallaJuego
 from escenas.menuPromocion  import MenuPromocion
 from escenas.menuDesafios import MenuDesafios
-from escenas.desafioTernimado import PantallaJuegoTerminado
+from escenas.desafioTerminado import PantallaJuegoTerminado
 from escenas.desafio import Desafio
 
 # iniciamos:
@@ -13,6 +14,7 @@ pilas = pilasengine.iniciar(titulo='pydrez 0.1 - alpha', capturar_errores=False,
 
 # vinculamos las pantallas:
 pilas.escenas.vincular(MenuPrincipal)
+pilas.escenas.vincular(ConectarseAlServidor)
 pilas.escenas.vincular(PantallaJuego)
 pilas.escenas.vincular(MenuPromocion)
 pilas.escenas.vincular(MenuDesafios)

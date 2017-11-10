@@ -11,9 +11,9 @@ class MenuPrincipal(pilasengine.escenas.Escena):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
         opciones = [('Jugar', self.jugar),
-                    (u'Desafíos', self.desafios),
-                    ('Conectarse', self.conectarse),
-                    ('Tutorial', self.tutorial),
+                    (u"Desafíos", self.desafios),
+                    (u"Conectarse a un servidor", self.conectarse),
+                    (u"Establecerse como servidor", self.levantarServidor),
                     ('Creditos', self.creditos),
                     ('Salir', self.salir)]
         self.menu = Menu(pilas, y = 100 , opciones = opciones)
@@ -41,9 +41,9 @@ class MenuPrincipal(pilasengine.escenas.Escena):
         #self.pilas.escenas.Desafio(pilas=self.pilas, nombreDesafio='2')
 
     def conectarse(self):
-        print("conectarse")
+        self.pilas.escenas.ConectarseAlServidor(pilas=self.pilas)
 
-    def tutorial(self):
+    def levantarServidor(self):
         print("tutorial")
 
     def creditos(self):
