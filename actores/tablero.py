@@ -19,12 +19,12 @@ class Tablero(Actor):
         :type filas: int
         :param estiloDeCelda: nombre de la carpeta donde se encuentra las imagenes de las celdas. relativas a: /imagenes/(nombre de estilo)
         :type estiloDeCelda: string
-        :param centrado: indica si el tablero estará centrado.
+        :param centrado: indica si el tablero estarï¿½ centrado.
         :type centrado: bool
         """
 
-        self.distancia = 30
-        # si esta centrado calculamos su posición:
+        self.distancia = 45
+        # si esta centrado calculamos su posiciï¿½n:
         if centrado:
             x = pilas.camara.x+columnas/2*self.distancia*-1
             y = pilas.camara.y+filas/2*self.distancia*-1
@@ -66,7 +66,7 @@ class Tablero(Actor):
 
         :param actor: una ficha a Agregarlo al juego.
         :type actor: Actor
-        :param columna: numero de columna en la que se posicionará (1..n)
+        :param columna: numero de columna en la que se posicionarï¿½ (1..n)
         :type columna: int
         :param fila: numero de fila (1..n)
         :type fila: int

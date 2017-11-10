@@ -29,8 +29,8 @@ class PantallaJuego(pilasengine.escenas.Escena):
         # eventos de juego:
         self.partida.eventoMueveFicha.conectar(self.mueveFicha)
 
-        self.pilas.camara.x = 180
-        self.pilas.camara.y= 85
+        self.pilas.camara.x = 270
+        self.pilas.camara.y= 160
 
         # sonidos:
         self.sonido_mover = Sonido('audio/mover-ficha.ogg')
@@ -71,7 +71,7 @@ class PantallaJuego(pilasengine.escenas.Escena):
         if evento.codigo == self.pilas.simbolos.SELECCION:
             self.partida.seleccionar_celda(columna=self.cabezal.columna, fila=self.cabezal.fila)
         if evento.codigo == "m":
-            self.partida.historial.subir()
+            self.historial.subir()
         if evento.codigo == "n":
-            self.partida.historial.bajar()
+            self.historial.bajar()
 

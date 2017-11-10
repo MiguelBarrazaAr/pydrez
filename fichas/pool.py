@@ -20,7 +20,8 @@ class PoolDeFichas():
         self.tablero = None
         self.pilas.log('Se inicia el pool de fichas con', cantidadDeFichas, 'fichas')
         # comportamientos:
-        self.comportamientos = {'alfil':Alfil,
+        self.comportamientos = {
+            'alfil':Alfil,
             'caballo':Caballo,
             'dama':Dama,
             'enano':Enano,

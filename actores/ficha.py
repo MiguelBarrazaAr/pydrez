@@ -12,6 +12,7 @@ class Ficha(Actor):
         self.color = ''
         Actor.__init__(self, pilas, x=0, y=0, imagen='invisible.png')
 
+
     def __repr__(self):
         if self.color == "blanco":
             return self.nombre[0].upper()
