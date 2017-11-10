@@ -65,3 +65,12 @@ class PoolDeFichas():
                 cantidad += 1
 
         return cantidad
+
+    def posicion(self):
+        """Retorna una lista de strings con la posición de las fichas"""
+        posicion = []
+        for ficha in self.fichas:
+            if ficha.tieneComportamiento():
+                posicion.append(str(ficha)+" "+str(ficha.celda))
+
+        return posicion
