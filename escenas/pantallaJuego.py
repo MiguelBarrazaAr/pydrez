@@ -11,10 +11,10 @@ from sonido import Sonido
 
 class PantallaJuego(pilasengine.escenas.Escena):
 
-    def iniciar(self, pilas):
+    def iniciar(self, pilas, datos=None):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
-        self.partida = Partida(pilas)
+        self.partida = Partida(pilas, datos)
         self.partida.definir_reglas(ReglasAjedrezTradicional())
         # armamos tablero:
         self.tablero = Tablero(pilas, filas=8, columnas=8, centrado=False, tts=tts)
@@ -37,7 +37,10 @@ class PantallaJuego(pilasengine.escenas.Escena):
         self.historial = Historial(pilas,130,140)
 
     def activar_menu_principal(self, evento):
-        self.pilas.escenas.MenuPrincipal(pilas=self.pilas)
+        datos=None
+        if self.partida.activa:
+            datos=self.partida.datos
+        self.pilas.escenas.MenuPrincipal(pilas=self.pilas, datos=datos)
 
     def mueveFicha(self, evento):
         self.sonido_mover.reproducir()

@@ -7,9 +7,10 @@ from sonido import Sonido
 
 class MenuPrincipal(pilasengine.escenas.Escena):
 
-    def iniciar(self, pilas):
+    def iniciar(self, pilas, datos=None):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
+        self.datos=datos
         opciones = [('Jugar', self.jugar),
                     (u"Desafíos", self.desafios),
                     (u"Conectarse a un servidor", self.conectarse),
@@ -34,7 +35,7 @@ class MenuPrincipal(pilasengine.escenas.Escena):
         self.sonido_activar.reproducir()
 
     def jugar(self):
-        self.pilas.escenas.PantallaJuego(pilas=self.pilas)
+        self.pilas.escenas.PantallaJuego(pilas=self.pilas, datos=self.datos)
 
     def desafios(self):
         self.pilas.escenas.MenuDesafios(pilas=self.pilas)

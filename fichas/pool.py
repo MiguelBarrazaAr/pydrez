@@ -71,6 +71,9 @@ class PoolDeFichas():
         posicion = ""
         for ficha in self.fichas:
             if ficha.tieneComportamiento():
-                posicion += " "+repr(ficha)+str(ficha.celda)
+                if posicion == "":
+                    posicion += repr(ficha)+str(ficha.celda)
+                else:
+                    posicion += " "+repr(ficha)+str(ficha.celda)
 
         return posicion
