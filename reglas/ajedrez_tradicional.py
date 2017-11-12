@@ -63,6 +63,7 @@ class ReglasAjedrezTradicional(Reglas):
             self.partida.tablero.posicionar(ficha, columna=columna, fila=fila)
             self.pasar_turno()
             self._deseleccionarCelda()
+            self.partida.finalizaMovimiento(celda)
         else:
             # no puede realizar el movimiento:
             self._deseleccionarCelda()
