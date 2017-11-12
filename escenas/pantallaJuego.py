@@ -54,16 +54,18 @@ class PantallaJuego(pilasengine.escenas.Escena):
 
 
     def click_mouse(self, evento):
+        x = int(evento.x) + (self.tablero.distancia / 2) + self.pilas.camara.x
+        y = int(evento.y) + (self.tablero.distancia / 2) + self.pilas.camara.y
+        columna = x / self.tablero.distancia
+        fila = y / self.tablero.distancia
         if(evento.boton == 1):
-            x = int(evento.x)+(self.tablero.distancia/2)+self.pilas.camara.x
-            y = int(evento.y)+(self.tablero.distancia/2)+self.pilas.camara.y
-            columna = x/self.tablero.distancia
-            fila = y/self.tablero.distancia
             self.cabezal.mover(columna=columna, fila=fila)
             #elf.cabezal.seleccionar()
             self.partida.seleccionar_celda(columna=self.cabezal.columna, fila=self.cabezal.fila)
         if(evento.boton == 2):
-            self.textoAyuda.decirAlgo()
+            ficha = self.tablero.obtenerFicha(columna=columna,fila=fila)
+            self.textoAyuda.decirAlgo(ficha.nombre,x,y)
+
 
     def interpreta_teclado(self, evento):
         if evento.codigo == "a" or evento.codigo == self.pilas.simbolos.IZQUIERDA:
