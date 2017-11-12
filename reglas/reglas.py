@@ -16,6 +16,7 @@ class Reglas(object):
         organizador = self.obtener_organizador()
         self.partida.tablero.acomodarFichas(organizador(pool=self.partida.pool, *args, **kwargs))
         self.partida.activa = True
+        self.partida.turno = self.bandos[self.turno]
         self.posIniciar()
 
     def PosIniciar(self):
@@ -28,6 +29,9 @@ class Reglas(object):
 
     def pasar_turno(self):
         self.turno = (self.turno+1)%2
+        self.partida.turno = self.bandos[self.turno]
+        if self.turno == 0:
+            self.partida.cantTurnos+=1
 
     def turno_actual(self):
         return self.bandos[self.turno]

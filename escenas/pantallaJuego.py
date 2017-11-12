@@ -27,7 +27,7 @@ class PantallaJuego(pilasengine.escenas.Escena):
         self.pilas.eventos.click_de_mouse.conectar(self.click_mouse)
         self.pilas.eventos.pulsa_tecla_escape.conectar(self.activar_menu_principal)
         # eventos de juego:
-        self.partida.eventoMueveFicha.conectar(self.mueveFicha)
+        self.partida.eventoPreMueveFicha.conectar(self.mueveFicha)
 
         self.pilas.camara.x = 270
         self.pilas.camara.y= 160
@@ -44,7 +44,6 @@ class PantallaJuego(pilasengine.escenas.Escena):
 
     def mueveFicha(self, evento):
         self.sonido_mover.reproducir()
-        print(self.partida.pool.posicion())
         self.decir(str(evento.ficha)+" mueve a: "+str(evento.celdaDestino))
         if evento.fichaEliminada:
             #print("fuera de juego", fichaEliminada.nombre,  fichaEliminada.color)

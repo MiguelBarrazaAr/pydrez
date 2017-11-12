@@ -14,6 +14,7 @@ class Partida(object):
         self.tablero = None
         # datos de la partida:
         self._turno = ""
+        self.cantTurnos = 0
         if datos is None:
             self.datos = {}
             self.activa = False
@@ -22,6 +23,7 @@ class Partida(object):
             self.activa = True
 
         # eventos de la partida:
+        self.eventoPreMueveFicha = pilas.evento.Evento("registra_movimiento")
         self.eventoMueveFicha = pilas.evento.Evento("mueve_ficha")
         self.eventoFinalizar = pilas.evento.Evento("finaliza_partida")
 
@@ -70,7 +72,11 @@ class Partida(object):
             self.reglas.seleccionar_celda(columna, fila)
 
     def registrar_movimiento(self, ficha, fichaEliminada, celdaOrigen, celdaDestino):
-        self.datos['posicion'] = self.pool.posicion()
+        self.eventoPreMueveFicha.emitir(ficha=ficha, fichaEliminada=fichaEliminada, celdaOrigen=celdaOrigen, celdaDestino=celdaDestino)
+
+    def finalizaMovimiento(self, celda):
+        posicion = self.pool.posicion()
+        self.datos['posicion'] = posicion
         self.cantMovimientos += 1
         self.datos['movimientos'] = self.cantMovimientos
-        self.eventoMueveFicha.emitir(ficha=ficha, fichaEliminada=fichaEliminada, celdaOrigen=celdaOrigen, celdaDestino=celdaDestino)
+        self.eventoMueveFicha.emitir(posicion=posicion, celda=celda, turno=self.turno)
