@@ -15,7 +15,8 @@ class MenuPrincipal(pilasengine.escenas.Escena):
                     (u"Desafíos", self.desafios),
                     (u"Conectarse a un servidor", self.conectarse),
                     (u"Establecerse como servidor", self.levantarServidor),
-                    ('Creditos', self.creditos),
+                    (u"Modos de juego", self.modoJuego),
+                    (u"Creditos", self.creditos),
                     ('Salir', self.salir)]
         self.menu = Menu(pilas, y = 100 , opciones = opciones)
         self.menu.seleccionaOpcion.conectar(self.seleccionarItem)
@@ -46,6 +47,9 @@ class MenuPrincipal(pilasengine.escenas.Escena):
 
     def levantarServidor(self):
         print("tutorial")
+
+    def modoJuego(self):
+        self.pilas.escenas.ModoJuego(pilas=self.pilas)
 
     def creditos(self):
         print("creditos")
