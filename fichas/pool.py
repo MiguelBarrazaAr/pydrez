@@ -11,6 +11,7 @@ from .torre import Torre
 # especiales:
 from .enano import Enano
 from .golem import Golem
+from .lobo import Lobo
 
 class PoolDeFichas():
 
@@ -26,6 +27,7 @@ class PoolDeFichas():
             'dama':Dama,
             'enano':Enano,
             'golem':Golem,
+            'lobo':Lobo,
             'peon':Peon,
             'rey':Rey,
             'torre':Torre}
@@ -35,6 +37,7 @@ class PoolDeFichas():
             'd':'dama',
             'e':'enano',
             'g':'golem',
+            'l':'lobo',
             'p':'peon',
             'r':'rey',
             't':'torre'
@@ -83,7 +86,7 @@ class PoolDeFichas():
                 ficha.eliminar()
 
     def posicion(self):
-        """Retorna una lista de strings con la posición de las fichas"""
+        """Retorna una lista de strings con la posiciï¿½n de las fichas"""
         posicion = ""
         for ficha in self.fichas:
             if ficha.tieneComportamiento():

@@ -8,13 +8,11 @@ class TextoAyuda(Actor):
 
 
 
-    def decirAlgo(self,nombre, x , y):
-        self.x = x
-        self.y = y
-
+    def infoDePieza(self,nombre, x , y):
         file = open("datos/ayuda/"+nombre+".ayuda", "r")
         info = file.read()
         file.close()
 
+        self.x = x
+        self.y = y
         self.decir(info)
-

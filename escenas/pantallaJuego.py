@@ -66,7 +66,10 @@ class PantallaJuego(pilasengine.escenas.Escena):
             self.partida.seleccionar_celda(columna=self.cabezal.columna, fila=self.cabezal.fila)
         if(evento.boton == 2):
             ficha = self.tablero.obtenerFicha(columna=columna,fila=fila)
-            self.textoAyuda.decirAlgo(ficha.nombre,x,y)
+            if ficha is not None:
+                self.textoAyuda.infoDePieza(ficha.nombre,x,y)
+
+
 
 
     def interpreta_teclado(self, evento):

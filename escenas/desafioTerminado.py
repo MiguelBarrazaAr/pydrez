@@ -14,6 +14,11 @@ class PantallaJuegoTerminado(pilasengine.escenas.Escena):
         self.salir.y = -150
         self.salir.x = -150
         self.pilas.eventos.pulsa_tecla.conectar(self.interpreta_teclado)
-        self.pilas.eventos.click_de_mouse.conectar(self.click_mouse)
-        self.pilas.eventos.pulsa_tecla_escape.conectar(self.activar_menu_principal)
+
+    def interpreta_teclado(self, evento):
+        if evento.codigo == "a" or evento.codigo == self.pilas.simbolos.IZQUIERDA:
+            print("chau")
+        if evento.codigo == "d" or evento.codigo == self.pilas.simbolos.DERECHA:
+            print("hola")
+
 
