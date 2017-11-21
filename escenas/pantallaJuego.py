@@ -89,5 +89,7 @@ class PantallaJuego(pilasengine.escenas.Escena):
         if evento.codigo == "F1":
             ficha = self.tablero.obtenerFicha(columna=self.cabezal.columna, fila=self.cabezal.fila)
             if ficha is not None:
-                self.textoAyuda.infoDePieza(ficha.nombre,self.cabezal.x + 30,self.cabezal.y)
+                info = self.textoAyuda.infoDePieza(ficha.nombre ,
+                    self.cabezal.x +30,self.cabezal.y)
+                self.decir(info)
 

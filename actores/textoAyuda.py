@@ -16,3 +16,4 @@ class TextoAyuda(Actor):
         self.x = x
         self.y = y
         self.decir(info)
+        return info
