@@ -7,6 +7,7 @@ from .dama import Dama
 from .peon import Peon
 from .rey import Rey
 from .torre import Torre
+from .caballero_oscuro import Caballero_oscuro
 
 # especiales:
 from .enano import Enano
@@ -23,6 +24,7 @@ class PoolDeFichas():
         # comportamientos:
         self.comportamientos = {
             'alfil':Alfil,
+            'caballero_oscuro':Caballero_oscuro,
             'caballo':Caballo,
             'dama':Dama,
             'enano':Enano,
@@ -33,6 +35,7 @@ class PoolDeFichas():
             'torre':Torre}
         self.prefijo = {
             'a':'alfil',
+            'co':'caballero_oscuro',
             'c':'caballo',
             'd':'dama',
             'e':'enano',
