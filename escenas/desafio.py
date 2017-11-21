@@ -6,6 +6,7 @@ from actores.cabezal import Cabezal
 from actores.reloj import Reloj
 from partida import Partida
 from reglas.puzzleAjedrez import PuzzleAjedrez
+from actores.textoAyuda import TextoAyuda
 
 from tts import leer as tts
 from sonido import Sonido
@@ -17,6 +18,7 @@ class Desafio(pilasengine.escenas.Escena):
         self.decir = tts
         self.partida = Partida(pilas)
         self.partida.definir_reglas(PuzzleAjedrez())
+        self.textoAyuda = TextoAyuda(self.pilas)
 
         # se arma el reloj
         self.reloj = Reloj(pilas, x=200, y=200, incremental=True)
@@ -28,7 +30,7 @@ class Desafio(pilasengine.escenas.Escena):
         self.pilas.avisar("Realiza movimientos siempre comiendo, y logra que quede solo una pieza en el tablero")
 
         # definimos la posicion inicial:
-        fichas = self.cargarDesafio("datos/desafios/"+nombreDesafio+".chess")
+        fichas = self.cargarDesafio("datos/desafios/"+ nombreDesafio +".chess")
         self.nombreDesafio = nombreDesafio
         self.partida.iniciar(posicionInicial=fichas)
         self.cabezal = Cabezal(pilas, tablero=self.tablero, tts=tts)
@@ -49,13 +51,17 @@ class Desafio(pilasengine.escenas.Escena):
         self.pilas.escenas.MenuPrincipal(pilas=self.pilas)
 
     def click_mouse(self, evento):
+        x = int(evento.x) - (self.tablero.x - self.tablero.distancia / 2) + self.pilas.camara.x
+        y = int(evento.y) - (self.tablero.y - self.tablero.distancia / 2) + self.pilas.camara.y
+        columna = x / self.tablero.distancia
+        fila = y / self.tablero.distancia
         if(evento.boton == 1):
-            x = int(evento.x)-(self.tablero.x-self.tablero.distancia/2)+self.pilas.camara.x
-            y = int(evento.y)-(self.tablero.y-self.tablero.distancia/2)+self.pilas.camara.y
-            columna = x/self.tablero.distancia
-            fila = y/self.tablero.distancia
             self.cabezal.mover(columna=columna, fila=fila)
             self.partida.seleccionar_celda(columna=self.cabezal.columna, fila=self.cabezal.fila)
+        if(evento.boton == 2):
+            ficha = self.tablero.obtenerFicha(columna=columna,fila=fila)
+            if ficha is not None:
+                self.textoAyuda.infoDePieza(ficha.nombre,x,y)
 
     def interpreta_teclado(self, evento):
         if evento.codigo == "a" or evento.codigo == self.pilas.simbolos.IZQUIERDA:
