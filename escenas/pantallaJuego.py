@@ -71,7 +71,6 @@ class PantallaJuego(pilasengine.escenas.Escena):
 
 
 
-
     def interpreta_teclado(self, evento):
         if evento.codigo == "a" or evento.codigo == self.pilas.simbolos.IZQUIERDA:
             self.cabezal.mover_izquierda()
@@ -87,4 +86,8 @@ class PantallaJuego(pilasengine.escenas.Escena):
             self.historial.subir()
         if evento.codigo == "n":
             self.historial.bajar()
+        if evento.codigo == "F1":
+            ficha = self.tablero.obtenerFicha(columna=self.cabezal.columna, fila=self.cabezal.fila)
+            if ficha is not None:
+                self.textoAyuda.infoDePieza(ficha.nombre,self.cabezal.x + 30,self.cabezal.y)
 

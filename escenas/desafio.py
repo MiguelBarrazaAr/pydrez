@@ -76,6 +76,10 @@ class Desafio(pilasengine.escenas.Escena):
             self.pilas.escenas.Desafio(pilas=self.pilas, nombreDesafio = self.nombreDesafio)
         if evento.codigo == self.pilas.simbolos.SELECCION:
             self.partida.seleccionar_celda(columna=self.cabezal.columna, fila=self.cabezal.fila)
+        if evento.codigo == "F1":
+            ficha = self.tablero.obtenerFicha(columna=self.cabezal.columna, fila=self.cabezal.fila)
+            if ficha is not None:
+                self.textoAyuda.infoDePieza(ficha.nombre,self.cabezal.x + 30,self.cabezal.y)
 
     def cargarDesafio(self, rutaDeArchivo):
         file = open(rutaDeArchivo, "r")
