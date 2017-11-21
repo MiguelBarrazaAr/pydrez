@@ -37,7 +37,7 @@ class PantallaJuego(pilasengine.escenas.Escena):
 
         # sonidos:
         self.sonido_mover = Sonido('audio/mover-ficha.ogg')
-        self.historial = Historial(pilas,130,140)
+        self.historial = Historial(pilas, 130, 140)
 
     def activar_menu_principal(self, evento):
         datos=None
@@ -50,7 +50,7 @@ class PantallaJuego(pilasengine.escenas.Escena):
         self.decir(str(evento.ficha)+" mueve a: "+str(evento.celdaDestino))
         if evento.fichaEliminada:
             #print("fuera de juego", fichaEliminada.nombre,  fichaEliminada.color)
-            self.historial.agregar(repr(evento.ficha) +  "x" + str(evento.celdaDestino))
+            self.historial.agregar(repr(evento.ficha) + "x" + str(evento.celdaDestino))
         else:
             self.historial.agregar(repr(evento.ficha) + str(evento.celdaDestino))
 
