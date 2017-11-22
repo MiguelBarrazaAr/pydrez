@@ -3,11 +3,12 @@
 from actores.ficha import Ficha
 from .alfil import Alfil
 from .caballo import Caballo
+from .caballero_oscuro import Caballero_oscuro
 from .dama import Dama
 from .peon import Peon
 from .rey import Rey
+from .serpiente import Serpiente
 from .torre import Torre
-from .caballero_oscuro import Caballero_oscuro
 
 # especiales:
 from .enano import Enano
@@ -32,6 +33,7 @@ class PoolDeFichas():
             'lobo':Lobo,
             'peon':Peon,
             'rey':Rey,
+            'serpiente':Serpiente,
             'torre':Torre}
         self.prefijo = {
             'a':'alfil',
@@ -43,6 +45,7 @@ class PoolDeFichas():
             'l':'lobo',
             'p':'peon',
             'r':'rey',
+            's':'serpiente',
             't':'torre'
         }
 

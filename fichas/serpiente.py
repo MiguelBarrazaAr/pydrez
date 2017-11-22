@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
 from .comportamiento import Comportamiento
 
-class Caballero_oscuro(Comportamiento):
+class Serpiente(Comportamiento):
 
 
     def puedeMoverA(self, columna, fila):
-        if self.fila == fila and abs(self.columna - columna) == 1:
+        if self.fila == fila and abs(self.columna - columna) == 2:
             # se mueve en vertical:
             return self.validar_celdas(map((lambda x: (x, fila)), range(min(self.columna, columna)+1, max(self.columna, columna))))
-        elif self.columna == columna and abs(self.fila - fila) == 1:
+        elif self.columna == columna and abs(self.fila - fila) == 2:
             # se mueve en orizontal:
             return self.validar_celdas(map((lambda x: (columna, x)), range(min(self.fila, fila)+1, max(self.fila, fila))))
         elif abs(self.fila - fila) == abs(self.columna - columna) and abs(self.columna - columna) <= 2 and abs(self.fila - fila) <= 2:
