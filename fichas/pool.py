@@ -3,21 +3,22 @@
 from actores.ficha import Ficha
 from .alfil import Alfil
 from .caballo import Caballo
-from .caballero_oscuro import Caballero_oscuro
-from .conejo import Conejo
 from .dama import Dama
-from .hipogrifo import Hipogrifo
-from .licantropo import Licantropo
-from .pegaso import Pegaso
 from .peon import Peon
 from .rey import Rey
-from .serpiente import Serpiente
 from .torre import Torre
 
 # especiales:
 from .enano import Enano
 from .golem import Golem
 from .lobo import Lobo
+from .pegaso import Pegaso
+from .caballero_oscuro import Caballero_oscuro
+from .conejo import Conejo
+from .hipogrifo import Hipogrifo
+from .licantropo import Licantropo
+from .serpiente import Serpiente
+from .murcielago_oscuro import Murcielago_oscuro
 
 class PoolDeFichas():
 
@@ -38,7 +39,7 @@ class PoolDeFichas():
             'hipogrifo':Hipogrifo,
             'licantropo':Licantropo,
             'lobo':Lobo,
-            'pegaso':Pegaso,
+            'murcielago_oscuro':Murcielago_oscuro,
             'peon':Peon,
             'rey':Rey,
             'serpiente':Serpiente,
@@ -54,6 +55,7 @@ class PoolDeFichas():
             'h':'hipogrifo',
             'li':'licantropo',
             'l':'lobo',
+            'm':'murcielago_oscuro',
             'pe':'pegaso',
             'p':'peon',
             'r':'rey',
