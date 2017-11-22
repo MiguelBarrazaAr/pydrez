@@ -18,6 +18,7 @@ from .caballero_oscuro import Caballero_oscuro
 from .conejo import Conejo
 from .hipogrifo import Hipogrifo
 from .licantropo import Licantropo
+from .unicornio import Unicornio
 from .serpiente import Serpiente
 from .murcielago_oscuro import Murcielago_oscuro
 
@@ -46,7 +47,8 @@ class PoolDeFichas():
             'peon':Peon,
             'rey':Rey,
             'serpiente':Serpiente,
-            'torre':Torre}
+            'torre':Torre,
+            'unicornio':Unicornio}
         self.prefijo = {
             'a':'alfil',
             'co':'caballero_oscuro',
@@ -64,7 +66,8 @@ class PoolDeFichas():
             'p':'peon',
             'r':'rey',
             's':'serpiente',
-            't':'torre'
+            't':'torre',
+            'u':'unicornio'
         }
 
         # iniciamos las fichas:
