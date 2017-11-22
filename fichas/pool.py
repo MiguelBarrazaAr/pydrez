@@ -12,6 +12,7 @@ from .torre import Torre
 from .enano import Enano
 from .golem import Golem
 from .lobo import Lobo
+from .dragon import Dragon
 from .pegaso import Pegaso
 from .caballero_oscuro import Caballero_oscuro
 from .conejo import Conejo
@@ -34,12 +35,14 @@ class PoolDeFichas():
             'caballo':Caballo,
             'conejo':Conejo,
             'dama':Dama,
+            'dragon':Dragon,
             'enano':Enano,
             'golem':Golem,
             'hipogrifo':Hipogrifo,
             'licantropo':Licantropo,
             'lobo':Lobo,
             'murcielago_oscuro':Murcielago_oscuro,
+            'pegaso':Pegaso,
             'peon':Peon,
             'rey':Rey,
             'serpiente':Serpiente,
@@ -50,6 +53,7 @@ class PoolDeFichas():
             'c':'caballo',
             'con':'conejo',
             'd':'dama',
+            'dr':'dragon',
             'e':'enano',
             'g':'golem',
             'h':'hipogrifo',
