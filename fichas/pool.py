@@ -6,6 +6,7 @@ from .caballo import Caballo
 from .caballero_oscuro import Caballero_oscuro
 from .conejo import Conejo
 from .dama import Dama
+from .hipogrifo import Hipogrifo
 from .licantropo import Licantropo
 from .peon import Peon
 from .rey import Rey
@@ -33,6 +34,7 @@ class PoolDeFichas():
             'dama':Dama,
             'enano':Enano,
             'golem':Golem,
+            'hipogrifo':Hipogrifo,
             'licantropo':Licantropo,
             'lobo':Lobo,
             'peon':Peon,
@@ -47,6 +49,7 @@ class PoolDeFichas():
             'd':'dama',
             'e':'enano',
             'g':'golem',
+            'h':'hipogrifo',
             'li':'licantropo',
             'l':'lobo',
             'p':'peon',
