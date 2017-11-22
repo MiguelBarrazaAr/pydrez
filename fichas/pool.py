@@ -4,6 +4,7 @@ from actores.ficha import Ficha
 from .alfil import Alfil
 from .caballo import Caballo
 from .caballero_oscuro import Caballero_oscuro
+from .conejo import Conejo
 from .dama import Dama
 from .licantropo import Licantropo
 from .peon import Peon
@@ -28,6 +29,7 @@ class PoolDeFichas():
             'alfil':Alfil,
             'caballero_oscuro':Caballero_oscuro,
             'caballo':Caballo,
+            'conejo':Conejo,
             'dama':Dama,
             'enano':Enano,
             'golem':Golem,
@@ -41,6 +43,7 @@ class PoolDeFichas():
             'a':'alfil',
             'co':'caballero_oscuro',
             'c':'caballo',
+            'con':'conejo',
             'd':'dama',
             'e':'enano',
             'g':'golem',
