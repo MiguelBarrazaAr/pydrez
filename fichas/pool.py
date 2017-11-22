@@ -8,6 +8,7 @@ from .conejo import Conejo
 from .dama import Dama
 from .hipogrifo import Hipogrifo
 from .licantropo import Licantropo
+from .pegaso import Pegaso
 from .peon import Peon
 from .rey import Rey
 from .serpiente import Serpiente
@@ -37,6 +38,7 @@ class PoolDeFichas():
             'hipogrifo':Hipogrifo,
             'licantropo':Licantropo,
             'lobo':Lobo,
+            'pegaso':Pegaso,
             'peon':Peon,
             'rey':Rey,
             'serpiente':Serpiente,
@@ -52,6 +54,7 @@ class PoolDeFichas():
             'h':'hipogrifo',
             'li':'licantropo',
             'l':'lobo',
+            'pe':'pegaso',
             'p':'peon',
             'r':'rey',
             's':'serpiente',
