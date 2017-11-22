@@ -5,6 +5,7 @@ from .alfil import Alfil
 from .caballo import Caballo
 from .caballero_oscuro import Caballero_oscuro
 from .dama import Dama
+from .licantropo import Licantropo
 from .peon import Peon
 from .rey import Rey
 from .serpiente import Serpiente
@@ -30,6 +31,7 @@ class PoolDeFichas():
             'dama':Dama,
             'enano':Enano,
             'golem':Golem,
+            'licantropo':Licantropo,
             'lobo':Lobo,
             'peon':Peon,
             'rey':Rey,
@@ -42,6 +44,7 @@ class PoolDeFichas():
             'd':'dama',
             'e':'enano',
             'g':'golem',
+            'li':'licantropo',
             'l':'lobo',
             'p':'peon',
             'r':'rey',
