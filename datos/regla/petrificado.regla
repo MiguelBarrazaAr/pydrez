@@ -1,2 +1,3 @@
-En el ajedrez petrificado una de las casillas tiene una nube oscura. Dicha nube se puede mover a cualquiera de sus 8 casillas adyacente luego de que finalice el turno de cada jugador.
-Si la nube toca alguna ficha en juego, esta queda petrificada y no se podrá comer ni mover en toda la partida.
+En el ajedrez petrificado una de las casillas tiene una nube oscura.
+Dicha nube se puede mover a cualquiera de sus 8 casillas adyacente luego de que finalice el turno de cada jugador.
+Si la nube toca alguna ficha en juego, esta queda petrificada y no se podra comer ni mover en toda la partida.
