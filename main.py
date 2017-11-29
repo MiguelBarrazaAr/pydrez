@@ -11,7 +11,7 @@ from escenas.desafio import Desafio
 from escenas.modoJuego import ModoJuego
 
 # iniciamos:
-pilas = pilasengine.iniciar(titulo='pydrez 0.1 - alpha', capturar_errores=False, habilitar_mensajes_log=False)
+pilas = pilasengine.iniciar(ancho=1024,alto=768, titulo='pydrez 0.1 - alpha', capturar_errores=False, habilitar_mensajes_log=False)
 
 # vinculamos las pantallas:
 pilas.escenas.vincular(MenuPrincipal)

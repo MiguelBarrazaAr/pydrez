@@ -82,3 +82,18 @@ class Tablero(Actor):
 
     def posicion_de_celda(self, columna, fila):
         return self.x+(columna*self.distancia), self.y+(fila*self.distancia)
+
+    def obteneer_celdas_lindantes(self, fila, columna):
+        celdas_lindantes = []
+        lindantes = [(0,1),(1,1),(1,0),(1,-1),(0,-1),(-1,-1),(-1,0),(-1,1)]
+        for x in lindantes:
+            if (columna + x[0] >= 0 and columna + x[0] <= self.filas - 1)and (fila + x[1] >= 0 and fila + x[1] <= self.columnas - 1):
+               celdas_lindantes.append(self.obtener_celda(columna + x[0], fila + x[1]))
+
+        return celdas_lindantes
+
+    def elimiraPieza(self, celda):
+        ficha = celda.ficha
+        if ficha is not None:
+            celda.liberar()
+            ficha.eliminar()

@@ -7,6 +7,7 @@ from actores.textoAyuda import TextoAyuda
 
 from partida import Partida
 from reglas.ajedrez_tradicional import ReglasAjedrezTradicional
+from reglas.ajedrez_atomico import ReglasAjedrezAtomico
 from tts import leer as tts
 from sonido import Sonido
 
