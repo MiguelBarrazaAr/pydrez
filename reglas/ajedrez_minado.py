@@ -1,8 +1,9 @@
 # -*- encoding: utf-8 -*-
 from .reglas import Reglas
 from sonido import Sonido
+from random import randint
 
-class ReglasAjedrezAtomico(Reglas):
+class ReglasAjedrezMinado(Reglas):
 
     def __init__(self, *args, **kwargs):
         Reglas.__init__(self, *args, **kwargs)
@@ -11,7 +12,8 @@ class ReglasAjedrezAtomico(Reglas):
         self.sonido_boom.volumen = 0.6
 
     def posIniciar(self):
-        pass
+        self.colocarMinaZonaBlanca()
+        self.colocarMinaZonaNegra()
 
     def seleccionar_celda(self, columna, fila):
         """Selecciona una celda.
@@ -54,19 +56,21 @@ class ReglasAjedrezAtomico(Reglas):
 
         if ficha.puede_mover(celda) and celdaVerificada:
             # puede realizar el movimiento:
+
             self.partida.registrar_movimiento(ficha=self.celda_seleccionada.ficha,
                 fichaEliminada=celda.ficha, celdaOrigen=self.celda_seleccionada, celdaDestino=celda)
             self.celda_seleccionada.liberar()
-
             # valida si se comio el rey para finalizar la partida:
             if celda.ficha is not None and celda.ficha.nombre == "rey":
                 self.partida.finalizar("jacke mate")
 
-            if celda.ficha is not None:
-                self.partida.tablero.posicionar(ficha, columna=columna, fila=fila)
+            self.partida.tablero.posicionar(ficha, columna=columna, fila=fila)
+            if(celda.fila == self.minaZonaBlanca[0] and celda.columna == self.minaZonaBlanca [1]):
                 self.explotar(celda)
-            else:
-                self.partida.tablero.posicionar(ficha, columna=columna, fila=fila)
+                self.colocarMinaZonaBlanca()
+            if (celda.fila == self.minaZonaNegra[0] and celda.columna == self.minaZonaNegra[1]):
+                self.explotar(celda)
+                self.colocarMinaZonaNegra()
             self.pasar_turno()
             self._deseleccionarCelda()
             self.partida.finalizaMovimiento(celda)
@@ -74,6 +78,7 @@ class ReglasAjedrezAtomico(Reglas):
             # no puede realizar el movimiento:
             self._deseleccionarCelda()
             self.movimiento_imposible()
+
     def _deseleccionarCelda(self):
         """deselecciona una celda seleccionada:
         precondici�n: debe haber una celda seleccionada.
@@ -85,6 +90,23 @@ class ReglasAjedrezAtomico(Reglas):
         """metodo que se ejecuta cuando un jugador realiza un movimiento imposible"""
         self.sonido_revote.reproducir()
         self.decir("movimiento imposible")
+
+    def colocarMinaZonaBlanca(self):
+
+        bomba = (randint(0, (self.partida.tablero.columnas / 2) - 1), randint(0, self.partida.tablero.filas - 1))
+
+        while (self.partida.tablero.obtener_celda(bomba[1],bomba[0]).ficha is not None):
+            bomba = (randint(0, (self.partida.tablero.columnas / 2) - 1), randint(0, self.partida.tablero.filas - 1))
+        print bomba
+        self.minaZonaBlanca = bomba
+
+    def colocarMinaZonaNegra(self):
+
+        bomba = (randint((self.partida.tablero.columnas / 2 ) + 1 , self.partida.tablero.columnas - 1),randint(0, self.partida.tablero.filas - 1))
+        while (self.partida.tablero.obtener_celda(bomba[1],bomba[0]).ficha is not None):
+            bomba = (randint((self.partida.tablero.columnas / 2 ) + 1 , self.partida.tablero.columnas - 1),randint(0, self.partida.tablero.filas - 1))
+        print bomba
+        self.minaZonaNegra = bomba
 
     def explotar(self,celda):
         if celda.ficha.nombre == 'rey':
@@ -99,4 +121,3 @@ class ReglasAjedrezAtomico(Reglas):
                     self.partida.finalizar("jacke mate")
                 self.partida.tablero.elimiraPieza(x)
         self.partida.tablero.elimiraPieza(celda)
-

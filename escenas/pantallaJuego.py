@@ -5,9 +5,11 @@ from actores.cabezal import Cabezal
 from actores.historial import Historial
 from actores.textoAyuda import TextoAyuda
 
+
 from partida import Partida
 from reglas.ajedrez_tradicional import ReglasAjedrezTradicional
 from reglas.ajedrez_atomico import ReglasAjedrezAtomico
+from reglas.ajedrez_minado import ReglasAjedrezMinado
 from tts import leer as tts
 from sonido import Sonido
 
@@ -17,8 +19,9 @@ class PantallaJuego(pilasengine.escenas.Escena):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
         self.partida = Partida(pilas, datos)
-        self.partida.definir_reglas(ReglasAjedrezTradicional())
+        self.partida.definir_reglas(ReglasAjedrezMinado())
         self.textoAyuda = TextoAyuda(self.pilas)
+
 
         # armamos tablero:
         self.tablero = Tablero(pilas, filas=8, columnas=8, centrado=False, tts=tts)
