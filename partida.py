@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+import reglas
 from fichas.pool import PoolDeFichas
 
 from tts import leer as tts
@@ -27,8 +28,8 @@ class Partida(object):
         self.eventoMueveFicha = pilas.evento.Evento("mueve_ficha")
         self.eventoFinalizar = pilas.evento.Evento("finaliza_partida")
 
-    def definir_reglas(self, reglas):
-        self.reglas = reglas
+    def definir_reglas(self, clave):
+        self.reglas = reglas.generar(clave)()
         self.reglas.definir_partida(self)
 
     def definir_tablero(self, tablero):

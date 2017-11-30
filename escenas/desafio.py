@@ -5,7 +5,6 @@ from actores.tablero import Tablero
 from actores.cabezal import Cabezal
 from actores.reloj import Reloj
 from partida import Partida
-from reglas.puzzleAjedrez import PuzzleAjedrez
 from actores.textoAyuda import TextoAyuda
 
 from tts import leer as tts
@@ -17,7 +16,7 @@ class Desafio(pilasengine.escenas.Escena):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
         self.decir = tts
         self.partida = Partida(pilas)
-        self.partida.definir_reglas(PuzzleAjedrez())
+        self.partida.definir_reglas("puzzle")
         self.textoAyuda = TextoAyuda(self.pilas)
 
         # se arma el reloj
@@ -27,7 +26,7 @@ class Desafio(pilasengine.escenas.Escena):
         # armamos tablero:
         self.tablero = Tablero(pilas, filas=8, columnas=8, tts=tts)
         self.partida.definir_tablero(self.tablero)
-        self.pilas.avisar("Realiza movimientos siempre comiendo, y logra que quede solo una pieza en el tablero")
+        self.pilas.avisar("Realiza movimientos siempre comiendo, \n y logra que quede solo una pieza en el tablero")
 
         # definimos la posicion inicial:
         fichas = self.cargarDesafio("datos/desafios/"+ nombreDesafio +".chess")

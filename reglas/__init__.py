@@ -1,1 +1,16 @@
-__all__ = ['ajedrez_tradicional','ajedrez_atomico']
+# -*- encoding: utf-8 -*-
+from .ajedrez_tradicional import ReglasAjedrezTradicional
+from .ajedrez_atomico import ReglasAjedrezAtomico
+from .ajedrez_minado import ReglasAjedrezMinado
+
+from .puzzleAjedrez import PuzzleAjedrez
+
+definiciones = {
+    "atomico":ReglasAjedrezAtomico,
+    "minado":ReglasAjedrezMinado,
+    "tradicional":ReglasAjedrezTradicional,
+    "puzzle":PuzzleAjedrez,
+}
+
+def generar(clave):
+    return definiciones[clave]
