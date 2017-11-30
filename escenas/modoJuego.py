@@ -43,7 +43,7 @@ class ModoJuego(pilasengine.escenas.Escena):
         for f in listdir("datos/regla"):
             lista.append(f[:-6])
         lista.sort()
-        return map(lambda x: (x, self.mostrarAyuda, x), lista)
+        return map(lambda x: (x, self.configurarModo, x), lista)
 
     def activar(self):
         self.decir(u"Modos de juegos disponibles: pulse las flechas para elegir uno,  pulse enter para ver como se juega o pulsa escape para regresar al menu anterior.", False)
@@ -51,9 +51,6 @@ class ModoJuego(pilasengine.escenas.Escena):
     def cuandoPulsaEscape(self, evento):
         self.pilas.escenas.MenuPrincipal(pilas=self.pilas)
 
-
-    def mostrarAyuda(self , modo):
-        print(modo)
-
-    def salir(self):
-        exit()
+    def configurarModo(self , modo):
+        self.pilas.datos['modoJuego'] = modo
+        self.pilas.escenas.MenuPrincipal(pilas=self.pilas)
