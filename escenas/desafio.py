@@ -99,9 +99,4 @@ class Desafio(pilasengine.escenas.Escena):
 
     def finalizar(self, evento):
         if evento.motivo == "superado":
-            mensaje = "Desafio superado!"
-            self.decir(mensaje, False)
-            self.pilas.avisar(mensaje)
-            audio = Sonido("audio/logro.ogg")
-            audio.reproducir_esperando()
             self.pilas.escenas.DesafioSuperado(self.pilas,self.reloj.texto, self.nombreDesafio)

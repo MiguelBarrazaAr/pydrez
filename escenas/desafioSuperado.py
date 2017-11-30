@@ -1,4 +1,7 @@
+# -*- encoding: utf-8 -*-
 import pilasengine
+from tts import leer
+from sonido import Sonido
 
 class DesafioSuperado(pilasengine.escenas.Escena):
 
@@ -18,8 +21,24 @@ class DesafioSuperado(pilasengine.escenas.Escena):
         self.botonSiguienteDesafio.y = -150
         self.botonSiguienteDesafio.conectar(self.siguienteDesafio)
 
+        # eventos:
+        self.pilas.eventos.pulsa_tecla_escape.conectar(self.menuPrincipal)
+        self.pilas.eventos.pulsa_tecla.conectar(self.interpretaTeclado)
+
+        mensaje = "¡Desafio superado!. (pulsa enter para ir al siguiente desafio o escape para ir al menu principal)"
+        leer(mensaje, False)
+        audio = Sonido("audio/logro.ogg")
+        audio.reproducir_esperando()
+
     def siguienteDesafio(self):
+        self.sonido_activar = Sonido("audio/menu_enter.ogg")
+        self.sonido_activar.volumen = 0.3
+        self.sonido_activar.reproducir_esperando()
         self.pilas.escenas.Desafio(pilas=self.pilas, nombreDesafio=self.nombreDesafio)
 
-    def menuPrincipal(self):
-        self.pilas.escenas.MenuPrincipal(pilas=self.pilas)
+    def menuPrincipal(self, evento=None):
+        self.pilas.escenas.MenuPrincipal(self.pilas)
+
+    def interpretaTeclado(self, evento):
+        if evento.codigo == self.pilas.simbolos.SELECCION:
+            self.siguienteDesafio()
