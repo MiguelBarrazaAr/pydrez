@@ -104,4 +104,4 @@ class Desafio(pilasengine.escenas.Escena):
             self.pilas.avisar(mensaje)
             audio = Sonido("audio/logro.ogg")
             audio.reproducir_esperando()
-            self.pilas.escenas.PantallaJuegoTerminado(self.pilas,self.reloj.texto, self.nombreDesafio)
+            self.pilas.escenas.DesafioSuperado(self.pilas,self.reloj.texto, self.nombreDesafio)

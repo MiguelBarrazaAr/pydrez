@@ -6,7 +6,7 @@ from escenas.conectarseAlServidor import ConectarseAlServidor
 from escenas.pantallaJuego import PantallaJuego
 from escenas.menuPromocion  import MenuPromocion
 from escenas.menuDesafios import MenuDesafios
-from escenas.desafioTerminado import PantallaJuegoTerminado
+from escenas.desafioSuperado import DesafioSuperado
 from escenas.desafio import Desafio
 from escenas.modoJuego import ModoJuego
 
@@ -20,7 +20,7 @@ pilas.escenas.vincular(PantallaJuego)
 pilas.escenas.vincular(MenuPromocion)
 pilas.escenas.vincular(MenuDesafios)
 pilas.escenas.vincular(Desafio)
-pilas.escenas.vincular(PantallaJuegoTerminado)
+pilas.escenas.vincular(DesafioSuperado)
 pilas.escenas.vincular(ModoJuego)
 
 pilas.escenas.MenuPrincipal(pilas=pilas)
