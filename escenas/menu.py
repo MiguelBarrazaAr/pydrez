@@ -16,6 +16,10 @@ class EscenaMenu(pilasengine.escenas.Escena):
         self.sonidoMover = Sonido("audio/menu_opcion.ogg")
         self.sonidoAbrir = Sonido("audio/menu_abrir.ogg")
         self.activar()
+        self.pilas.eventos.pulsa_tecla_escape.conectar(self.cuandoPulsaEscape)
+
+    def cuandoPulsaEscape(self, evento):
+        self.pilas.escenas.MenuPrincipal(pilas=self.pilas)
 
     def activar(self):
         self.decir(u"menú principal: pulse las flechas para navegar por el menú.", False)
