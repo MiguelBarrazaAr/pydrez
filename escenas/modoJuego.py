@@ -22,6 +22,10 @@ class ModoJuego(pilasengine.escenas.Escena):
         self.sonidoAbrir.reproducir()
         self.menu.x = -200
         self.texto = pilas.actores.Texto("", x= 90 ,y=25, ancho=350 , magnitud= 17, fuente= "datos/tipografia/KaushanScript-Regular.otf")
+        self.pilas.eventos.pulsa_tecla_escape.conectar(self.activar_menu_principal)
+
+    def activar_menu_principal(self, evento):
+        self.pilas.escenas.MenuPrincipal(pilas=self.pilas)
 
     def seleccionarItem(self, evento):
         file = open("datos/regla/" + (self.menu.opciones [self.menu.opcion_actual]) [0] + ".regla", "r")
