@@ -6,7 +6,7 @@ from celda import Celda
 class Tablero(Actor):
     """Representa al tablero"""
 
-    def __init__(self, pilas, x=0, y=0, columnas=8, filas=8, centrado=False, estiloDeCelda="celda", tts=None):
+    def __init__(self, pilas, x=0, y=0, columnas=0, filas=0, estiloDeCelda="celda"):
         """Constructor del tablero:
 
         :param x: x del punto central de a1 (casilla inferior izquierda).
@@ -19,30 +19,30 @@ class Tablero(Actor):
         :type filas: int
         :param estiloDeCelda: nombre de la carpeta donde se encuentra las imagenes de las celdas. relativas a: /imagenes/(nombre de estilo)
         :type estiloDeCelda: string
-        :param centrado: indica si el tablero estar� centrado.
-        :type centrado: bool
         """
 
         self.distancia = 45
-        # si esta centrado calculamos su posici�n:
-        if centrado:
-            x = pilas.camara.x+columnas/2*self.distancia*-1
-            y = pilas.camara.y+filas/2*self.distancia*-1
-
         Actor.__init__(self, pilas, x=x, y=y, imagen='invisible.png')
         self.columnas = columnas
         self.filas = filas
+        self.estiloDeCelda = estiloDeCelda
         self.celda = []
-        self.celda_seleccionada = None
         self.ficha = []
-        #self.radio_de_colision = None
-        self.decir = tts
+        if columnas > 0 and filas > 0:
+            self.graficar()
 
+    def graficar(self):
         color = 'negro'
-        for f in range(filas):
+        for f in range(self.filas):
             self.celda.append([])
-            for c in range(columnas):
-                self.celda[f].append(Celda(pilas, x=(x+c*self.distancia), y=(y+f*self.distancia), z=100, color=color, columna=c, fila=f, estiloDeCelda=estiloDeCelda))
+            for c in range(self.columnas):
+                self.celda[f].append(Celda(self.pilas,
+                    x=(self.x+c*self.distancia),
+                    y=(self.y+f*self.distancia),
+                    z=100,
+                    color=color,
+                    columna=c, fila=f,
+                    estiloDeCelda=self.estiloDeCelda))
 
                 # invertimos el color:
                 if color == 'negro':
@@ -56,6 +56,11 @@ class Tablero(Actor):
             else:
                 # la siguiente fila es impar, es blanco:
                 color = 'blanco'
+
+    def eliminarCeldas(self):
+        for f in range(self.filas):
+            for c in range(self.columnas):
+                del self.celda[f][c]
 
     def acomodarFichas(self, loader):
         loader.acomodar(tablero=self)

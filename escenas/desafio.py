@@ -24,7 +24,7 @@ class Desafio(pilasengine.escenas.Escena):
         self.reloj.comenzar()
 
         # armamos tablero:
-        self.tablero = Tablero(pilas, filas=8, columnas=8, tts=tts)
+        self.tablero = Tablero(pilas, filas=8, columnas=8)
         self.partida.definir_tablero(self.tablero)
         self.pilas.avisar("Realiza movimientos siempre comiendo, \n y logra que quede solo una pieza en el tablero")
 
