@@ -21,7 +21,7 @@ class Tablero(Actor):
         :type estiloDeCelda: string
         """
 
-        self.distancia = 45
+        self.distancia = 69
         Actor.__init__(self, pilas, x=x, y=y, imagen='invisible.png')
         self.columnas = columnas
         self.filas = filas
