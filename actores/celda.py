@@ -12,7 +12,7 @@ class Celda(Actor):
         self.fila = fila
         self.seleccionado = False
         self.estiloDeCelda = estiloDeCelda
-        self.escala = 1.5
+        self.escala = 2.3
 
         if color == 'blanco':
             self.normal = "imagenes/"+estiloDeCelda+"/blanco.png"

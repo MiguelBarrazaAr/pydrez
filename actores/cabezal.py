@@ -18,7 +18,7 @@ class Cabezal(Actor):
         self.sonido_mover = Sonido('audio/mover.ogg')
         self.sonido_limite = Sonido('audio/limite.ogg')
         self.x, self.y = self.tablero.posicion_de_celda(self.columna, self.fila)
-        self.escala = 1.5
+        self.escala = 2.3
 
     def mover_izquierda(self):
         self.moverseEnColumna(-1)
