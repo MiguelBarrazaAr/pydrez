@@ -15,14 +15,22 @@ class Reglas(object):
 
     def iniciar(self, *args, **kwargs):
         """configura el inicio de una partida"""
-        self.partida.tablero.eliminarCeldas()
-        self.partida.tablero.columnas = self.dimensionTablero[0]
-        self.partida.tablero.filas = self.dimensionTablero[1]
-        self.partida.tablero.graficar()
+        self.acomodarTablero()
         self.partida.tablero.acomodarFichas(self.organizador(pool=self.partida.pool, *args, **kwargs))
         self.partida.activa = True
         self.partida.turno = self.bandos[self.turno]
         self.posIniciar()
+
+    def reiniciar(self, *args, **kwargs):
+        """Continua con la partida ya iniciada."""
+        self.acomodarTablero()
+        self.posIniciar()
+
+    def acomodarTablero(self):
+        self.partida.tablero.eliminarCeldas()
+        self.partida.tablero.columnas = self.dimensionTablero[0]
+        self.partida.tablero.filas = self.dimensionTablero[1]
+        self.partida.tablero.graficar()
 
     def PosIniciar(self):
         """metodo que se ejecuta despues de iniciar la partida.
