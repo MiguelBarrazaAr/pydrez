@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-from organizadores.ajedrez_basico import AjedrezTradicional
+from organizadores.ajedrez_basico import OrganizadorAjedrezTradicional
 from organizadores.acomodar_fichas import AcomodarFichas
 
 class Reglas(object):
@@ -11,16 +11,14 @@ class Reglas(object):
         self.celda_seleccionada = None
         self.dimensionTablero = (8, 8)
         self.personalizado = personalizado
-        self.organizador = None
+        self.organizador = self.obtener_organizador()
 
     def iniciar(self, *args, **kwargs):
         """configura el inicio de una partida"""
-        if self.organizador is None:
-            self.organizador = self.obtener_organizador()
-            self.partida.tablero.eliminarCeldas()
-            self.partida.tablero.columnas = self.dimensionTablero[0]
-            self.partida.tablero.filas = self.dimensionTablero[1]
-            self.partida.tablero.graficar()
+        self.partida.tablero.eliminarCeldas()
+        self.partida.tablero.columnas = self.dimensionTablero[0]
+        self.partida.tablero.filas = self.dimensionTablero[1]
+        self.partida.tablero.graficar()
         self.partida.tablero.acomodarFichas(self.organizador(pool=self.partida.pool, *args, **kwargs))
         self.partida.activa = True
         self.partida.turno = self.bandos[self.turno]
@@ -48,7 +46,7 @@ class Reglas(object):
         if self.personalizado:
             return AcomodarFichas
         else:
-            return AjedrezTradicional
+            return OrganizadorAjedrezTradicional
 
     def decir(self, texto, interrumpir=True):
         self.partida.decir(texto, interrumpir)
