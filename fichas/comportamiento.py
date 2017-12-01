@@ -4,7 +4,7 @@ class Comportamiento(object):
 
     def __init__(self, bando):
         self.nombre = self.__class__.__name__.lower()
-        self.escala = 0.09
+        self.escala = 0.13
         self.saltadora = False
         self.bando = bando
         self.ficha = None
