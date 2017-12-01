@@ -36,6 +36,7 @@ class PantallaJuego(pilasengine.escenas.Escena):
         # sonidos:
         self.sonido_mover = Sonido('audio/mover-ficha.ogg')
         self.historial = Historial(pilas, ejex=300, ejey=0)
+        self.historial.fijo = True
 
     def activar_menu_principal(self, evento):
         datos=None
@@ -72,18 +73,28 @@ class PantallaJuego(pilasengine.escenas.Escena):
     def interpreta_teclado(self, evento):
         if evento.codigo == "a" or evento.codigo == self.pilas.simbolos.IZQUIERDA:
             self.cabezal.mover_izquierda()
+            if self.tablero.columnas > 8 and abs(self.cabezal.x - self.camara.x) > 400 and self.cabezal.x - self.camara.x < 399:
+                self.pilas.camara.x =  self.cabezal.x + 400
         if evento.codigo == "d" or evento.codigo == self.pilas.simbolos.DERECHA:
             self.cabezal.mover_derecha()
+            if self.tablero.columnas > 8 and self.cabezal.x - self.camara.x > -400 and self.cabezal.x - self.camara.x > 399 :
+                self.pilas.camara.x = self.cabezal.x - 400
         if evento.codigo == "s" or evento.codigo == self.pilas.simbolos.ABAJO:
             self.cabezal.mover_abajo()
+            if self.tablero.filas > 8 and abs(self.cabezal.y - self.camara.y) > 200:
+                self.pilas.camara.y =  self.cabezal.y + 200
         if evento.codigo == "w" or evento.codigo == self.pilas.simbolos.ARRIBA:
             self.cabezal.mover_arriba()
+            if self.tablero.filas > 8 and abs(self.cabezal.y - self.camara.y) > 200:
+                self.pilas.camara.y = self.cabezal.y - 200
         if evento.codigo == self.pilas.simbolos.SELECCION:
             self.partida.seleccionar_celda(columna=self.cabezal.columna, fila=self.cabezal.fila)
         if evento.codigo == "m":
             self.historial.subir()
         if evento.codigo == "n":
             self.historial.bajar()
+        if evento.codigo == "u":
+            self.pilas.camara.x += 10
         if evento.codigo == "F1":
             ficha = self.tablero.obtenerFicha(columna=self.cabezal.columna, fila=self.cabezal.fila)
             if ficha is not None:
