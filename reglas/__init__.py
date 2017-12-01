@@ -3,7 +3,7 @@ from .ajedrez_tradicional import ReglasAjedrezTradicional
 from .ajedrez_atomico import ReglasAjedrezAtomico
 from .ajedrez_epico import ReglasAjedrezEpico
 from .ajedrez_minado import ReglasAjedrezMinado
-from .ajedrez_salvaje import AjedrezSalvaje
+from .ajedrez_salvaje import ReglasAjedrezSalvaje
 
 from .puzzleAjedrez import PuzzleAjedrez
 
@@ -11,9 +11,10 @@ definiciones = {
     "atomico":ReglasAjedrezAtomico,
     "epico":ReglasAjedrezEpico,
     "minado":ReglasAjedrezMinado,
-    "salvaje":AjedrezSalvaje,
+    "salvaje":ReglasAjedrezSalvaje,
     "tradicional":ReglasAjedrezTradicional,
     "puzzle":PuzzleAjedrez,
+
 }
 
 def generar(clave):
