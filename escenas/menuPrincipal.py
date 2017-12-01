@@ -8,7 +8,10 @@ from sonido import Sonido
 class MenuPrincipal(pilasengine.escenas.Escena):
 
     def iniciar(self, pilas, datos=None):
-        self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
+
+        marronClaro = pilas.colores.Color(128, 84, 66)
+        marronOscuro = pilas.colores.Color(77, 38, 22)
+        self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/fondoMenu.jpg")
         self.decir = tts
         self.datos=datos
         opciones = [('Jugar', self.jugar),
@@ -18,7 +21,7 @@ class MenuPrincipal(pilasengine.escenas.Escena):
                     (u"Modos de juego", self.modoJuego),
                     (u"Creditos", self.creditos),
                     ('Salir', self.salir)]
-        self.menu = Menu(pilas, y = 100 , opciones = opciones)
+        self.menu = Menu(pilas, y = 100 , opciones = opciones, fuente= "datos/tipografia/anirb___.ttf", color_normal=marronOscuro,color_resaltado=marronClaro)
         self.menu.seleccionaOpcion.conectar(self.seleccionarItem)
         self.menu.activaOpcion.conectar(self.activarOpcion)
         self.decir(u"menú principal: pulse las flechas para navegar por el menú.", False)

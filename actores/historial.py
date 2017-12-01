@@ -6,7 +6,7 @@ class Historial(Actor):
 
 
     def iniciar(self, ejex, ejey):
-        self.imagen = "imagenes/papel.png"
+        self.imagen = "invisible.png"
         self.escala = 0.5
         self.x = ejex
         self.y = ejey
