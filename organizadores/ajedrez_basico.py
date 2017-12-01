@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 from .organizador_de_fichas import OrganizadorDeFichas
 
-class AjedrezTradicional(OrganizadorDeFichas):
+class OrganizadorAjedrezTradicional(OrganizadorDeFichas):
 
     def organizar_fichas(self):
         """acomoda las fichas de un ajedrez tradicional."""
