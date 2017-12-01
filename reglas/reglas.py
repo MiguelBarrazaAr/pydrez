@@ -10,11 +10,13 @@ class Reglas(object):
         self.partida = None
         self.celda_seleccionada = None
         self.personalizado = personalizado
+        self.organizador = None
 
     def iniciar(self, *args, **kwargs):
         """configura el inicio de una partida"""
-        organizador = self.obtener_organizador()
-        self.partida.tablero.acomodarFichas(organizador(pool=self.partida.pool, *args, **kwargs))
+        if self.organizador is None:
+            self.organizador = self.obtener_organizador()
+        self.partida.tablero.acomodarFichas(self.organizador(pool=self.partida.pool, *args, **kwargs))
         self.partida.activa = True
         self.partida.turno = self.bandos[self.turno]
         self.posIniciar()
