@@ -13,10 +13,13 @@ from .enano import Enano
 from .golem import Golem
 from .lobo import Lobo
 from .dragon import Dragon
+from .elefante import Elefante
 from .pegaso import Pegaso
+from .raton import Raton
 from .caballero_oscuro import Caballero_oscuro
 from .conejo import Conejo
 from .hipogrifo import Hipogrifo
+from .leon import Leon
 from .licantropo import Licantropo
 from .unicornio import Unicornio
 from .serpiente import Serpiente
@@ -37,14 +40,17 @@ class PoolDeFichas():
             'conejo':Conejo,
             'dama':Dama,
             'dragon':Dragon,
+            'elefante':Elefante,
             'enano':Enano,
             'golem':Golem,
             'hipogrifo':Hipogrifo,
+            'leon':Leon,
             'licantropo':Licantropo,
             'lobo':Lobo,
             'murcielago_oscuro':Murcielago_oscuro,
             'pegaso':Pegaso,
             'peon':Peon,
+            'raton':Raton,
             'rey':Rey,
             'serpiente':Serpiente,
             'torre':Torre,
@@ -56,14 +62,17 @@ class PoolDeFichas():
             'con':'conejo',
             'd':'dama',
             'dr':'dragon',
+            'el':'elefante',
             'e':'enano',
             'g':'golem',
             'h':'hipogrifo',
+            'le':'leon',
             'li':'licantropo',
             'l':'lobo',
             'm':'murcielago_oscuro',
             'pe':'pegaso',
             'p':'peon',
+            'ra':'raton',
             'r':'rey',
             's':'serpiente',
             't':'torre',
