@@ -21,7 +21,7 @@ class PantallaJuego(pilasengine.escenas.Escena):
 
 
         # armamos tablero:
-        self.tablero = Tablero(pilas, filas=8, columnas=8, x=- 400 ,y=-250)
+        self.tablero = Tablero(pilas, x=- 400 ,y=-250)
         self.partida.definir_tablero(self.tablero)
         self.partida.iniciar()
 

@@ -9,6 +9,7 @@ class Reglas(object):
         self.turno = 0
         self.partida = None
         self.celda_seleccionada = None
+        self.dimensionTablero = (8, 8)
         self.personalizado = personalizado
         self.organizador = None
 
@@ -16,6 +17,10 @@ class Reglas(object):
         """configura el inicio de una partida"""
         if self.organizador is None:
             self.organizador = self.obtener_organizador()
+            self.partida.tablero.eliminarCeldas()
+            self.partida.tablero.columnas = self.dimensionTablero[0]
+            self.partida.tablero.filas = self.dimensionTablero[1]
+            self.partida.tablero.graficar()
         self.partida.tablero.acomodarFichas(self.organizador(pool=self.partida.pool, *args, **kwargs))
         self.partida.activa = True
         self.partida.turno = self.bandos[self.turno]

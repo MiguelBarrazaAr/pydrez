@@ -58,9 +58,8 @@ class Tablero(Actor):
                 color = 'blanco'
 
     def eliminarCeldas(self):
-        for f in range(self.filas):
-            for c in range(self.columnas):
-                del self.celda[f][c]
+        del self.celda
+        self.celda = []
 
     def acomodarFichas(self, loader):
         loader.acomodar(tablero=self)
