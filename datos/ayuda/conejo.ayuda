@@ -1,1 +1,2 @@
-conejo
+El conejo se mueve en vertical o orizontal, salta solo en casillas del mismo color,
+y puede realizar un salto hasta 4 casillas.
