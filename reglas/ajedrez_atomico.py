@@ -95,8 +95,7 @@ class ReglasAjedrezAtomico(Reglas):
         x = self.partida.pilas.camara.x
         y = self.partida.pilas.camara.y
         self.partida.pilas.camara.vibrar(intensidad=3, tiempo=0.3)
-        self.partida.pilas.camara.x = x
-        self.partida.pilas.camara.y = y
+        self.partida.pilas.tareas.agregar(0.35, self.acomodarCamara, x=x, y=y)
         celdas = self.partida.tablero.obteneer_celdas_lindantes(celda.fila, celda.columna)
         for x in celdas:
             if x.ficha is not None and x.ficha.nombre != 'peon':
@@ -105,3 +104,6 @@ class ReglasAjedrezAtomico(Reglas):
                 self.partida.tablero.elimiraPieza(x)
         self.partida.tablero.elimiraPieza(celda)
 
+    def acomodarCamara(self, x, y):
+        self.partida.pilas.camara.x = x
+        self.partida.pilas.camara.y = y

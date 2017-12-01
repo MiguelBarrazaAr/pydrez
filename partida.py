@@ -41,6 +41,7 @@ class Partida(object):
         precondicion: debe tener cargada las reglas y definido un tablero."""
         # falta validar precondicion.
         if self.activa:
+            self.reglas.reiniciar(*args, **kwargs)
             self.pool.cargarPosicion(self.datos['posicion'])
             self.cantMovimientos = self.datos['movimientos']
             self._turno = self.datos['turno']
