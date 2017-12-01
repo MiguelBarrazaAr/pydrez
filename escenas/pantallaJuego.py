@@ -21,7 +21,7 @@ class PantallaJuego(pilasengine.escenas.Escena):
 
 
         # armamos tablero:
-        self.tablero = Tablero(pilas, filas=8, columnas=8)
+        self.tablero = Tablero(pilas, filas=8, columnas=8, x=- 400 ,y=-250)
         self.partida.definir_tablero(self.tablero)
         self.partida.iniciar()
 
@@ -33,12 +33,9 @@ class PantallaJuego(pilasengine.escenas.Escena):
         # eventos de juego:
         self.partida.eventoPreMueveFicha.conectar(self.mueveFicha)
 
-        self.pilas.camara.x = 270
-        self.pilas.camara.y= 160
-
         # sonidos:
         self.sonido_mover = Sonido('audio/mover-ficha.ogg')
-        self.historial = Historial(pilas, 130, 140)
+        self.historial = Historial(pilas, ejex=300, ejey=0)
 
     def activar_menu_principal(self, evento):
         datos=None
@@ -57,8 +54,8 @@ class PantallaJuego(pilasengine.escenas.Escena):
 
 
     def click_mouse(self, evento):
-        x = int(evento.x) + (self.tablero.distancia / 2) + self.pilas.camara.x
-        y = int(evento.y) + (self.tablero.distancia / 2) + self.pilas.camara.y
+        x = (int(evento.x) + (self.tablero.distancia / 2) + self.pilas.camara.x) - self.tablero.x
+        y = (int(evento.y) + (self.tablero.distancia / 2) + self.pilas.camara.y) - self.tablero.y
         columna = x / self.tablero.distancia
         fila = y / self.tablero.distancia
         if(evento.boton == 1):
