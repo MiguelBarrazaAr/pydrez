@@ -5,16 +5,16 @@ class ColumnaDeHistorial(Actor):
     def iniciar(self,ejex,ejey):
         self.posicion = 0
         self.imagen = "invisible.png"
+        self.x = ejex
+        self.y = ejey
 
         self.lineas = []
 
         self.cantidad_de_lineas = 14
-        self.actor_texto = self.pilas.actores.Texto(x=-90, y=90)
+        self.actor_texto = self.pilas.actores.Texto(x=ejex, y=ejey)
         self.actor_texto.ancho = 240
-        self.actor_texto.x = ejex - 26
-        self.actor_texto.y = ejey - 45
         self.actor_texto.color = self.pilas.colores.negro
-        self.actor_texto.escala = 0.5
+        self.actor_texto.escala = 0.8
         self.borde = self.pilas.actores.Pizarra()
         self.lineas.append("")
         self.actualizar_textos()

@@ -7,11 +7,12 @@ class Historial(Actor):
 
     def iniciar(self, ejex, ejey):
         self.imagen = "imagenes/papel.png"
-        self.escala = 0.3
-        self.x = 450
-        self.columnaBlanca = ColumnaDeHistorial(self.pilas, ejex + 30, ejey)
-        self.columnaNegra  = ColumnaDeHistorial(self.pilas, ejex + 90, ejey)
-        self.columnaNumero = ColumnaDeHistorial(self.pilas, ejex, ejey)
+        self.escala = 0.5
+        self.x = ejex
+        self.y = ejey
+        self.columnaBlanca = ColumnaDeHistorial(self.pilas, self.x + -70, ejey + 185)
+        self.columnaNegra  = ColumnaDeHistorial(self.pilas, self.x + 40, ejey + 185)
+        self.columnaNumero = ColumnaDeHistorial(self.pilas, self.x + -120, ejey + 185)
         self.turnoBlanca = True
         self.numeroDeLinea = 1
 
