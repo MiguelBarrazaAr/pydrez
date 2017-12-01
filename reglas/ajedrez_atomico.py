@@ -92,6 +92,11 @@ class ReglasAjedrezAtomico(Reglas):
         self.sonido_boom.reproducir()
         self.grilla = self.partida.pilas.imagenes.cargar_grilla("imagenes/animaciones/ExplosionGrande.png", 12)
         p = self.partida.pilas.actores.Animacion(self.grilla, False, x=celda.x, y=celda.y, velocidad=15)
+        x = self.partida.pilas.camara.x
+        y = self.partida.pilas.camara.y
+        self.partida.pilas.camara.vibrar(intensidad=3, tiempo=0.3)
+        self.partida.pilas.camara.x = x
+        self.partida.pilas.camara.y = y
         celdas = self.partida.tablero.obteneer_celdas_lindantes(celda.fila, celda.columna)
         for x in celdas:
             if x.ficha is not None and x.ficha.nombre != 'peon':
