@@ -97,7 +97,7 @@ class ReglasAjedrezMinado(Reglas):
 
         while (self.partida.tablero.obtener_celda(bomba[1],bomba[0]).ficha is not None):
             bomba = (randint(0, (self.partida.tablero.columnas / 2) - 1), randint(0, self.partida.tablero.filas - 1))
-        print bomba
+        print(chr(97+bomba[1])+str(bomba[0]+1))
         self.minaZonaBlanca = bomba
 
     def colocarMinaZonaNegra(self):
@@ -105,7 +105,7 @@ class ReglasAjedrezMinado(Reglas):
         bomba = (randint((self.partida.tablero.columnas / 2 ) + 1 , self.partida.tablero.columnas - 1),randint(0, self.partida.tablero.filas - 1))
         while (self.partida.tablero.obtener_celda(bomba[1],bomba[0]).ficha is not None):
             bomba = (randint((self.partida.tablero.columnas / 2 ) + 1 , self.partida.tablero.columnas - 1),randint(0, self.partida.tablero.filas - 1))
-        print bomba
+        print(chr(97+bomba[1])+str(bomba[0]+1))
         self.minaZonaNegra = bomba
 
     def explotar(self,celda):
@@ -114,6 +114,11 @@ class ReglasAjedrezMinado(Reglas):
         self.sonido_boom.reproducir()
         self.grilla = self.partida.pilas.imagenes.cargar_grilla("imagenes/animaciones/ExplosionGrande.png", 12)
         p = self.partida.pilas.actores.Animacion(self.grilla, False, x=celda.x, y=celda.y, velocidad=15)
+        x = self.partida.pilas.camara.x
+        y = self.partida.pilas.camara.y
+        self.partida.pilas.camara.vibrar(intensidad=3, tiempo=0.3)
+        self.partida.pilas.tareas.agregar(0.35, self.acomodarCamara, x=x, y=y)
+
         celdas = self.partida.tablero.obteneer_celdas_lindantes(celda.fila, celda.columna)
         for x in celdas:
             if x.ficha is not None and x.ficha.nombre != 'peon':
@@ -121,3 +126,7 @@ class ReglasAjedrezMinado(Reglas):
                     self.partida.finalizar("jacke mate")
                 self.partida.tablero.elimiraPieza(x)
         self.partida.tablero.elimiraPieza(celda)
+
+    def acomodarCamara(self, x, y):
+        self.partida.pilas.camara.x = x
+        self.partida.pilas.camara.y = y
