@@ -31,8 +31,7 @@ class Tablero(Actor):
         if columnas > 0 and filas > 0:
             self.graficar()
 
-    def graficar(self):
-        color = 'negro'
+    def graficar(self, alteracion=None):
         for f in range(self.filas):
             self.celda.append([])
             for c in range(self.columnas):
@@ -40,22 +39,21 @@ class Tablero(Actor):
                     x=(self.x+c*self.distancia),
                     y=(self.y+f*self.distancia),
                     z=100,
-                    color=color,
+                    color=self.tipoDeCelda(c, f, alteracion),
                     columna=c, fila=f,
                     estiloDeCelda=self.estiloDeCelda))
 
-                # invertimos el color:
-                if color == 'negro':
-                    color = 'blanco'
-                else:
-                    color = 'negro'
-
-            if (f%2) == 1:
-                # la siguiente fila es par, es negro:
+    def tipoDeCelda(self, columna, fila, alteracion):
+        color = 'negro'
+        if alteracion is None:
+            c = columna%2
+            f = fila%2
+            if (c+f) == 1:
                 color = 'negro'
             else:
-                # la siguiente fila es impar, es blanco:
                 color = 'blanco'
+
+        return color
 
     def eliminarCeldas(self):
         del self.celda

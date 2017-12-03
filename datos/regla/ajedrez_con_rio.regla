@@ -1,0 +1,3 @@
+Una partida de ajedrez con rio,se juega en modo tradicional.
+En un tablero de 8 por 11, y por el medio pasa una franja de agua (un rio) que son las casillas azules, que no se pueden pisar.
+finaliza cuando uno de los reyes queda en jaque mate.

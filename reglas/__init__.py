@@ -5,11 +5,14 @@ from .ajedrez_atomico import ReglasAjedrezAtomico
 from .ajedrez_epico import ReglasAjedrezEpico
 from .ajedrez_minado import ReglasAjedrezMinado
 from .ajedrez_salvaje import ReglasAjedrezSalvaje
+from .ajedrez_con_rio import ReglasAjedrezConRio
+
 
 from .puzzleAjedrez import PuzzleAjedrez
 
 definiciones = {
     "ajedrez8x12":ReglasAjedrez8x12,
+    "ajedrez_con_rio":ReglasAjedrezConRio,
     "atomico":ReglasAjedrezAtomico,
     "epico":ReglasAjedrezEpico,
     "minado":ReglasAjedrezMinado,

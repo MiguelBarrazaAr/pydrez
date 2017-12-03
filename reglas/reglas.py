@@ -12,6 +12,7 @@ class Reglas(object):
         self.dimensionTablero = (8, 8)
         self.personalizado = personalizado
         self.organizador = self.obtener_organizador()
+        self.alteracionDeTablero = None
 
     def iniciar(self, *args, **kwargs):
         """configura el inicio de una partida"""
@@ -30,7 +31,7 @@ class Reglas(object):
         self.partida.tablero.eliminarCeldas()
         self.partida.tablero.columnas = self.dimensionTablero[0]
         self.partida.tablero.filas = self.dimensionTablero[1]
-        self.partida.tablero.graficar()
+        self.partida.tablero.graficar(self.alteracionDeTablero)
 
     def PosIniciar(self):
         """metodo que se ejecuta despues de iniciar la partida.
@@ -66,3 +67,9 @@ class Reglas(object):
         """metodo que se ejecuta al seleccionar una celda.
         este metodo se debe redefinir"""
         pass
+
+    def definirTablero(self, clave):
+        import tableros
+        alterar = tableros.generar(clave)()
+        self.dimensionTablero = alterar.dimensionTablero
+        self.alteracionDeTablero = alterar
