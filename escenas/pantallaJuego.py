@@ -13,7 +13,7 @@ from sonido import Sonido
 class PantallaJuego(pilasengine.escenas.Escena):
 
     def iniciar(self, pilas, datos=None):
-        self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
+        self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/fondoJuego.jpg")
         self.decir = tts
         self.partida = Partida(pilas, datos)
         self.partida.definir_reglas(pilas.datos.modoJuego)

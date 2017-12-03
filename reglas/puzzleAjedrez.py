@@ -5,7 +5,7 @@ from sonido import Sonido
 class PuzzleAjedrez(Reglas):
 
     def __init__(self, *args, **kwargs):
-        Reglas.__init__(self, *args, **kwargs)
+        Reglas.__init__(self, True, *args, **kwargs)
         self.personalizado=True
         self.sonido_revote = Sonido("audio/boing.ogg")
 

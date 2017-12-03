@@ -9,19 +9,22 @@ from sonido import Sonido
 class ModoJuego(pilasengine.escenas.Escena):
 
     def iniciar(self, pilas, datos=None):
-        self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
+        marronClaro = pilas.colores.Color(128, 84, 66)
+        marronOscuro = pilas.colores.Color(77, 38, 22)
+        self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/fondoJuego.jpg")
         self.decir = tts
         self.datos=datos
         opciones = self.listaOpciones()
-        self.menu = Menu(pilas,y = 70, opciones = opciones)
+        self.menu = Menu(pilas,y = 150, opciones = opciones,fuente= "datos/tipografia/anirb___.ttf", color_normal=marronOscuro,color_resaltado=marronClaro)
         self.menu.seleccionaOpcion.conectar(self.seleccionarItem)
         self.menu.activaOpcion.conectar(self.activarOpcion)
         self.decir(u"Modo juego: pulse las flechas para elegir un modo de juego.", False)
         self.sonidoMover = Sonido("audio/menu_opcion.ogg")
         self.sonidoAbrir = Sonido("audio/menu_abrir.ogg")
         self.sonidoAbrir.reproducir()
-        self.menu.x = -200
-        self.texto = pilas.actores.Texto("", x= 90 ,y=25, ancho=350 , magnitud= 17, fuente= "datos/tipografia/KaushanScript-Regular.otf")
+        self.menu.x = -300
+        self.texto = pilas.actores.Texto("", x= 90 ,y=25, ancho=350 , magnitud= 17, fuente= "datos/tipografia/al.ttf")
+        self.texto.color = marronOscuro
         self.pilas.eventos.pulsa_tecla_escape.conectar(self.activar_menu_principal)
 
     def activar_menu_principal(self, evento):
