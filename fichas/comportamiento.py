@@ -57,3 +57,7 @@ class Comportamiento(object):
             libre = libre and self.ficha.tablero.obtener_celda(x[0], x[1]).estaLibre()
 
         return libre
+
+    def fichasAmenazadas(self, tablero):
+        """Retorna la lista de fichas amenazadas por la actual"""
+        return []

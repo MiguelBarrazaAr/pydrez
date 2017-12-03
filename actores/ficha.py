@@ -56,6 +56,9 @@ class Ficha(Actor):
                 # si no tiene ficha retorna si puede mover a esa celda:
                 return self.comportamiento.puedeMoverA(columna=celda.columna, fila=celda.fila)
 
+    def fichasAmenazadas(self):
+        return self.comportamiento.fichasAmenazadas(self.tablero)
+
     def eliminar(self):
         self.pilas.log(self.nombre, self.color, "de (", self._celda.columna, ",", self._celda.fila, "), se elimina del juego.")
         self.eliminar_comportamiento()
