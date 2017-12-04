@@ -58,7 +58,7 @@ class ReglasAjedrezTradicional(Reglas):
             self.celda_seleccionada.liberar()
             # valida si se comio el rey para finalizar la partida:
             if celda.ficha is not None and celda.ficha.nombre == "rey":
-                self.partida.finalizar("jacke mate")
+                self.partida.finalizar(motivo="jacke mate", color=self.colorOpuesto(celda.ficha.color))
 
             self.partida.tablero.posicionar(ficha, columna=columna, fila=fila)
             self.pasar_turno()
@@ -68,6 +68,12 @@ class ReglasAjedrezTradicional(Reglas):
             # no puede realizar el movimiento:
             self._deseleccionarCelda()
             self.movimiento_imposible()
+
+    def colorOpuesto(self, color):
+        if color == "blanco":
+            return "negro"
+        else:
+            return "blanco"
 
     def _deseleccionarCelda(self):
         """deselecciona una celda seleccionada:
