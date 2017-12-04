@@ -25,5 +25,7 @@ class OrganizadorAjedrezLagoDeLava(OrganizadorDeFichas):
     def acomodarPeones(self, fila, color):
         self.colocar('peon', color, 0, fila)
         self.colocar('peon', color, 1, fila)
+        self.colocar('peon', color, 2, fila)
+        self.colocar('peon', color, 5, fila)
         self.colocar('peon', color, 6, fila)
         self.colocar('peon', color, 7, fila)

@@ -45,6 +45,7 @@ class PantallaJuego(pilasengine.escenas.Escena):
         self.botonReiniciar.x =  400
         self.botonReiniciar.y = -300
         self.botonReiniciar.conectar(self.nuevaPartida)
+        self.botonReiniciar.fijo = True
 
     def activar_menu_principal(self, evento):
         datos=None
