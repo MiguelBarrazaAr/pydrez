@@ -10,3 +10,6 @@ class FxLava(EfectoCelda):
 
     def __str__(self):
         return "lava"
+
+    def celdaLiberada(self):
+        return False
