@@ -14,13 +14,24 @@ class MenuPrincipal(pilasengine.escenas.Escena):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/fondoMenu.jpg")
         self.decir = tts
         self.datos=datos
-        opciones = [('Jugar', self.jugar),
-                    (u"Desafíos", self.desafios),
-                    (u"Conectarse a un servidor", self.conectarse),
-                    (u"Establecerse como servidor", self.levantarServidor),
-                    (u"Modos de juego", self.modoJuego),
-                    (u"Creditos", self.creditos),
-                    ('Salir', self.salir)]
+        if datos is None:
+            opciones = [('Jugar contra la maquina', self.jugar),
+                (u"Desafíos", self.desafios),
+                (u"Conectarse a un servidor", self.conectarse),
+                (u"Establecerse como servidor", self.levantarServidor),
+                (u"Modos de juego para 2 jugadores", self.modoJuego),
+                (u"Creditos", self.creditos),
+                ('Salir', self.salir)]
+        else:
+            opciones = [('Jugar contra la maquina', self.jugar),
+                (u'Continuar Con partida', self.continuarConPartida),
+                (u"Desafíos", self.desafios),
+                (u"Conectarse a un servidor", self.conectarse),
+                (u"Establecerse como servidor", self.levantarServidor),
+                (u"Modos de juego para 2 jugadores", self.modoJuego),
+                (u"Creditos", self.creditos),
+                ('Salir', self.salir)]
+
         self.menu = Menu(pilas, y = 170 , opciones = opciones, fuente= "datos/tipografia/anirb___.ttf", color_normal=marronOscuro,color_resaltado=marronClaro)
         self.menu.seleccionaOpcion.conectar(self.seleccionarItem)
         self.menu.activaOpcion.conectar(self.activarOpcion)
@@ -39,6 +50,9 @@ class MenuPrincipal(pilasengine.escenas.Escena):
         self.sonido_activar.reproducir()
 
     def jugar(self):
+        self.pilas.escenas.PantallaJuego(pilas=self.pilas, datos=self.datos)
+
+    def continuarConPartida(self):
         self.pilas.escenas.PantallaJuego(pilas=self.pilas, datos=self.datos)
 
     def desafios(self):
