@@ -6,8 +6,7 @@ class FxAgua(EfectoCelda):
     def configurarCelda(self, celda):
         """se aplica al iniciarse en una celda"""
         self.celda = celda
-        celda.color = "azul"
-        celda.cambiar("azul")
+        celda.definirTipo("azul")
 
     def __str__(self):
         return "agua"

@@ -40,6 +40,11 @@ class Celda(Actor):
 
         return text
 
+    def definirTipo(self, tipo):
+        self.normal = "imagenes/"+self.estiloDeCelda+"/"+tipo+".png"
+        self.imagen = self.normal
+        self.color = tipo
+
     def cambiar(self, nombreDeCelda):
         self.imagen = "imagenes/"+self.estiloDeCelda+"/"+nombreDeCelda+".png"
 
