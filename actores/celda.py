@@ -53,7 +53,7 @@ class Celda(Actor):
         self.imagen = self.normal
 
     def estaLibre(self):
-        return self.ficha is None
+        return (self.ficha is None) and self.pisable
 
     def tiene_ficha(self):
         return self.ficha is not None
@@ -91,3 +91,10 @@ class Celda(Actor):
         if efecto is not None:
             efecto.configurarCelda(self)
         self._efecto = efecto
+
+    @property
+    def pisable(self):
+        if self._efecto is None:
+            return True
+        else:
+            return self._efecto.celdaLiberada()

@@ -3,7 +3,7 @@ from .comportamiento import Comportamiento
 
 class Torre(Comportamiento):
 
-    def puedeMoverA(self, columna, fila):
+    def _puedeMoverA(self, columna, fila):
         if self.fila == fila or self.columna == columna:
             return self.validar_celdas_intermedias(columna, fila)
         else:

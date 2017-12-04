@@ -3,7 +3,7 @@ from .comportamiento import Comportamiento
 
 class Alfil(Comportamiento):
 
-    def puedeMoverA(self, columna, fila):
+    def _puedeMoverA(self, columna, fila):
         if abs(self.fila - fila) == abs(self.columna - columna):
             # mueve en diagonal:
             lista1 = range(min(self.columna, columna)+1, max(self.columna, columna))

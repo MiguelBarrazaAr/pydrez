@@ -3,7 +3,7 @@ from .comportamiento import Comportamiento
 
 class Conejo(Comportamiento):
 
-    def puedeMoverA(self, columna, fila):
+    def _puedeMoverA(self, columna, fila):
         if self.fila == fila and abs(self.columna - columna)%2 == 0:
             # se mueve en vertical:
             return True

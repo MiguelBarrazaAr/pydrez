@@ -4,7 +4,7 @@ from .dama import Dama
 
 class Raton(Comportamiento):
 
-    def puedeMoverA(self, columna, fila):
+    def _puedeMoverA(self, columna, fila):
 
         if self.bando == "blanco":
             return self._blanco_puedeMoverA(columna, fila)

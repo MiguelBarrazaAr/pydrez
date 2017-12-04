@@ -3,7 +3,7 @@ from .comportamiento import Comportamiento
 
 class Leon(Comportamiento):
 
-    def puedeMoverA(self, columna, fila):
+    def _puedeMoverA(self, columna, fila):
         if abs(self.fila - fila) == 1  and abs(self.columna - columna) == 1:
             # se mueve en diagonal:
             return True

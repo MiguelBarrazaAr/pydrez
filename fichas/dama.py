@@ -3,7 +3,7 @@ from .comportamiento import Comportamiento
 
 class Dama(Comportamiento):
 
-    def puedeMoverA(self, columna, fila):
+    def _puedeMoverA(self, columna, fila):
         if self.fila == fila:
             # se mueve en vertical:
             return self.validar_celdas(map((lambda x: (x, fila)), range(min(self.columna, columna)+1, max(self.columna, columna))))

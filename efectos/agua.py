@@ -10,3 +10,6 @@ class FxAgua(EfectoCelda):
 
     def __str__(self):
         return "agua"
+
+    def celdaLiberada(self):
+        return False
