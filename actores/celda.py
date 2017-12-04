@@ -23,11 +23,22 @@ class Celda(Actor):
 
         self.imagen = self.normal
 
-    def __str__(self):
+    def __repr__(self):
         if self.columna >= 0 and self.columna <= 24:
             return chr(self.columna+97)+str(self.fila+1)
         else:
             return str(self.columna)+str(self.fila)
+
+    def __str__(self):
+        if self.columna >= 0 and self.columna <= 24:
+            text = chr(self.columna+97)+str(self.fila+1)
+        else:
+            text = str(self.columna)+str(self.fila)
+
+        if self._efecto is not None:
+            text += str(self._efecto)
+
+        return text
 
     def cambiar(self, nombreDeCelda):
         self.imagen = "imagenes/"+self.estiloDeCelda+"/"+nombreDeCelda+".png"

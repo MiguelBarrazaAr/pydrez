@@ -64,10 +64,11 @@ class Cabezal(Actor):
         self.sonido_limite.reproducir()
 
     def leer_ubicacion(self):
-        self.decir(self.letra_de_columna()+str(self.fila+1))
-        ficha = self.tablero.obtenerFicha(columna=self.columna, fila=self.fila)
-        if ficha:
-            self.decir(ficha.nombre+" "+ficha.color, False)
+        celda = self.tablero.obtener_celda(columna=self.columna, fila=self.fila)
+        self.decir(str(celda))
+
+        if celda.ficha:
+            self.decir(str(celda.ficha), False)
 
     def letra_de_columna(self):
         if self.columna >= 0 and self.columna <= 24:

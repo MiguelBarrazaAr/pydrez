@@ -46,12 +46,12 @@ class PantallaJuego(pilasengine.escenas.Escena):
 
     def mueveFicha(self, evento):
         self.sonido_mover.reproducir()
-        self.decir(str(evento.ficha)+" mueve a: "+str(evento.celdaDestino))
+        self.decir(str(evento.ficha)+" mueve a: "+repr(evento.celdaDestino))
         if evento.fichaEliminada:
             #print("fuera de juego", fichaEliminada.nombre,  fichaEliminada.color)
-            self.historial.agregar(repr(evento.ficha) + "x" + str(evento.celdaDestino))
+            self.historial.agregar(repr(evento.ficha) + "x" + repr(evento.celdaDestino))
         else:
-            self.historial.agregar(repr(evento.ficha) + str(evento.celdaDestino))
+            self.historial.agregar(repr(evento.ficha) + repr(evento.celdaDestino))
 
 
     def click_mouse(self, evento):

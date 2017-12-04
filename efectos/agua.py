@@ -9,3 +9,5 @@ class FxAgua(EfectoCelda):
         celda.color = "azul"
         celda.cambiar("azul")
 
+    def __str__(self):
+        return "agua"
