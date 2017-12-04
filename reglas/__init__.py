@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
 from .ajedrez_tradicional import ReglasAjedrezTradicional
+from ajedrez_ia import ReglasAjedrezTradicionalConIa
 from .ajedrez_8x12 import ReglasAjedrez8x12
 from .ajedrez_atomico import ReglasAjedrezAtomico
 from .ajedrez_epico import ReglasAjedrezEpico
@@ -21,6 +22,7 @@ definiciones = {
     "minado":ReglasAjedrezMinado,
     "salvaje":ReglasAjedrezSalvaje,
     "tradicional":ReglasAjedrezTradicional,
+    "ajedrezIa":ReglasAjedrezTradicionalConIa,
     "puzzle":PuzzleAjedrez,
 
 }

@@ -26,7 +26,7 @@ pilas.escenas.vincular(ModoJuego)
 pilas.escenas.MenuPrincipal(pilas=pilas)
 
 # configuramos el cliente:
-pilas.datos['modoJuego'] = "tradicional"
+pilas.datos['modoJuego'] = "ajedrezIa"
 pilas.datos['posicion'] = None
 pilas.datos['tablero'] = "8x8"
 
