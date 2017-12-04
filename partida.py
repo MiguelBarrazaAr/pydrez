@@ -61,12 +61,12 @@ class Partida(object):
         self.pool.limpiar()
         self.reglas.iniciar(*args, **kwargs)
 
-    def finalizar(self, motivo):
+    def finalizar(self, **kwargs):
         """finaliza la partida
         : param motivo: se refiere al motivo por el cual finaliza esta partida."""
         self.activa = False
         self.datos = {}
-        self.eventoFinalizar.emitir(motivo=motivo)
+        self.eventoFinalizar.emitir(**kwargs)
 
     def seleccionar_celda(self, columna, fila):
         """Realiza una seleccion de celda si la partida esta activa"""
