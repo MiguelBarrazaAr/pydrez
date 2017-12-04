@@ -61,4 +61,4 @@ class ModoJuego(pilasengine.escenas.Escena):
 
     def configurarModo(self , modo):
         self.pilas.datos['modoJuego'] = modo
-        self.pilas.escenas.MenuPrincipal(pilas=self.pilas)
+        self.pilas.escenas.PantallaJuego(pilas=self.pilas)
