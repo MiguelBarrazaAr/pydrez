@@ -8,7 +8,7 @@ from sonido import Sonido
 class MenuPrincipal(pilasengine.escenas.Escena):
 
     def iniciar(self, pilas, datos=None):
-
+        self.pilas.eventos.pulsa_tecla_escape.conectar(self.cuandoPulsaEscape)
         marronClaro = pilas.colores.Color(128, 84, 66)
         marronOscuro = pilas.colores.Color(77, 38, 22)
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/fondoMenu.jpg")
@@ -38,7 +38,13 @@ class MenuPrincipal(pilasengine.escenas.Escena):
         self.decir(u"menú principal: pulse las flechas para navegar por el menú.", False)
         self.sonidoMover = Sonido("audio/menu_opcion.ogg")
         self.sonidoAbrir = Sonido("audio/menu_abrir.ogg")
+        self.sonidoCerrar = Sonido("audio/menu_cerrar.ogg")
         self.sonidoAbrir.reproducir()
+
+    def cuandoPulsaEscape(self, evento):
+        if self.datos:
+            self.sonidoCerrar.reproducir()
+            self.continuarConPartida()
 
     def seleccionarItem(self, evento):
         self.sonidoMover.reproducir()
