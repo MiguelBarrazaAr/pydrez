@@ -41,7 +41,7 @@ class Comportamiento(object):
     def puedeMoverA(self, columna, fila):
         """Verifica si la pieza puede llegar a la columna y fila indicada.
         este metodo se debe sobreescribir."""
-        return False
+        return self.ficha.tablero.obtener_celda(columna, fila).pisable and self._puedeMoverA(columna=columna, fila=fila)
 
     def puedeComerEn(self, celda):
         """retorna true si esta ficha puede comer en esa celda_destino.

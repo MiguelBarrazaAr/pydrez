@@ -8,3 +8,6 @@ class EfectoCelda(object):
     def aplicarFicha(self, ficha):
         """Se aplica cuando una ficha cae en la celda."""
         pass
+
+    def celdaLiberada(self):
+        return True

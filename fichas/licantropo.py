@@ -3,8 +3,7 @@ from .comportamiento import Comportamiento
 
 class Licantropo(Comportamiento):
 
-
-    def puedeMoverA(self, columna, fila):
+    def _puedeMoverA(self, columna, fila):
         if self.fila == fila and abs(self.columna - columna) <= 2:
             # se mueve en vertical:
             return self.validar_celdas(map((lambda x: (x, fila)), range(min(self.columna, columna)+1, max(self.columna, columna))))

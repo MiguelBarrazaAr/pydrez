@@ -3,7 +3,7 @@ from .comportamiento import Comportamiento
 
 class Golem(Comportamiento):
 
-    def puedeMoverA(self, columna, fila):
+    def _puedeMoverA(self, columna, fila):
         if self.fila == fila and self.columna+1 == columna:
             return True
         if self.fila+1 == fila and self.columna == columna:

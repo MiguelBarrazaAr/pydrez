@@ -3,7 +3,7 @@ from .comportamiento import Comportamiento
 
 class Pegaso(Comportamiento):
 
-    def puedeMoverA(self, columna, fila):
+    def _puedeMoverA(self, columna, fila):
         if self.fila == fila and abs(self.columna - columna) <= 5:
             # se mueve en vertical:
             return True

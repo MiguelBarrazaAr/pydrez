@@ -4,7 +4,7 @@ from .dama import Dama
 
 class Peon(Comportamiento):
 
-    def puedeMoverA(self, columna, fila):
+    def _puedeMoverA(self, columna, fila):
         """los peones podrán caminar 2 pasos si es su primer movimiento, luego solo podrá moverse de a 1 paso siempre hacia adelante.
         come 1 paso en  diagonal."""
         if self.bando == "blanco":
