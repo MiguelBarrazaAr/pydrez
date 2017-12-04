@@ -68,7 +68,7 @@ class Desafio(pilasengine.escenas.Escena):
             self.cabezal.mover_abajo()
         if evento.codigo == "w" or evento.codigo == self.pilas.simbolos.ARRIBA:
             self.cabezal.mover_arriba()
-        if evento.codigo == "r":
+        if evento.codigo == "n":
             self.pilas.escenas.Desafio(pilas=self.pilas, nombreDesafio = self.nombreDesafio)
         if evento.codigo == self.pilas.simbolos.SELECCION:
             self.partida.seleccionar_celda(columna=self.cabezal.columna, fila=self.cabezal.fila)

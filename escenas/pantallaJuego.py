@@ -15,7 +15,8 @@ class PantallaJuego(pilasengine.escenas.Escena):
     def iniciar(self, pilas, datos=None):
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/fondoJuego.jpg")
         self.decir = tts
-        self.partida = Partida(pilas, datos)
+        self.datos   = datos
+        self.partida = Partida(pilas, self.datos)
         self.partida.definir_reglas(pilas.datos.modoJuego)
         self.textoAyuda = TextoAyuda(self.pilas)
 
@@ -32,11 +33,18 @@ class PantallaJuego(pilasengine.escenas.Escena):
         self.pilas.eventos.pulsa_tecla_escape.conectar(self.activar_menu_principal)
         # eventos de juego:
         self.partida.eventoPreMueveFicha.conectar(self.mueveFicha)
+        self.partida.eventoFinalizar.conectar(self.mostrarResultado)
 
         # sonidos:
         self.sonido_mover = Sonido('audio/mover-ficha.ogg')
         self.historial = Historial(pilas, ejex=300, ejey=0)
         self.historial.fijo = True
+
+        #
+        self.botonReiniciar = pilas.interfaz.Boton("Nueva Partida")
+        self.botonReiniciar.x =  400
+        self.botonReiniciar.y = -300
+        self.botonReiniciar.conectar(self.nuevaPartida)
 
     def activar_menu_principal(self, evento):
         datos=None
@@ -89,16 +97,27 @@ class PantallaJuego(pilasengine.escenas.Escena):
                 self.pilas.camara.y = [self.cabezal.y - 200]
         if evento.codigo == self.pilas.simbolos.SELECCION:
             self.partida.seleccionar_celda(columna=self.cabezal.columna, fila=self.cabezal.fila)
-        if evento.codigo == "m":
+        if evento.codigo == "g":
             self.historial.subir()
-        if evento.codigo == "n":
+        if evento.codigo == "h":
             self.historial.bajar()
-        if evento.codigo == "u":
-            self.pilas.camara.x += 10
+        if evento.codigo == "n":
+            self.nuevaPartida()
         if evento.codigo == "F1":
             ficha = self.tablero.obtenerFicha(columna=self.cabezal.columna, fila=self.cabezal.fila)
             if ficha is not None:
                 info = self.textoAyuda.infoDePieza(ficha.nombre ,
                     self.cabezal.x +30,self.cabezal.y)
                 self.decir(info)
+
+    def nuevaPartida(self):
+        self.pilas.escenas.PantallaJuego(pilas=self.pilas, datos=self.datos)
+
+    def mostrarResultado(self,evento):
+        texto = self.pilas.actores.Texto("Ganan las ", y=300,ancho=300)
+        texto.color = self.pilas.colores.Color(77, 38, 22)
+        if evento.color == "blanco":
+            texto.texto = texto.texto + "blancas"
+        else:
+            texto.texto = texto.texto + "negras"
 
