@@ -6,11 +6,11 @@ class TableroRio(ConfiguradorDeTablero):
     def __init__(self):
         self.dimensionTablero = (8, 11)
         self.celdas = {
-            "5 0":"agua",
-            "5 2":"agua",
-            "5 3":"agua",
-            "5 4":"agua",
-            "5 5":"agua",
-            "5 7":"agua",
+            "a 6":"agua",
+            "c 6":"agua",
+            "d 6":"agua",
+            "e 6":"agua",
+            "f 6":"agua",
+            "h 6":"agua",
         }
 

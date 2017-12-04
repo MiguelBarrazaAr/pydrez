@@ -2,6 +2,7 @@
 from pilasengine.actores.actor import Actor
 
 from celda import Celda
+import efectos as fx
 
 class Tablero(Actor):
     """Representa al tablero"""
@@ -31,7 +32,7 @@ class Tablero(Actor):
         if columnas > 0 and filas > 0:
             self.graficar()
 
-    def graficar(self, alteracion=None):
+    def graficar(self, efectos=None):
         for f in range(self.filas):
             self.celda.append([])
             for c in range(self.columnas):
@@ -39,19 +40,26 @@ class Tablero(Actor):
                     x=(self.x+c*self.distancia),
                     y=(self.y+f*self.distancia),
                     z=100,
-                    color=self.tipoDeCelda(c, f, alteracion),
+                    color=self.colorDeCelda(c, f),
                     columna=c, fila=f,
                     estiloDeCelda=self.estiloDeCelda))
 
-    def tipoDeCelda(self, columna, fila, alteracion):
+        if efectos is not None:
+            keys = efectos.celdas.keys()
+            for k in keys:
+                c, f = k.split(" ")
+                f=int(f)-1
+                c=ord(c)-97
+                self.celda[f][c].efecto = fx.generar(efectos.celdas[k])
+
+    def colorDeCelda(self, columna, fila):
         color = 'negro'
-        if alteracion is None:
-            c = columna%2
-            f = fila%2
-            if (c+f) == 1:
-                color = 'negro'
-            else:
-                color = 'blanco'
+        c = columna%2
+        f = fila%2
+        if (c+f) == 1:
+            color = 'negro'
+        else:
+            color = 'blanco'
 
         return color
 

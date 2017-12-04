@@ -13,6 +13,8 @@ class Celda(Actor):
         self.seleccionado = False
         self.estiloDeCelda = estiloDeCelda
         self.escala = 2.3
+        self.efecto = None
+
 
         if color == 'blanco':
             self.normal = "imagenes/"+estiloDeCelda+"/blanco.png"
