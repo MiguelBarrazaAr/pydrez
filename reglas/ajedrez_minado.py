@@ -62,7 +62,7 @@ class ReglasAjedrezMinado(Reglas):
             self.celda_seleccionada.liberar()
             # valida si se comio el rey para finalizar la partida:
             if celda.ficha is not None and celda.ficha.nombre == "rey":
-                self.partida.finalizar("jacke mate")
+                self.partida.finalizar(motivo="jacke mate", color=self.colorOpuesto(celda.ficha.color))
 
             self.partida.tablero.posicionar(ficha, columna=columna, fila=fila)
             if(celda.fila == self.minaZonaBlanca[0] and celda.columna == self.minaZonaBlanca [1]):
@@ -110,7 +110,7 @@ class ReglasAjedrezMinado(Reglas):
 
     def explotar(self,celda):
         if celda.ficha.nombre == 'rey':
-            self.partida.finalizar("jacke mate")
+            self.partida.finalizar(motivo="jacke mate", color=self.colorOpuesto(celda.ficha.color))
         self.sonido_boom.reproducir()
         self.grilla = self.partida.pilas.imagenes.cargar_grilla("imagenes/animaciones/ExplosionGrande.png", 12)
         p = self.partida.pilas.actores.Animacion(self.grilla, False, x=celda.x, y=celda.y, velocidad=15)
@@ -123,10 +123,16 @@ class ReglasAjedrezMinado(Reglas):
         for x in celdas:
             if x.ficha is not None and x.ficha.nombre != 'peon':
                 if x.ficha.nombre == 'rey':
-                    self.partida.finalizar("jacke mate")
+                    self.partida.finalizar(motivo="jacke mate", color=self.colorOpuesto(x.ficha.color))
                 self.partida.tablero.elimiraPieza(x)
         self.partida.tablero.elimiraPieza(celda)
 
     def acomodarCamara(self, x, y):
         self.partida.pilas.camara.x = x
         self.partida.pilas.camara.y = y
+
+    def colorOpuesto(self, color):
+        if color == "blanco":
+            return "negro"
+        else:
+            return "blanco"

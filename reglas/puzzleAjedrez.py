@@ -50,7 +50,7 @@ class PuzzleAjedrez(Reglas):
             # valida si queda una ficha o no tiene posibilidad de comer. para finalizar el puzzgle.
             self.fichasActivas = self.partida.pool.fichasActivas()
             if self.fichasActivas == 1:
-                self.partida.finalizar("superado")
+                self.partida.finalizar(motivo="superado")
 
         else:
             # no puede realizar el movimiento:

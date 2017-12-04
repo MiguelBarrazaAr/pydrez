@@ -33,6 +33,7 @@ class PantallaJuego(pilasengine.escenas.Escena):
         self.pilas.eventos.pulsa_tecla_escape.conectar(self.activar_menu_principal)
         # eventos de juego:
         self.partida.eventoPreMueveFicha.conectar(self.mueveFicha)
+        self.partida.eventoFinalizar.conectar(self.mostrarResultado)
 
         # sonidos:
         self.sonido_mover = Sonido('audio/mover-ficha.ogg')
@@ -112,4 +113,11 @@ class PantallaJuego(pilasengine.escenas.Escena):
     def nuevaPartida(self):
         self.pilas.escenas.PantallaJuego(pilas=self.pilas, datos=self.datos)
 
+    def mostrarResultado(self,evento):
+        texto = self.pilas.actores.Texto("Ganan las ", y=300,ancho=300)
+        texto.color = self.pilas.colores.Color(77, 38, 22)
+        if evento.color == "blanco":
+            texto.texto = texto.texto + "blancas"
+        else:
+            texto.texto = texto.texto + "negras"
 
