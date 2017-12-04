@@ -50,7 +50,7 @@ class Tablero(Actor):
                 c, f = k.split(" ")
                 f=int(f)-1
                 c=ord(c)-97
-                self.celda[f][c].efecto = fx.generar(efectos.celdas[k])
+                self.celda[f][c].efecto = fx.generar(efectos.celdas[k])()
 
     def colorDeCelda(self, columna, fila):
         color = 'negro'

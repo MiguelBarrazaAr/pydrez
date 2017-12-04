@@ -13,7 +13,7 @@ class Celda(Actor):
         self.seleccionado = False
         self.estiloDeCelda = estiloDeCelda
         self.escala = 2.3
-        self.efecto = None
+        self._efecto = None
 
 
         if color == 'blanco':
@@ -65,3 +65,13 @@ class Celda(Actor):
     def liberar(self):
         """metodo que se invoca cuando un actor deja esta celda."""
         self.ficha = None
+
+    @property
+    def efecto(self):
+        return self._efecto
+
+    @efecto.setter
+    def efecto(self, efecto):
+        if efecto is not None:
+            efecto.configurarCelda(self)
+        self._efecto = efecto

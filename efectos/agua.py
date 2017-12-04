@@ -2,4 +2,10 @@
 from .efecto import EfectoCelda
 
 class FxAgua(EfectoCelda):
-    pass
+
+    def configurarCelda(self, celda):
+        """se aplica al iniciarse en una celda"""
+        self.celda = celda
+        celda.color = "azul"
+        celda.cambiar("azul")
+
