@@ -38,6 +38,7 @@ class ModoJuego(pilasengine.escenas.Escena):
         self.sonidoMover.reproducir()
         self.decir(evento.texto)
         self.texto.texto = info
+        self.decir(info, False)
 
 
     def activarOpcion(self, evento):
