@@ -102,7 +102,7 @@ class PoolDeFichas():
 
         # no encontro ninguna ficha libre, genera nueva:
         ficha = Ficha(self.pilas)
-        fichas.agregar(ficha)
+        self.fichas.agregar(ficha)
         self.pilas.log("se agranda el pool de fichas, ahora tiene", len(self.fichas), "fichas")
         return ficha
 
