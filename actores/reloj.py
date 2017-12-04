@@ -4,15 +4,16 @@ from pilasengine.colores import *
 class Reloj(Actor):
 
     def iniciar(self, x=0, y=0, incremental=True):
+        marronOsucuro = self.pilas.colores.Color(77, 38, 22)
         self.incremental = incremental
         self.imagen = "invisible.png"
         self.minutos = 0
         self.segundos = 0
         self.tarea_en_curso = None
-        self.texto = self.pilas.actores.Texto(str(self.minutos) + ":" + str(self.segundos))
+        self.texto = self.pilas.actores.Texto(str(self.minutos) + ":" + str(self.segundos),fuente= "datos/tipografia/anirb___.ttf")
+        self.texto.color = marronOsucuro
         self.texto.x = x
         self.texto.y = y
-        self.texto.color = negro
 
     def configurar(self, min, seg):
         self.minutos = min

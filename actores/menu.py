@@ -9,16 +9,18 @@ class Menu(Actor):
     """Un actor que puede mostrar una lista de opciones a seleccionar."""
 
     def __init__(self, pilas, x=0, y=0, opciones=[], fuente=None,
-             color_normal=colores.gris, color_resaltado=colores.blanco):
+             color_normal=colores.gris, color_resaltado=colores.blanco,
+             imagenFondo= None, distancia = 50):
         Actor.__init__(self, pilas, x=x, y=y)
         self.opciones_como_actores = []
         self.iconos_de_opciones = []
         self.imagen = "invisible.png"
         self._verificar_opciones(opciones)
-        self.crear_texto_de_las_opciones(opciones, fuente, color_normal , color_resaltado)
+        self.crear_texto_de_las_opciones(opciones, fuente, color_normal , color_resaltado, imagenFondo=imagenFondo, distancia= distancia)
         self.opciones = opciones
         self.seleccionar_primer_opcion()
         self.opcion_actual = 0
+
 
         # eventos:
         self.seleccionaOpcion = pilas.evento.Evento("selecciona_opcion")
@@ -37,14 +39,14 @@ class Menu(Actor):
         self.pilas.escena_actual().click_de_mouse.desconectar(self.cuando_hace_click_con_el_mouse)
         self.pilas.eventos.pulsa_tecla.desconectar(self.interpreta_teclado)
 
-    def crear_texto_de_las_opciones(self, opciones, fuente, color_normal, color_resaltado):
+    def crear_texto_de_las_opciones(self, opciones, fuente, color_normal, color_resaltado, imagenFondo, distancia):
         """Genera un actor por cada opcion del menu.
 
         :param opciones: Una lista con todas las opciones que tendrá el menú.
         """
 
         for indice, opcion in enumerate(opciones):
-            y = self.y - indice * 50
+            y = self.y - indice * distancia
             if len(opcion) == 2:
                 texto, funcion, argumentos = opcion[0], opcion[1], opcion[2:] #No debería de aceptar argumentos
             else:
@@ -56,8 +58,11 @@ class Menu(Actor):
                 else:
                     texto, funcion, argumentos = opcion[0], opcion[1], opcion[2:]
 
-            opciones = self.pilas.actores.Opcion(texto, x=0, y=y, funcion_a_invocar=funcion, argumentos=argumentos, fuente=fuente,
+            opciones = self.pilas.actores.Opcion(texto, x=self.x, y=y, funcion_a_invocar=funcion, argumentos=argumentos, fuente=fuente,
                                             color_normal=color_normal, color_resaltado=color_resaltado)
+
+            if imagenFondo is not None:
+                self.actorImagenFondo = self.pilas.actores.Actor(imagen=imagenFondo, x=self.x, y=y)
 
             self.opciones_como_actores.append(opciones)
 

@@ -4,6 +4,14 @@ from os import listdir
 
 class MenuDesafios(EscenaMenu):
 
+    def configuracion(self):
+        self.menu_y = 190
+        self.colorResaltado = self.pilas.colores.Color(0, 0, 0)
+        self.colorNormal = self.pilas.colores.Color(255, 255, 255)
+        self.distancia = 90
+        self.texto = self.pilas.actores.Texto("       Realiza movimientos siempre comiendo, \n y logra que quede solo una pieza en el tablero\n",y= 280,  magnitud= 25, fuente= "datos/tipografia/al.ttf")
+        self.texto.color = self.colorResaltado
+
     def listaOpciones(self):
         desafios = []
         for desafio in listdir("datos/desafios"):

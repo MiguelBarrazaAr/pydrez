@@ -15,15 +15,15 @@ class ModoJuego(pilasengine.escenas.Escena):
         self.decir = tts
         self.datos=datos
         opciones = self.listaOpciones()
-        self.menu = Menu(pilas,y = 150, opciones = opciones,fuente= "datos/tipografia/anirb___.ttf", color_normal=marronOscuro,color_resaltado=marronClaro)
+        self.menu = Menu(pilas,x = -300 ,y = 170, opciones = opciones,fuente= "datos/tipografia/anirb___.ttf", color_normal=marronOscuro, color_resaltado=marronClaro)
         self.menu.seleccionaOpcion.conectar(self.seleccionarItem)
         self.menu.activaOpcion.conectar(self.activarOpcion)
         self.decir(u"Modo juego: pulse las flechas para elegir un modo de juego.", False)
         self.sonidoMover = Sonido("audio/menu_opcion.ogg")
         self.sonidoAbrir = Sonido("audio/menu_abrir.ogg")
         self.sonidoAbrir.reproducir()
-        self.menu.x = -300
-        self.texto = pilas.actores.Texto("", x= 90 ,y=25, ancho=350 , magnitud= 17, fuente= "datos/tipografia/al.ttf")
+
+        self.texto = pilas.actores.Texto("", x= 170 ,y=25, ancho=500 , magnitud= 19, fuente= "datos/tipografia/al.ttf")
         self.texto.color = marronOscuro
         self.pilas.eventos.pulsa_tecla_escape.conectar(self.activar_menu_principal)
 

@@ -6,4 +6,4 @@ class ReglasAjedrez8x12(ReglasAjedrezTradicional):
 
     def __init__(self, *args, **kwargs):
         ReglasAjedrezTradicional.__init__(self, *args, **kwargs)
-        self.dimensionTablero = (8, 12)
+        self.dimensionTablero = (20, 20)

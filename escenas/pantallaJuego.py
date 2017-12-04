@@ -55,8 +55,8 @@ class PantallaJuego(pilasengine.escenas.Escena):
 
 
     def click_mouse(self, evento):
-        x = (int(evento.x) + (self.tablero.distancia / 2) + self.pilas.camara.x) - self.tablero.x
-        y = (int(evento.y) + (self.tablero.distancia / 2) + self.pilas.camara.y) - self.tablero.y
+        x = (int(evento.x) + (self.tablero.distancia / 2) + int(self.pilas.camara.x)) - self.tablero.x
+        y = (int(evento.y) + (self.tablero.distancia / 2) + int(self.pilas.camara.y)) - self.tablero.y
         columna = x / self.tablero.distancia
         fila = y / self.tablero.distancia
         if(evento.boton == 1):
@@ -74,19 +74,19 @@ class PantallaJuego(pilasengine.escenas.Escena):
         if evento.codigo == "a" or evento.codigo == self.pilas.simbolos.IZQUIERDA:
             self.cabezal.mover_izquierda()
             if self.tablero.columnas > 8 and abs(self.cabezal.x - self.camara.x) > 400 and self.cabezal.x - self.camara.x < 399:
-                self.pilas.camara.x =  self.cabezal.x + 400
+                self.pilas.camara.x = [self.cabezal.x + 400]
         if evento.codigo == "d" or evento.codigo == self.pilas.simbolos.DERECHA:
             self.cabezal.mover_derecha()
             if self.tablero.columnas > 8 and self.cabezal.x - self.camara.x > -400 and self.cabezal.x - self.camara.x > 399 :
-                self.pilas.camara.x = self.cabezal.x - 400
+                self.pilas.camara.x = [self.cabezal.x - 400]
         if evento.codigo == "s" or evento.codigo == self.pilas.simbolos.ABAJO:
             self.cabezal.mover_abajo()
             if self.tablero.filas > 8 and abs(self.cabezal.y - self.camara.y) > 200:
-                self.pilas.camara.y =  self.cabezal.y + 200
+                self.pilas.camara.y = [self.cabezal.y + 200]
         if evento.codigo == "w" or evento.codigo == self.pilas.simbolos.ARRIBA:
             self.cabezal.mover_arriba()
             if self.tablero.filas > 8 and abs(self.cabezal.y - self.camara.y) > 200:
-                self.pilas.camara.y = self.cabezal.y - 200
+                self.pilas.camara.y = [self.cabezal.y - 200]
         if evento.codigo == self.pilas.simbolos.SELECCION:
             self.partida.seleccionar_celda(columna=self.cabezal.columna, fila=self.cabezal.fila)
         if evento.codigo == "m":
