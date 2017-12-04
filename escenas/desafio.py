@@ -13,20 +13,20 @@ from sonido import Sonido
 class Desafio(pilasengine.escenas.Escena):
 
     def iniciar(self, pilas, nombreDesafio):
-        self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/madera.jpg")
+        self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/fondoJuego.jpg")
         self.decir = tts
         self.partida = Partida(pilas)
         self.partida.definir_reglas("puzzle")
         self.textoAyuda = TextoAyuda(self.pilas)
 
         # se arma el reloj
-        self.reloj = Reloj(pilas, x=200, y=200, incremental=True)
+        self.reloj = Reloj(pilas, x=-150, y=300, incremental=True)
+
         self.reloj.comenzar()
 
         # armamos tablero:
-        self.tablero = Tablero(pilas, filas=8, columnas=8)
+        self.tablero = Tablero(pilas, x=- 400 ,y=-250, filas=8, columnas=8)
         self.partida.definir_tablero(self.tablero)
-        self.pilas.avisar("Realiza movimientos siempre comiendo, \n y logra que quede solo una pieza en el tablero")
 
         # definimos la posicion inicial:
         fichas = self.cargarDesafio("datos/desafios/"+ nombreDesafio +".chess")
@@ -34,9 +34,6 @@ class Desafio(pilasengine.escenas.Escena):
         self.partida.iniciar(posicionInicial=fichas)
         self.cabezal = Cabezal(pilas, tablero=self.tablero, tts=tts)
 
-        # camara:
-        self.pilas.camara.x = 270
-        self.pilas.camara.y = 160
 
         # conexiones con eventos:
         self.pilas.eventos.pulsa_tecla.conectar(self.interpreta_teclado)

@@ -21,7 +21,7 @@ class MenuPrincipal(pilasengine.escenas.Escena):
                     (u"Modos de juego", self.modoJuego),
                     (u"Creditos", self.creditos),
                     ('Salir', self.salir)]
-        self.menu = Menu(pilas, y = 100 , opciones = opciones, fuente= "datos/tipografia/anirb___.ttf", color_normal=marronOscuro,color_resaltado=marronClaro)
+        self.menu = Menu(pilas, y = 170 , opciones = opciones, fuente= "datos/tipografia/anirb___.ttf", color_normal=marronOscuro,color_resaltado=marronClaro)
         self.menu.seleccionaOpcion.conectar(self.seleccionarItem)
         self.menu.activaOpcion.conectar(self.activarOpcion)
         self.decir(u"menú principal: pulse las flechas para navegar por el menú.", False)
