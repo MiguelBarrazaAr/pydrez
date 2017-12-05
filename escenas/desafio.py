@@ -38,7 +38,6 @@ class Desafio(pilasengine.escenas.Escena):
         self.partida.iniciar(posicionInicial=fichas)
         self.cabezal = Cabezal(pilas, tablero=self.tablero, tts=tts)
 
-
         # conexiones con eventos:
         self.pilas.eventos.pulsa_tecla.conectar(self.interpreta_teclado)
         self.pilas.eventos.click_de_mouse.conectar(self.click_mouse)

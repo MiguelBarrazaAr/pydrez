@@ -11,6 +11,7 @@ from escenas.menuDesafios import MenuDesafios
 from escenas.desafioSuperado import DesafioSuperado
 from escenas.desafio import Desafio
 from escenas.modoJuego import ModoJuego
+from escenas.creditos import Creditos
 
 # iniciamos:
 pilas = pilasengine.iniciar(ancho=1024,alto=768, titulo='pydrez 0.1 - alpha', capturar_errores=False, habilitar_mensajes_log=False)
@@ -27,6 +28,7 @@ pilas.escenas.vincular(MenuDesafios)
 pilas.escenas.vincular(Desafio)
 pilas.escenas.vincular(DesafioSuperado)
 pilas.escenas.vincular(ModoJuego)
+pilas.escenas.vincular(Creditos)
 
 # configuramos el cliente:
 pilas.datos['modoJuego'] = "ajedrezIa"
