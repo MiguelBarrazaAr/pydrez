@@ -8,3 +8,4 @@ class ReglasAjedrezSalvaje(ReglasAjedrezTradicional):
     def __init__(self, *args, **kwargs):
         ReglasAjedrezTradicional.__init__(self, *args, **kwargs)
         self.organizador = AjedrezSalvaje
+        self.fichaRey = "leon"

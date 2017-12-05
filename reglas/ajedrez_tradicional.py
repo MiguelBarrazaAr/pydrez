@@ -7,6 +7,7 @@ class ReglasAjedrezTradicional(Reglas):
     def __init__(self, *args, **kwargs):
         Reglas.__init__(self, *args, **kwargs)
         self.sonido_revote = Sonido("audio/boing.ogg")
+        self.fichaRey = "rey"
 
     def seleccionar_celda(self, columna, fila):
         """Selecciona una celda.
@@ -54,7 +55,7 @@ class ReglasAjedrezTradicional(Reglas):
                 fichaEliminada=celda.ficha, celdaOrigen=self.celda_seleccionada, celdaDestino=celda)
             self.celda_seleccionada.liberar()
             # valida si se comio el rey para finalizar la partida:
-            if celda.ficha is not None and celda.ficha.nombre == "rey":
+            if celda.ficha is not None and celda.ficha.nombre == self.fichaRey:
                 self.partida.finalizar(motivo="jacke mate", color=self.colorOpuesto(celda.ficha.color))
 
             self.partida.tablero.posicionar(ficha, columna=columna, fila=fila)
