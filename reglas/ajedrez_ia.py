@@ -49,7 +49,7 @@ class ReglasAjedrezTradicionalConIa(ReglasAjedrezTradicional):
             self._deseleccionarCelda()
             self.partida.finalizaMovimiento(celda)
             self.pasar_turno()
-            self.jugarPc()
+            self.partida.pilas.tareas.agregar(1, self.jugarPc)
         else:
             # no puede realizar el movimiento:
             self._deseleccionarCelda()
