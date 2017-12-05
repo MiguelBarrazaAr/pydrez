@@ -87,5 +87,5 @@ class ReglasAjedrezTradicionalConIa(ReglasAjedrezTradicional):
                 fichaEliminada = celda_destino.ficha,
                 celdaOrigen = celda_origen,
                 celdaDestino=celda_destino)
-            celda_destino.ficha = ficha
+            self.partida.tablero.posicionar(ficha, columna=c2, fila=f2)
             celda_origen.liberar()
