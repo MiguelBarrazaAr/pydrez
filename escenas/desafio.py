@@ -6,6 +6,7 @@ from actores.cabezal import Cabezal
 from actores.reloj import Reloj
 from partida import Partida
 from actores.textoAyuda import TextoAyuda
+from actores.historial import Historial
 
 from tts import leer as tts
 from sonido import Sonido
@@ -44,10 +45,27 @@ class Desafio(pilasengine.escenas.Escena):
         self.pilas.eventos.pulsa_tecla_escape.conectar(self.activar_menu_principal)
 
         # eventos de partida:
+        self.partida.eventoPreMueveFicha.conectar(self.mueveFicha)
         self.partida.eventoFinalizar.conectar(self.finalizar)
+
+        # sonidos:
+        self.sonido_mover = Sonido('audio/mover-ficha.ogg')
+        self.historial = Historial(pilas, ejex=300, ejey=0)
+        self.historial.fijo = True
 
     def activar_menu_principal(self, evento):
         self.pilas.escenas.MenuPrincipal(pilas=self.pilas)
+
+
+    def mueveFicha(self, evento):
+        self.sonido_mover.reproducir()
+
+        if evento.fichaEliminada:
+            self.decir(str(evento.ficha) +" por "+ str(evento.fichaEliminada) +" de "+ repr(evento.celdaDestino))
+            self.historial.agregar(repr(evento.ficha) + "x" + repr(evento.celdaDestino))
+        else:
+            self.decir(str(evento.ficha)+" mueve a: "+repr(evento.celdaDestino))
+            self.historial.agregar(repr(evento.ficha) + repr(evento.celdaDestino))
 
     def click_mouse(self, evento):
         x = int(evento.x) - (self.tablero.x - self.tablero.distancia / 2) + self.pilas.camara.x
