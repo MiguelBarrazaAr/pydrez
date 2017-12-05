@@ -2,6 +2,7 @@
 import pilasengine
 
 from escenas.menuPrincipal import MenuPrincipal
+from escenas.configurar import Configurar
 from escenas.elegirColor import ElegirColor
 from escenas.conectarseAlServidor import ConectarseAlServidor
 from escenas.pantallaJuego import PantallaJuego
@@ -17,6 +18,7 @@ pilas.forzar_habilitacion_de_audio()
 
 # vinculamos las pantallas:
 pilas.escenas.vincular(MenuPrincipal)
+pilas.escenas.vincular(Configurar)
 pilas.escenas.vincular(ElegirColor)
 pilas.escenas.vincular(ConectarseAlServidor)
 pilas.escenas.vincular(PantallaJuego)
