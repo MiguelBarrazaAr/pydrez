@@ -9,13 +9,15 @@ from sonido import Sonido
 class ModoJuego(pilasengine.escenas.Escena):
 
     def iniciar(self, pilas, datos=None):
-        marronClaro = pilas.colores.Color(128, 84, 66)
+        colorResaltado = pilas.colores.Color(0, 0, 0)
+        colorNormal = pilas.colores.Color(255, 255, 255)
         marronOscuro = pilas.colores.Color(77, 38, 22)
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/fondoJuego.jpg")
         self.decir = tts
         self.datos=datos
         opciones = self.listaOpciones()
-        self.menu = Menu(pilas,x = -300 ,y = 170, opciones = opciones,fuente= "datos/tipografia/anirb___.ttf", color_normal=marronOscuro, color_resaltado=marronClaro)
+        self.menu = Menu(pilas,x = -300 ,y = 250, opciones = opciones,fuente= "datos/tipografia/anirb___.ttf", color_normal=colorNormal, color_resaltado=colorResaltado, imagenFondo= "imagenes/fondo/boton.jpg", escala=0.7, distancia= 60 )
+        self.menu.escala = 0.5
         self.menu.seleccionaOpcion.conectar(self.seleccionarItem)
         self.menu.activaOpcion.conectar(self.activarOpcion)
         self.decir(u"Modo juego: pulse las flechas para elegir un modo de juego.", False)
