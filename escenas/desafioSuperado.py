@@ -20,9 +20,11 @@ class DesafioSuperado(pilasengine.escenas.Escena):
         self.botonMenuPrincipal.y = -150
         self.botonMenuPrincipal.conectar(self.menuPrincipal)
 
+
         self.botonSiguienteDesafio = pilas.interfaz.Boton("siguiente desafio")
         self.botonSiguienteDesafio.x = 150
         self.botonSiguienteDesafio.y = -150
+
         self.botonSiguienteDesafio.conectar(self.siguienteDesafio)
 
         # eventos:

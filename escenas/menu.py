@@ -21,9 +21,11 @@ class EscenaMenu(pilasengine.escenas.Escena):
         self.fuente = "datos/tipografia/anirb___.ttf"
         self.imagenFondo = "imagenes/fondo/boton.jpg"
         self.distancia = 50
+        self.escala = 1
         self.configuracion()
         self.decir = tts
-        self.menu = Menu(pilas, x=self.menu_x, y=self.menu_y, opciones=self.listaOpciones(), fuente=self.fuente, color_normal=self.colorNormal, color_resaltado=self.colorResaltado , imagenFondo= self.imagenFondo, distancia=self.distancia)
+        self.menu = Menu(pilas, x=self.menu_x, y=self.menu_y, opciones=self.listaOpciones(), fuente=self.fuente, color_normal=self.colorNormal, color_resaltado=self.colorResaltado , imagenFondo= self.imagenFondo, distancia=self.distancia, escala= self.escala)
+        self.menu.escala = self.escala
         self.menu.seleccionaOpcion.conectar(self.seleccionarOpcion)
         self.menu.activaOpcion.conectar(self.activarOpcion)
         self.sonidoMover = Sonido("audio/menu_opcion.ogg")

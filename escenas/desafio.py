@@ -99,4 +99,7 @@ class Desafio(pilasengine.escenas.Escena):
 
     def finalizar(self, evento):
         if evento.motivo == "superado":
-            self.pilas.escenas.DesafioSuperado(self.pilas,self.reloj.texto, self.nombreDesafio)
+            if self.nombreDesafio == '9':
+                self.pilas.escenas.GanasteLosDesafios(self.pilas)
+            else:
+                self.pilas.escenas.DesafioSuperado(self.pilas,self.reloj.texto, self.nombreDesafio)
