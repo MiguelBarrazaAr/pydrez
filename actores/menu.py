@@ -10,13 +10,13 @@ class Menu(Actor):
 
     def __init__(self, pilas, x=0, y=0, opciones=[], fuente=None,
              color_normal=colores.gris, color_resaltado=colores.blanco,
-             imagenFondo= None, distancia = 50):
+             imagenFondo= None, distancia = 50, escala = 1):
         Actor.__init__(self, pilas, x=x, y=y)
         self.opciones_como_actores = []
         self.iconos_de_opciones = []
         self.imagen = "invisible.png"
         self._verificar_opciones(opciones)
-        self.crear_texto_de_las_opciones(opciones, fuente, color_normal , color_resaltado, imagenFondo=imagenFondo, distancia= distancia)
+        self.crear_texto_de_las_opciones(opciones, fuente, color_normal , color_resaltado, imagenFondo=imagenFondo, distancia= distancia, escala= escala)
         self.opciones = opciones
         self.seleccionar_primer_opcion()
         self.opcion_actual = 0
@@ -39,7 +39,7 @@ class Menu(Actor):
         self.pilas.escena_actual().click_de_mouse.desconectar(self.cuando_hace_click_con_el_mouse)
         self.pilas.eventos.pulsa_tecla.desconectar(self.interpreta_teclado)
 
-    def crear_texto_de_las_opciones(self, opciones, fuente, color_normal, color_resaltado, imagenFondo, distancia):
+    def crear_texto_de_las_opciones(self, opciones, fuente, color_normal, color_resaltado, imagenFondo, distancia, escala):
         """Genera un actor por cada opcion del menu.
 
         :param opciones: Una lista con todas las opciones que tendrá el menú.
@@ -62,7 +62,8 @@ class Menu(Actor):
                                             color_normal=color_normal, color_resaltado=color_resaltado)
 
             if imagenFondo is not None:
-                self.actorImagenFondo = self.pilas.actores.Actor(imagen=imagenFondo, x=self.x, y=y)
+                actorImagen = self.pilas.actores.Actor(imagen=imagenFondo, x=self.x, y=y + 3)
+                actorImagen.escala = escala
 
             self.opciones_como_actores.append(opciones)
 
