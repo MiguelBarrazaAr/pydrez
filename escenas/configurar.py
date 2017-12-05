@@ -14,9 +14,9 @@ class Configurar(EscenaMenu):
     def listaOpciones(self):
         lista = []
         if self.pilas.datos.musica is None:
-            opcion = (u'Activar musica', self.musicaActivar)
+            opcion = (u'musica off', self.musicaActivar)
         else:
-            opcion = (u'Desactivar musica', self.musicaDesactivar)
+            opcion = (u'musica on', self.musicaDesactivar)
         lista.append(opcion)
         return lista
 
