@@ -9,7 +9,7 @@ class PuzzleAjedrez(Reglas):
         self.personalizado=True
         self.sonido_revote = Sonido("audio/boing.ogg")
 
-    def posIniciar(self):
+    def posIniciar(self, *args, **kwargs):
         self.fichasActivas = self.partida.pool.fichasActivas()
 
     def seleccionar_celda(self, columna, fila):
