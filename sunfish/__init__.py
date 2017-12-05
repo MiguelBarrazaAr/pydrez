@@ -4,9 +4,12 @@ import sunfish
 import re
 
 A1, H1, A8, H8 = 91, 98, 21, 28
-def parse(c):
+def parse(c, t='w'):
     fil, rank = ord(c[0]) - ord('a'), int(c[1]) - 1
-    return A1 + fil - 10*rank
+    if t=='b':
+        return (rank+2)*10+(8-fil)
+    else:
+        return A1 + fil - 10*rank
 
 def render(i):
     rank, fil = divmod(i - A1, 10)

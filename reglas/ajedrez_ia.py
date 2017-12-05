@@ -11,15 +11,9 @@ class ReglasAjedrezTradicionalConIa(ReglasAjedrezTradicional):
         self.secs=2
 
     def posIniciar(self, *args, **kwargs):
-        print(self.partida.pilas.datos.colorPc)
         if self.partida.pilas.datos.colorPc == 'blanco':
-            import time
-            time.sleep(2)
-            print("juega")
-            self.pasar_turno()
             self.secs=1
-            self.jugarPc()
-
+            self.partida.pilas.tareas.agregar(2, self.jugarPc)
 
     def mover_ficha(self, columna, fila):
         ficha = self.celda_seleccionada.ficha
@@ -36,11 +30,14 @@ class ReglasAjedrezTradicionalConIa(ReglasAjedrezTradicional):
 
             self.partida.registrar_movimiento(ficha=self.celda_seleccionada.ficha,
                 fichaEliminada=celda.ficha, celdaOrigen=self.celda_seleccionada, celdaDestino=celda)
-            self.celda_seleccionada.liberar()
+
             # ajustamos el movimiento:
             desde = chr(97+self.celda_seleccionada.columna) + str(self.celda_seleccionada.fila+1)
             hasta = chr(97+columna) + str(fila+1)
-            mover = sunfish.parse(desde), sunfish.parse(hasta)
+            if self.secs == 1:
+                mover = sunfish.parse(desde, 'b'), sunfish.parse(hasta, 'b')
+            else:
+                mover = sunfish.parse(desde), sunfish.parse(hasta)
             self.posicion = self.posicion.move(mover)
 
             # valida si se comio el rey para finalizar la partida:
@@ -48,9 +45,11 @@ class ReglasAjedrezTradicionalConIa(ReglasAjedrezTradicional):
                 self.partida.finalizar(motivo="jacke mate", color=self.colorOpuesto(celda.ficha.color))
 
             self.partida.tablero.posicionar(ficha, columna=columna, fila=fila)
-            self.jugarPc()
+            self.celda_seleccionada.liberar()
             self._deseleccionarCelda()
             self.partida.finalizaMovimiento(celda)
+            self.pasar_turno()
+            self.jugarPc()
         else:
             # no puede realizar el movimiento:
             self._deseleccionarCelda()
@@ -58,8 +57,6 @@ class ReglasAjedrezTradicionalConIa(ReglasAjedrezTradicional):
 
     def jugarPc(self):
         """Juega la maquina"""
-        self.pasar_turno()
-        print("...")
         mover, _ = sunfish.search(self.posicion, self.secs)
         self.posicion = self.posicion.move(mover)
         if self.secs == 1:
