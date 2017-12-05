@@ -14,3 +14,13 @@ def render(i):
 
 def brender(i):
     return render(119-i)
+
+
+def positionInitial():
+    return tools.parseFEN(tools.FEN_INITIAL)
+
+def parseFen(fen):
+    return tools.parseFEN(fen)
+
+def search(position, secs=1):
+    return sunfish.Searcher().search(position, secs)
