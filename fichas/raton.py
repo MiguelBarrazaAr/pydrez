@@ -12,7 +12,7 @@ class Raton(Comportamiento):
             return self._negro_puedeMoverA(columna, fila)
 
     def _blanco_puedeMoverA(self, columna, fila):
-        if self.columna == columna and abs(self.fila + fila) == 1:
+        if self.columna == columna and abs(self.fila - fila) == 1:
             return True
         elif fila == 3 and self.columna == columna:
             return self.validar_celdas([(columna, 2)])
