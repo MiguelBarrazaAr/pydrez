@@ -10,7 +10,7 @@ class MenuPrincipal(pilasengine.escenas.Escena):
     def iniciar(self, pilas, datos=None):
         musica = pilas.datos.musica
         if musica is not None:
-            musica.reproducir()
+            musica.reproducir(repetir=True)
         self.pilas.eventos.pulsa_tecla_escape.conectar(self.cuandoPulsaEscape)
         marronClaro = pilas.colores.Color(128, 84, 66)
         marronOscuro = pilas.colores.Color(77, 38, 22)
