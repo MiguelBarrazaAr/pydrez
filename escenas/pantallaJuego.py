@@ -117,8 +117,8 @@ class PantallaJuego(pilasengine.escenas.Escena):
                 self.decir(info)
 
     def nuevaPartida(self):
-        audio = Sonido("audio/acomodar_tablero.ogg")
-        audio.reproducir_esperando()
+        self.audio = Sonido("audio/acomodar_tablero.ogg")
+        self.audio.reproducir()
         self.pilas.escenas.PantallaJuego(pilas=self.pilas, datos=self.datos)
 
     def mostrarResultado(self,evento):
