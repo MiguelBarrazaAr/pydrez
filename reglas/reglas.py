@@ -33,10 +33,10 @@ class Reglas(object):
         self.partida.tablero.filas = self.dimensionTablero[1]
         self.partida.tablero.graficar(self.efectoTablero)
 
-    def PosIniciar(self, *args, **kwargs):
+    def posIniciar(self, *args, **kwargs):
         """metodo que se ejecuta despues de iniciar la partida.
         se debe sobreescribir si es necesario"""
-        return None
+        pass
 
     def definir_partida(self, partida):
         self.partida = partida

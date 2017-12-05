@@ -2,6 +2,7 @@
 import pilasengine
 
 from escenas.menuPrincipal import MenuPrincipal
+from escenas.elegirColor import ElegirColor
 from escenas.conectarseAlServidor import ConectarseAlServidor
 from escenas.pantallaJuego import PantallaJuego
 from escenas.menuPromocion  import MenuPromocion
@@ -15,6 +16,7 @@ pilas = pilasengine.iniciar(ancho=1024,alto=768, titulo='pydrez 0.1 - alpha', ca
 
 # vinculamos las pantallas:
 pilas.escenas.vincular(MenuPrincipal)
+pilas.escenas.vincular(ElegirColor)
 pilas.escenas.vincular(ConectarseAlServidor)
 pilas.escenas.vincular(PantallaJuego)
 pilas.escenas.vincular(MenuPromocion)

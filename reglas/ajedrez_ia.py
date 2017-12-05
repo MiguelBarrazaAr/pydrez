@@ -8,6 +8,18 @@ class ReglasAjedrezTradicionalConIa(ReglasAjedrezTradicional):
     def __init__(self, *args, **kwargs):
         ReglasAjedrezTradicional.__init__(self, *args, **kwargs)
         self.posicion = sunfish.positionInitial()
+        self.secs=2
+
+    def posIniciar(self, *args, **kwargs):
+        print(self.partida.pilas.datos.colorPc)
+        if self.partida.pilas.datos.colorPc == 'blanco':
+            import time
+            time.sleep(2)
+            print("juega")
+            self.pasar_turno()
+            self.secs=1
+            self.jugarPc()
+
 
     def mover_ficha(self, columna, fila):
         ficha = self.celda_seleccionada.ficha
@@ -36,7 +48,7 @@ class ReglasAjedrezTradicionalConIa(ReglasAjedrezTradicional):
                 self.partida.finalizar(motivo="jacke mate", color=self.colorOpuesto(celda.ficha.color))
 
             self.partida.tablero.posicionar(ficha, columna=columna, fila=fila)
-            self.pasar_turno()
+            self.jugarPc()
             self._deseleccionarCelda()
             self.partida.finalizaMovimiento(celda)
         else:
@@ -44,13 +56,21 @@ class ReglasAjedrezTradicionalConIa(ReglasAjedrezTradicional):
             self._deseleccionarCelda()
             self.movimiento_imposible()
 
-    def pasar_turno(self):
-        """Al pasar el turno juega la maquina"""
-        mover, _ = sunfish.search(self.posicion, 2)
+    def jugarPc(self):
+        """Juega la maquina"""
+        self.pasar_turno()
+        print("...")
+        mover, _ = sunfish.search(self.posicion, self.secs)
         self.posicion = self.posicion.move(mover)
-        desde = sunfish.brender(mover[0])
-        hasta = sunfish.brender(mover[1])
+        if self.secs == 1:
+            desde = sunfish.render(mover[0])
+            hasta = sunfish.render(mover[1])
+        else:
+            desde = sunfish.brender(mover[0])
+            hasta = sunfish.brender(mover[1])
+
         self.realizarMovimiento(desde, hasta)
+        self.pasar_turno()
 
     def realizarMovimiento(self, desde, hasta):
         c1 = ord(desde[0])-97

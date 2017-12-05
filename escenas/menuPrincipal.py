@@ -24,7 +24,7 @@ class MenuPrincipal(pilasengine.escenas.Escena):
                 ('Salir', self.salir)]
         else:
             opciones = [('Jugar contra la maquina', self.jugar),
-                (u'Continuar Con partida', self.continuarConPartida),
+                (u'Continuar Con la partida', self.continuarConPartida),
                 (u"Desafíos", self.desafios),
                 (u"Conectarse a un servidor", self.conectarse),
                 (u"Establecerse como servidor", self.levantarServidor),
@@ -56,7 +56,8 @@ class MenuPrincipal(pilasengine.escenas.Escena):
         self.sonido_activar.reproducir()
 
     def jugar(self):
-        self.pilas.escenas.PantallaJuego(pilas=self.pilas, datos=self.datos)
+        self.pilas.datos['modoJuego'] = "ajedrezIa"
+        self.pilas.escenas.ElegirColor(self.pilas)
 
     def continuarConPartida(self):
         self.pilas.escenas.PantallaJuego(pilas=self.pilas, datos=self.datos)

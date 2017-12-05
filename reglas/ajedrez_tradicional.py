@@ -8,9 +8,6 @@ class ReglasAjedrezTradicional(Reglas):
         Reglas.__init__(self, *args, **kwargs)
         self.sonido_revote = Sonido("audio/boing.ogg")
 
-    def posIniciar(self):
-        pass
-
     def seleccionar_celda(self, columna, fila):
         """Selecciona una celda.
         solo se puede seleccionar celdas que tienen fichas.
