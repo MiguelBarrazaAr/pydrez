@@ -13,6 +13,7 @@ from escenas.modoJuego import ModoJuego
 
 # iniciamos:
 pilas = pilasengine.iniciar(ancho=1024,alto=768, titulo='pydrez 0.1 - alpha', capturar_errores=False, habilitar_mensajes_log=False)
+pilas.forzar_habilitacion_de_audio()
 
 # vinculamos las pantallas:
 pilas.escenas.vincular(MenuPrincipal)
@@ -25,12 +26,12 @@ pilas.escenas.vincular(Desafio)
 pilas.escenas.vincular(DesafioSuperado)
 pilas.escenas.vincular(ModoJuego)
 
-pilas.escenas.MenuPrincipal(pilas=pilas)
-
 # configuramos el cliente:
 pilas.datos['modoJuego'] = "ajedrezIa"
 pilas.datos['posicion'] = None
 pilas.datos['tablero'] = "8x8"
+# musica:
+pilas.datos['musica'] = pilas.musica.cargar('audio/presentacion.mp3')
 
-
+pilas.escenas.MenuPrincipal(pilas=pilas)
 pilas.ejecutar()

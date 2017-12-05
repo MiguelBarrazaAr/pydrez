@@ -13,6 +13,10 @@ from sonido import Sonido
 class Desafio(pilasengine.escenas.Escena):
 
     def iniciar(self, pilas, nombreDesafio):
+        musica = pilas.datos.musica
+        if musica is not None:
+            musica.detener_gradualmente(3)
+
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/fondoJuego.jpg")
         self.decir = tts
         self.partida = Partida(pilas)
