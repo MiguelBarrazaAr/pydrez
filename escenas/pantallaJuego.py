@@ -117,8 +117,15 @@ class PantallaJuego(pilasengine.escenas.Escena):
     def mostrarResultado(self,evento):
         texto = self.pilas.actores.Texto("Ganan las ", y=300,ancho=300)
         texto.color = self.pilas.colores.Color(77, 38, 22)
+        mensaje = evento.motivo + ", "
         if evento.color == "blanco":
             texto.texto = texto.texto + "blancas"
+            mensaje += "gana las blancas."
         else:
             texto.texto = texto.texto + "negras"
+            mensaje += "gana las negras."
 
+        audio = Sonido("audio/logro.ogg")
+        audio.reproducir_esperando()
+
+        self.decir(mensaje)
