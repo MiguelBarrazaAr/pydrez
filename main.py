@@ -15,7 +15,7 @@ from escenas.creditos import Creditos
 from escenas.ganasteLosDesafios import GanasteLosDesafios
 
 # iniciamos:
-pilas = pilasengine.iniciar(ancho=1024,alto=768, titulo='pydrez 0.1 - alpha', capturar_errores=False, habilitar_mensajes_log=False)
+pilas = pilasengine.iniciar(ancho=1024,alto=768, titulo='pydrez 1.1 - alpha', capturar_errores=False, habilitar_mensajes_log=False)
 pilas.forzar_habilitacion_de_audio()
 
 # vinculamos las pantallas:

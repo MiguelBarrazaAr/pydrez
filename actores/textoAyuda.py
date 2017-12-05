@@ -13,7 +13,7 @@ class TextoAyuda(Actor):
         info = file.read()
         file.close()
 
-        self.x = x
-        self.y = y
+        self.x = 450
+        self.y = -250
         self.decir(info)
         return info
