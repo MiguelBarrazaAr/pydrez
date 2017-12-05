@@ -80,7 +80,7 @@ class MenuPrincipal(pilasengine.escenas.Escena):
         self.pilas.escenas.ModoJuego(pilas=self.pilas)
 
     def creditos(self):
-        print("creditos")
+        self.pilas.escenas.Creditos(pilas=self.pilas)
 
     def configurar(self):
         self.pilas.escenas.Configurar(self.pilas)

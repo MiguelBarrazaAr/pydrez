@@ -6,14 +6,14 @@ from sonido import Sonido
 class DesafioSuperado(pilasengine.escenas.Escena):
 
     def iniciar(self, pilas, tiempo, nombreDesafio):
-        marronOsucuro = pilas.colores.Color(77, 38, 22)
+        marronOscuro = pilas.colores.Color(77, 38, 22)
         self.nombreDesafio = str(int(nombreDesafio) + 1)
         self.fondo = pilas.fondos.FondoMozaico("imagenes/fondo/fondoJuego.jpg")
         self.textoDesafioTerminado = self.pilas.actores.Texto("Desafio "+ str(nombreDesafio) + " terminado " , magnitud=40,fuente= "datos/tipografia/anirb___.ttf" )
         self.tiempoEnElDesafio = self.pilas.actores.Texto("tiempo: " + tiempo.texto, magnitud=40,fuente= "datos/tipografia/anirb___.ttf")
         self.textoDesafioTerminado.y = 100
-        self.textoDesafioTerminado.color = marronOsucuro
-        self.tiempoEnElDesafio.color = marronOsucuro
+        self.textoDesafioTerminado.color = marronOscuro
+        self.tiempoEnElDesafio.color = marronOscuro
 
         self.botonMenuPrincipal = pilas.interfaz.Boton("ir al menu Principal")
         self.botonMenuPrincipal.x = -150
