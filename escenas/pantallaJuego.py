@@ -55,11 +55,13 @@ class PantallaJuego(pilasengine.escenas.Escena):
 
     def mueveFicha(self, evento):
         self.sonido_mover.reproducir()
-        self.decir(str(evento.ficha)+" mueve a: "+repr(evento.celdaDestino))
+
         if evento.fichaEliminada:
+            self.decir(str(evento.ficha) +" por "+ str(evento.fichaEliminada) +" de "+ repr(evento.celdaDestino))
             #print("fuera de juego", fichaEliminada.nombre,  fichaEliminada.color)
             self.historial.agregar(repr(evento.ficha) + "x" + repr(evento.celdaDestino))
         else:
+            self.decir(str(evento.ficha)+" mueve a: "+repr(evento.celdaDestino))
             self.historial.agregar(repr(evento.ficha) + repr(evento.celdaDestino))
 
 
