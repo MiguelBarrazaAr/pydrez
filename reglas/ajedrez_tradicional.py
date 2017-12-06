@@ -56,6 +56,18 @@ class ReglasAjedrezTradicional(Reglas):
                 fichaEliminada=celda.ficha,
                 celdaOrigen=self.celda_seleccionada,
                 celdaDestino=celda)
+
+            # verificamos si enroca:
+            if ficha.nombre == "rey" and (celda_origen.fila in [0,7] and abs(celda_origen.columna - celda_destino.columna) == 2):
+                # enroca:
+                if celda_destino.columna == 6:
+                    #enroque corto:
+                    self.acomodarTorreDeEnroque(largo=False)
+                else:
+                    # enroque largo:
+                    self.acomodarTorreDeEnroque(largo=True)
+
+
             if celda.ficha is not None:
                 celda.ficha.efectoAlEliminar()
             self.celda_seleccionada.liberar()
@@ -89,3 +101,16 @@ class ReglasAjedrezTradicional(Reglas):
         """metodo que se ejecuta cuando un jugador realiza un movimiento imposible"""
         self.sonido_revote.reproducir()
         self.decir("movimiento imposible")
+
+    def acomodarTorreDeEnroque(self, largo=True):
+        print("enroca")
+        if not largo:
+            #enroque corto:
+            c = self.partida.tablero.obtener_celda(7, 0)
+            self.partida.tablero.posicionar(c.ficha, columna=5, fila=0)
+            c.liberar()
+        else:
+            # enroque largo:
+            c = self.partida.tablero.obtener_celda(0, 0)
+            self.partida.tablero.posicionar(c.ficha, columna=3, fila=0)
+            c.liberar()

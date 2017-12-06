@@ -87,5 +87,15 @@ class ReglasAjedrezTradicionalConIa(ReglasAjedrezTradicional):
                 fichaEliminada = celda_destino.ficha,
                 celdaOrigen = celda_origen,
                 celdaDestino=celda_destino)
+            # verificamos si enroca:
+            if ficha.nombre == "rey" and (celda_origen.fila in [0,7] and abs(celda_origen.columna - celda_destino.columna) == 2):
+                # enroca:
+                if celda_destino.columna == 6:
+                    #enroque corto:
+                    self.acomodarTorreDeEnroque(largo=False)
+                else:
+                    # enroque largo:
+                    self.acomodarTorreDeEnroque(largo=True)
+
             self.partida.tablero.posicionar(ficha, columna=c2, fila=f2)
             celda_origen.liberar()

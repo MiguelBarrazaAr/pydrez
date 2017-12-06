@@ -11,5 +11,8 @@ class Rey(Comportamiento):
             return True
         if self.fila == fila and abs(self.columna - columna) == 1:
             return True
+        # para el enroque:
+        if (self.fila in [0, 7] and self.columna == 4) and columna in [2, 6]:
+            return True
         else:
             return False
