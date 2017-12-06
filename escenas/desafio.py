@@ -50,7 +50,7 @@ class Desafio(pilasengine.escenas.Escena):
 
         # sonidos:
         self.sonido_mover = Sonido('audio/mover-ficha.ogg')
-        self.historial = Historial(pilas, ejex=300, ejey=0)
+        self.historial = Historial(pilas, ejex=300, ejey=0, cantidadDeJugadores=1 )
         self.historial.fijo = True
 
     def activar_menu_principal(self, evento):

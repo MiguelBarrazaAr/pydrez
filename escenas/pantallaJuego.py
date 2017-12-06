@@ -40,7 +40,7 @@ class PantallaJuego(pilasengine.escenas.Escena):
 
         # sonidos:
         self.sonido_mover = Sonido('audio/mover-ficha.ogg')
-        self.historial = Historial(pilas, ejex=350, ejey=0)
+        self.historial = Historial(pilas, ejex=320, ejey=0)
         self.historial.fijo = True
 
         #
