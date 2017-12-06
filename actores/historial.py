@@ -14,13 +14,6 @@ class Historial(Actor):
         self.jugadores = []
         for x in range(cantidadDeJugadores):
             self.jugadores.append(ColumnaDeHistorial(self.pilas, self.x + x * 75, ejey + 185))
-
-
-        print self.jugadores
-
-
-        #self.columnaBlanca = ColumnaDeHistorial(self.pilas, self.x + -70, ejey + 185)
-        #self.columnaNegra  = ColumnaDeHistorial(self.pilas, self.x + 40, ejey + 185)
         self.columnaNumero = ColumnaDeHistorial(self.pilas, self.x + - 30, ejey + 185)
         self.indice = 0
         self.numeroDeLinea = 1
