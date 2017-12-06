@@ -36,6 +36,7 @@ pilas.escenas.vincular(GanasteLosDesafios)
 pilas.datos['modoJuego'] = "ajedrezIa"
 pilas.datos['posicion'] = None
 pilas.datos['tablero'] = "8x8"
+pilas.datos['fichasFx'] = "off"
 # musica:
 pilas.datos['musica'] = pilas.musica.cargar('audio/presentacion.mp3')
 

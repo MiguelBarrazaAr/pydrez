@@ -33,6 +33,7 @@ class MenuPrincipal(pilasengine.escenas.Escena):
                 (u"Conectarse a un servidor", self.conectarse),
                 (u"Establecerse como servidor", self.levantarServidor),
                 (u"Modos de juego para 2 jugadores", self.modoJuego),
+                (u'Configuracion', self.configurar),
                 (u"Creditos", self.creditos),
                 ('Salir', self.salir)]
 

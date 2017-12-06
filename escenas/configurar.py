@@ -18,6 +18,13 @@ class Configurar(EscenaMenu):
         else:
             opcion = (u'musica on', self.musicaDesactivar)
         lista.append(opcion)
+
+        if self.pilas.datos.fichasFx == "off":
+            opcion = (u'Efectos off', self.modificarEfectos, "on")
+        else:
+            opcion = (u'Efectos on', self.modificarEfectos, "off")
+        lista.append(opcion)
+
         return lista
 
 
@@ -38,4 +45,8 @@ class Configurar(EscenaMenu):
     def musicaDesactivar(self):
         self.pilas.datos.musica.detener()
         self.pilas.datos.musica = None
+        self.recargar()
+
+    def modificarEfectos(self, modo):
+        self.pilas.datos.fichasFx = modo
         self.recargar()
