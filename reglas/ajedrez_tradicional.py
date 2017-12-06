@@ -24,6 +24,7 @@ class ReglasAjedrezTradicional(Reglas):
                     # seleccionamos la celda:
                     self.celda_seleccionada = celda
                     self.celda_seleccionada.seleccionar()
+                    celda.ficha.seleccionar()
                     self.decir(str(self.celda_seleccionada.ficha)+" seleccionado")
                 else:
                     self.decir("es turno del "+turno_actual)

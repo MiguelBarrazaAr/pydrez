@@ -61,3 +61,7 @@ class Comportamiento(object):
     def fichasAmenazadas(self, tablero):
         """Retorna la lista de fichas amenazadas por la actual"""
         return []
+
+    def seleccionar(self):
+        """metodo que se ejecuta al seleccionar una ficha"""
+        pass

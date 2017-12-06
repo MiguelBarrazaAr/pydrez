@@ -70,3 +70,11 @@ class Ficha(Actor):
 
     def tieneComportamiento(self):
         return self.comportamiento is not None
+
+    def seleccionar(self):
+        import os
+        from sonido import Sonido
+        nombre = "audio/"+self.nombre+".ogg"
+        if os.path.exists(nombre):
+            self.audio = Sonido(nombre)
+            self.audio.reproducir()
