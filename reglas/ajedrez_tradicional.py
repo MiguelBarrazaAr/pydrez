@@ -53,7 +53,11 @@ class ReglasAjedrezTradicional(Reglas):
             # puede realizar el movimiento:
 
             self.partida.registrar_movimiento(ficha=self.celda_seleccionada.ficha,
-                fichaEliminada=celda.ficha, celdaOrigen=self.celda_seleccionada, celdaDestino=celda)
+                fichaEliminada=celda.ficha,
+                celdaOrigen=self.celda_seleccionada,
+                celdaDestino=celda)
+            if celda.ficha is not None:
+                celda.ficha.efectoAlEliminar()
             self.celda_seleccionada.liberar()
             # valida si se comio el rey para finalizar la partida:
             if celda.ficha is not None and celda.ficha.nombre == self.fichaRey:
