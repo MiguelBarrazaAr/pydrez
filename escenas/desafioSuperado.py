@@ -31,7 +31,7 @@ class DesafioSuperado(pilasengine.escenas.Escena):
         self.pilas.eventos.pulsa_tecla_escape.conectar(self.menuPrincipal)
         self.pilas.eventos.pulsa_tecla.conectar(self.interpretaTeclado)
 
-        mensaje = "ï¿½Desafio superado!. (pulsa enter para ir al siguiente desafio o escape para ir al menu principal)"
+        mensaje = "¿Desafio superado!. (pulsa enter para ir al siguiente desafio o escape para ir al menu principal)"
         leer(mensaje, False)
         audio = Sonido("audio/logro.ogg")
         audio.reproducir_esperando()

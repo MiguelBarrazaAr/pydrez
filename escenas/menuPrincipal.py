@@ -20,20 +20,20 @@ class MenuPrincipal(pilasengine.escenas.Escena):
         if datos is None:
             opciones = [('Jugar contra la maquina', self.jugar),
                 (u"Desafíos", self.desafios),
-                (u"Conectarse a un servidor", self.conectarse),
-                (u"Establecerse como servidor", self.levantarServidor),
                 (u"Modos de juego para 2 jugadores", self.modoJuego),
                 (u'Configuracion', self.configurar),
+                (u"Conectarse a un servidor", self.conectarse),
+                (u"Establecerse como servidor", self.levantarServidor),
                 (u"Creditos", self.creditos),
                 ('Salir', self.salir)]
         else:
             opciones = [('Jugar contra la maquina', self.jugar),
                 (u'Continuar Con la partida', self.continuarConPartida),
                 (u"Desafíos", self.desafios),
-                (u"Conectarse a un servidor", self.conectarse),
-                (u"Establecerse como servidor", self.levantarServidor),
                 (u"Modos de juego para 2 jugadores", self.modoJuego),
                 (u'Configuracion', self.configurar),
+                (u"Conectarse a un servidor", self.conectarse),
+                (u"Establecerse como servidor", self.levantarServidor),
                 (u"Creditos", self.creditos),
                 ('Salir', self.salir)]
 
@@ -72,10 +72,12 @@ class MenuPrincipal(pilasengine.escenas.Escena):
         #self.pilas.escenas.Desafio(pilas=self.pilas, nombreDesafio='2')
 
     def conectarse(self):
-        self.pilas.escenas.ConectarseAlServidor(pilas=self.pilas)
+        self.pilas.avisar("No se pudo conectar...\n\n")
+        #self.pilas.escenas.ConectarseAlServidor(pilas=self.pilas)
 
     def levantarServidor(self):
-        print("tutorial")
+        self.pilas.avisar("error: el servidor no se pudo levantar.\n\n")
+        print("servidor no disponible.")
 
     def modoJuego(self):
         self.pilas.escenas.ModoJuego(pilas=self.pilas)
